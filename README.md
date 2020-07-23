@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 401 FINAL PROJECT
 
-## Available Scripts
+## Project Name : Trader APP
 
-In the project directory, you can run:
 
-### `npm start`
+## Team Members:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Marah Joudeh
+- Ahmad Kmal
+- Yazan aljamal
+- yasmeen Adaileh
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## LINKS:
 
-### `npm test`
+- [heruko app](https://trader401.herokuapp.com/)
+- [Trello Board](https://trello.com/b/YLFmPzGT/trader)
+- [Software Requirements](software-Req.md)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## App Description:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Trader App is an app for users who want to see who's interested in buying or trading thier items , so that other users can explore the app and see all published posts from all users, also a user can chat with another user as well to ask for more information. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Wireframe:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Wireframe](https://miro.com/app/board/o9J_kpNWHHw=/)
 
-### `npm run eject`
+## Domain Modeling:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Domain](/assets/domain.png)
+![Domain1](/assets/domain1.png)
+![Domain2](/assets/domain2.png)
+![Domain3](/assets/domain3.png)
+![Domain4](/assets/domain4.png)
+![Domain5](/assets/domain5.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Database Entity-Relationship-Diagram:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Diagram](/assets/schema1.PNG)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
