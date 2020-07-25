@@ -7,15 +7,12 @@ export default (state = initialState ,action) =>{
     const { type , payload } = action;
     switch(type){
         case 'ACTIVE' :
-            let products = state.products.filter(product=> product.category === payload) ;
+            let products = initialState.products.filter(product=> product.category === payload) ;
             return {products :  products};
 
-        case 'GET':
-            state.products = [...payload];
-            return {
-                ...state,
-                products:state.products
-            };
+    
+        default:
+             return state;
     }
 }
 export const active = (categoryName) => {
@@ -25,13 +22,14 @@ export const active = (categoryName) => {
     }
 }
 
-export const getProducts = () => dispatch => {
-    let api = 'https://trader401.herokuapp.com/all';
+export const getPosts = (categories) => dispatch => {
+    let api = `https://trader401.herokuapp.com/categories/${categories}`;
     return superagent.get(api)
       .then(data => {
+        //   (console.log(data.body , 'daata.body'))
         dispatch(getActionProducts(data.body))
       });
-  }
+  };
 
   export const getActionProducts = payload => {
     return {
