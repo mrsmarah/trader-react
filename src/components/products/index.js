@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import products from '../../store/reducers/products';
-import { getRemoteData} from '../../store/reducers/products.js';
+import * as action from '../../store/reducers/products.js';
 function Products (props){
     const fetchData = () => {
         props.get();
@@ -16,8 +16,10 @@ function Products (props){
         <section>
               <button onClick={fetchData}>Get Products</button>
             <ul className='pro'>
+                {console.log('hello------->', props.data)}
                 {
-                    props.data.products.map(product =>{
+                    
+                    props.data.map(product =>{
                         console.log('hello')
                         return (
         <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {product.title}>
@@ -49,10 +51,10 @@ function Products (props){
     )
 }
 const mapStateToProps = (state) =>{
-    return {data : state.data}
+    return {data : state.Products.products}
 } 
 
   const mapDispatchToProps = (dispatch) => ({
-    get: () => dispatch(getRemoteData()),
+    get: () => dispatch(action.getRemoteData()),
   });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);
