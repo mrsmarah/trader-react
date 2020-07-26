@@ -16,11 +16,11 @@ function Products (props){
         <section>
               <button onClick={fetchData}>Get Products</button>
             <ul className='pro'>
-                {console.log('hello------->', props.data)}
+                {/* {console.log('hello------->', props.data)} */}
                 {
                     
                     props.data.map(product =>{
-                        console.log('hello')
+                        // console.log('hello')
                         return (
         <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {product.title}>
             <Card.Img className='imagepro' variant="top" src={product.img} />
@@ -28,7 +28,7 @@ function Products (props){
                 <Card.Title>{product.title}</Card.Title>
                 <Card.Text>
                 POSTED BY: <br/>
-                {product.price}$ 
+                {product.username}
                 </Card.Text>
                 <Card.Text>
                 description: <br/>
@@ -36,7 +36,7 @@ function Products (props){
                 </Card.Text>
                 <section className="btnn">
                 {/* <Button onClick={()=> props.addtoCart(product.title)} variant="light">ADD TO CART</Button> */}
-                <Button variant="light">Comment</Button> |
+                <Button variant="light" onClick={fetchData} key={product._id}>view details</Button> |
                 <Button variant="light">Add To Favorite</Button> |
                 <Button variant="light">Chat</Button>
 
@@ -55,6 +55,6 @@ const mapStateToProps = (state) =>{
 } 
 
   const mapDispatchToProps = (dispatch) => ({
-    get: () => dispatch(action.getRemoteData()),
+    get: () => dispatch(action.getRemoteData() , action.getRemoteProduct()),
   });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);
