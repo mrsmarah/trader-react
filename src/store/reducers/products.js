@@ -2,17 +2,25 @@ import superagent from 'superagent';
 
 const initialState = {
   products : [],
-}
+};
 export default (state = initialState ,action) =>{
   const { type , payload } = action;
   switch(type){
   case 'GET':
     return {...state,products : payload};
-
+    ////////////////////// MARAH
+  case 'UPDATE PRODUCTS':
+    console.log( type, payload);
+    let products = state.products.filter(
+      (product) => product.categories === payload,
+    );
+    console.log(products);
+    return { ...state, products };
+    /////////////////////////////
   default:
     return state;
   }
-}
+};
 
 export const getRemoteData = () => dispatch => {
   let api = `https://trader401.herokuapp.com/all`;
@@ -24,11 +32,18 @@ export const getRemoteData = () => dispatch => {
 };
 
 
-  
 export const getAction = (payload) => {
   return {
     type: 'GET',
     payload: payload,
   };
 };
+
+///////////////////////////////// MARAH
+export const handelProduct = (name) => ({
+  type: 'UPDATE PRODUCTS',
+  payload: name,
+});
+////////////////////////////////////
+
 
