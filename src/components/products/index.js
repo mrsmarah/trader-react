@@ -36,7 +36,7 @@ function Products (props){
                 </Card.Text>
                 <section className="btnn">
                 {/* <Button onClick={()=> props.addtoCart(product.title)} variant="light">ADD TO CART</Button> */}
-                <Button variant="light">Comment</Button> |
+                <Button variant="light" onClick={fetchData} >view details</Button> |
                 <Button variant="light">Add To Favorite</Button> |
                 <Button variant="light">Chat</Button>
 
@@ -55,6 +55,6 @@ const mapStateToProps = (state) =>{
 } 
 
   const mapDispatchToProps = (dispatch) => ({
-    get: () => dispatch(action.getRemoteData()),
+    get: () => dispatch(action.getRemoteData() ),
   });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);

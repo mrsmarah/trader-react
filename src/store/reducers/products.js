@@ -8,12 +8,13 @@ export default (state = initialState ,action) =>{
     switch(type){
         case 'GET':
             return {...state,products : payload};
+
         default:
              return state;
     }
 }
 
-export const getRemoteData =() => dispatch => {
+export const getRemoteData = () => dispatch => {
     let api = `https://trader401.herokuapp.com/all`;
     return superagent.get(api)
       .then(data => {
@@ -22,7 +23,7 @@ export const getRemoteData =() => dispatch => {
       });
   };
 
-  
+
   
   export const getAction = (payload) => {
     return {
@@ -30,3 +31,4 @@ export const getRemoteData =() => dispatch => {
       payload: payload,
     };
   };
+
