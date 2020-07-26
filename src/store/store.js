@@ -7,6 +7,7 @@ import categories from './reducers/categories';
 
 const reducers = combineReducers({ categories });
 
+
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 };
