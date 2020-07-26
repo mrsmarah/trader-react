@@ -30,11 +30,11 @@ export const setUserIn = (user) => {
   };
 };
 
-const validateToken = token => dispatch => {
+const validateToken = (token,dispatch) => {
 
   try {
     console.log('token--->',token);
-    let user = jwt.verify(token, 'supersecret');
+    let user = jwt.verify(token, 'Dealer5-401+');
     cookie.save('auth', token);
     dispatch(setUserIn(user));
 
@@ -50,7 +50,17 @@ export const signup = (username, password, email, role) => dispatch => {
     cache: 'no-cache',
   };
   axios.post(`${API}/signup`, { username, password, email, role }, options).then(res => {
-    validateToken(res.token);
+    // try {
+    //   console.log('token--->',res.token);
+    //   let user = jwt.verify(res.token, 'supersecret');
+    //   cookie.save('auth', res.token);
+    //   dispatch(setUserIn(user));
+  
+    // } catch (ex) {
+    //   this.logout();
+    //   console.log('token Validation error');
+    // }
+    validateToken(res.data.token,dispatch);
   }).catch(e => {
     console.log('ERROR SIGNUP');
     console.error();
@@ -60,6 +70,7 @@ export const signup = (username, password, email, role) => dispatch => {
 
 
 export const login = (username, password) => dispatch => {
+  console.log('username, password---------------->',username, password);
   const options = {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,'Authorization': `Basic ${btoa(`${username}:${password}` )}`},
@@ -68,7 +79,18 @@ export const login = (username, password) => dispatch => {
   
   axios.post(`${API}/signin`, {}, options).then(res => {
     console.log('res--->',res);
-    this.validateToken(res.token);
+    // try {
+    //   console.log('token--->',res.data.token);
+    //   let user = jwt.verify(res.data.token, 'Dealer5-401+');
+    //   console.log('user--->',user);
+    //   cookie.save('auth', res.data.token);
+    //   dispatch(setUserIn(user));
+  
+    // } catch (ex) {
+    //   this.logout();
+    //   console.log('token Validation error');
+    // }
+    validateToken(res.data.token,dispatch);
   }).catch(e => {
     console.log('ERROR SIGNUP');
     console.error();

@@ -17,6 +17,8 @@ const Login = (props) =>{
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log('props.login(state.username, state.password);---->',state.username,state.password);
+    console.log('login props------>',props);
     props.login(state.username, state.password);
   };
 
@@ -27,7 +29,7 @@ const Login = (props) =>{
         <button onClick={props.logout}>Logout</button>
       </Show>
       <Show condition={!props.loggedIn}>
-        <form onSubmit={()=>handleSubmit()} >
+        <form onSubmit={handleSubmit} >
           <input
             placeholder="userName"
             name="username"
@@ -47,7 +49,8 @@ const Login = (props) =>{
 
 };
 const mapStateToProps = (state) => {
-  console.log('state------>',state);
+  console.log('state login------>',state);
+  console.log('actions.login------>',actions.login);
   return { 
     loggedIn: state.auth.loggedIn,
     user:  state.auth.user ,
@@ -56,6 +59,7 @@ const mapStateToProps = (state) => {
   
   
 const mapDispatchToProps = (dispatch, getState) => ({
-  load: (username, password) => dispatch(actions.login(username, password)),
+  
+  login: (username, password) => dispatch(actions.login(username, password)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
