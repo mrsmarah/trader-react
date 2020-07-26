@@ -16,11 +16,11 @@ function Products (props){
     <section>
       <button onClick={fetchData}>Get Products</button>
       <ul className='pro'>
-        {/* {console.log('hello------->', props.data)} */}
+        {console.log('hello------->', props.data)}
         {
                     
           props.data.map(product =>{
-            // console.log('hello')
+            console.log('hello')
             return (
               <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {product.title}>
                 <Card.Img className='imagepro' variant="top" src={product.img} />

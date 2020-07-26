@@ -10,7 +10,7 @@ const Categories = (props) => {
 
   useEffect(() => {
     props.getCategories();
-  });
+  },[]);
 
   return (
     <>
