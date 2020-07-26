@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handelCategory, getRemoteData } from '../../store/actions/categories';
+import { handelCategory, getCategories } from '../../store/reducers/categories';
 import { useEffect } from 'react';
 
 
 const Categories = (props) => {
 
   useEffect(() => {
-    props.getRemoteData();
+    props.getCategories();
   });
 
   return (
@@ -15,13 +15,13 @@ const Categories = (props) => {
       <h3>Categories:</h3>
         
       <div>
-        {props.categories.categories.map((category,i) => {
+        {props.categories.categories.map((category) => {
           return (
             <ul>
-              <li key={i} color="inherit" onClick={() =>{
+              <li key={category.name} onClick={() =>{
                 props.handelCategory(category.name);
               }}>
-                {category.displayName}
+                {category.categories}
               </li>
             </ul>
           );
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
   
 const mapDispatchToProps = (dispatch) => ({
   handelCategory: () => dispatch(handelCategory()),
-  getRemoteData: () => dispatch(getRemoteData()),
+  getCategories: () => dispatch(getCategories()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

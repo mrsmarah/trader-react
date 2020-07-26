@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-
+import { Route } from 'react-router-dom';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
-import Categories from './components/categories/categories.js';
+import Main from './components/main/main.js';
 
 
 
@@ -12,7 +12,9 @@ function App() {
   return (
     <>
       <Header />
-      <Categories />
+
+      <Main />
+      
       <Footer />
     </>
   );
