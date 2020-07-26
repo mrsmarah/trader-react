@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handelCategory, getCategories } from '../../store/reducers/categories';
-import {handelProduct} from '../../store/reducers/products';
+import {getFilteredProducts} from '../../store/reducers/products';
 
 import { useEffect } from 'react';
 
@@ -17,12 +17,12 @@ const Categories = (props) => {
       <h3>Categories:</h3>
         
       <div>
-        {props.categories.map((category) => {
+        {props.categories.categories.map((category) => {
           return (
             <ul>
               <li key={category.categories} onClick={() =>{
                 props.handelCategory(category.categories);
-                props.handelProduct(category.categories);
+                props.getFilteredProducts(category.categories);
               }}>
                 {category.categories}
               </li>
@@ -39,14 +39,14 @@ const Categories = (props) => {
  
 
 const mapStateToProps = (state) => {
-  return { categories: state.categories.categories,
+  return { categories: state.categories,
     products: state.products.products ,
   };
 };
   
 const mapDispatchToProps = (dispatch) => ({
-  handelCategory: () => dispatch(handelCategory()),
-  handelProduct: (category) => dispatch(handelProduct(category)),
+  handelCategory: (category) => dispatch(handelCategory(category)),
+  getFilteredProducts: (category) => dispatch(getFilteredProducts(category)),
   getCategories: () => dispatch(getCategories()),
 });
 

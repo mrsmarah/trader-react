@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
   switch (type) {
     
   case 'UPDATE ACTIVE CATEGORY':
-    // console.log('PAYLOAD ACTIVE', payload);
+    console.log('PAYLOAD ACTIVE', payload);
     return { ...state, activeCategory: payload };
     
   case 'GET CATEGIRIES':
