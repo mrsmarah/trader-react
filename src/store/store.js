@@ -10,7 +10,6 @@ import auth from './reducers/auth';
 
 const reducers = combineReducers({ categories , products , profile ,auth});
 
-
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 };
