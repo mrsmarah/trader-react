@@ -2,10 +2,10 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Categories from '../categories/categories.js';
 import Products from '../products';
-// import Profile from '../profile';
-// import Signup from '../signup/signup.js';
-// import Login from '../login/login.js';
-// import Auth from '../auth';
+import Profile from '../profile';
+import Signup from '../signup/signup.js';
+import Login from '../login/login.js';
+import Auth from '../auth';
 
 
 function Main() {
@@ -15,7 +15,7 @@ function Main() {
         <Categories />
         <Products />
       </Route>
-{/*       
+            
       <Route exact path="/profile">
         <Profile />
       </Route>
@@ -23,7 +23,7 @@ function Main() {
       <Route exact path="/log">
         <Signup />
         <Login />
-      </Route> */}
+      </Route>
 
      
     </>
