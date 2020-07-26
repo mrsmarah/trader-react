@@ -1,10 +1,21 @@
 import React from 'react';
 import './App.css';
-import Products from './components/Products/index.js';
+import { Route } from 'react-router-dom';
+import Header from './components/header/header.js';
+import Footer from './components/footer/footer.js';
+import Main from './components/main/main.js';
+
+
+
+
 function App() {
   return (
     <>
-    <Products/> 
+      <Header />
+
+      <Main />
+      
+      <Footer />
     </>
   );
 }
