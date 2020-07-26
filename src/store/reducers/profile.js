@@ -11,7 +11,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  console.log('action ---->',payload,type);
+  // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUser':
     return {...state,user : payload};
