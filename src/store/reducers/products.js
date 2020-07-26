@@ -3,6 +3,7 @@ import superagent from 'superagent';
 const initialState = {
   products : [],
 };
+
 export default (state = initialState ,action) =>{
   const { type , payload } = action;
   switch(type){
@@ -13,9 +14,11 @@ export default (state = initialState ,action) =>{
     console.log( type, payload);
     return { ...state, products : payload };
     /////////////////////////////
+
     case 'SELECTED':
       return {...state,products : payload};
-   default:
+
+  default:
     return state;
   }
 };
@@ -39,6 +42,7 @@ export const getFilteredProducts = (category) => dispatch => {
     });
 };
 ///////////////////////////////
+
 export const getRemoteProduct = (id)  => dispatch => {
   let api = `https://trader401.herokuapp.com/search/${id}`;
   return superagent.get(api)
@@ -47,6 +51,7 @@ export const getRemoteProduct = (id)  => dispatch => {
         dispatch( getProduct(data.body));
     });
 };
+
 
 export const getAction = (payload) => {
   return {
@@ -62,6 +67,7 @@ export const handelProduct = (name) => ({
 });
 ////////////////////////////////////
 
+
 export const getProduct = (payload) => {
   // console.log(payload)
   return {
@@ -72,7 +78,4 @@ export const getProduct = (payload) => {
 
 
 
-  
-  
  
-
