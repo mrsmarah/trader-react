@@ -1,6 +1,6 @@
 import React , { useEffect }from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/profile';
+import * as actions from '../../store/reducers/profile';
 import Post from '../post'; 
 
 const Main = (props) => {

@@ -6,9 +6,9 @@ import categories from './reducers/categories';
 import products from './reducers/products';
 // import auth from './reducers/auth';
 import profile from './reducers/profile';
+import auth from './reducers/auth';
 
-
-const reducers = combineReducers({ categories , products , profile });
+const reducers = combineReducers({ categories , products , profile ,auth});
 
 
 const store = () => {
