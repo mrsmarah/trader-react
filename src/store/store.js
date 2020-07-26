@@ -3,9 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import categories from './reducers/categories';
+import products from './reducers/products';
+// import auth from './reducers/auth';
+import profile from './reducers/profile';
 
 
-const reducers = combineReducers({ categories });
+const reducers = combineReducers({ categories , products , profile });
 
 
 const store = () => {

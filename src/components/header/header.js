@@ -17,15 +17,12 @@ function Header(props) {
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#profile">profile</Nav.Link>
-            <Nav.Link href="#log">log</Nav.Link>
-            <Nav.Link href="#post">post</Nav.Link>
-            {/* <NavLink to="/">Home</NavLink>
+            
+            <NavLink to="/">Home</NavLink>
             <NavLink to="/profile">Profile</NavLink>
             <NavLink to="/log">Log In</NavLink>
             <NavLink to="/post">Add Post</NavLink>
-            */}
+           
           </Nav>
 
           <Form inline>
@@ -45,25 +42,7 @@ function Header(props) {
 
 export default Header;
 
-
-// <header>
-//         <h1>TRADER</h1>
-
-//         <nav>
-//           <ul>
-//             <li>
-//               <NavLink to="/">Home</NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/profile">Profile</NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/log">Log In</NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/post">Add Post</NavLink>
-//             </li>
-//           </ul>
-//         </nav>
-
-//       </header>
+// <Nav.Link href="#home">Home</Nav.Link>
+// <Nav.Link href="#profile">profile</Nav.Link>
+// <Nav.Link href="#log">log</Nav.Link>
+// <Nav.Link href="#post">post</Nav.Link> 
