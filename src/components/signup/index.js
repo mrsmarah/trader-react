@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Show from './show.js';
-import * as actions from '../../store/auth';
+import Show from '../show';
+import * as actions from '../../store/reducers/auth';
 
 
 const SignUP = (props) =>{

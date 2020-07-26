@@ -12,9 +12,9 @@ const Auth = (props) =>{
   let okToRender = false;
 
   try {
-    okToRender = this.context.loggedIn && (
+    okToRender = this.props.loggedIn && (
       this.props.capability ?
-        this.context.user.capabilities.includes(this.props.capability)
+        this.props.user.capabilities.includes(this.props.capability)
         : true
     );
   } catch (e) {

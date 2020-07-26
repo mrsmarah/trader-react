@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import Categories from '../categories/categories.js';
 import Products from '../products';
 import Profile from '../profile';
-import Signup from '../signup/signup.js';
-import Login from '../login/login.js';
+import Signup from '../signup';
+import Login from '../login';
 import Auth from '../auth';
 
 
