@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { handelCategory, getCategories } from '../../store/reducers/categories';
 import {getFilteredProducts} from '../../store/reducers/products';
-
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
@@ -24,7 +24,10 @@ const Categories = (props) => {
                 props.handelCategory(category.categories);
                 props.getFilteredProducts(category.categories);
               }}>
-                {category.categories}
+                <Link to={`/searchBy/${category.categories}`} >
+                  {category.categories}
+                </Link>
+                
               </li>
             </ul>
           );
