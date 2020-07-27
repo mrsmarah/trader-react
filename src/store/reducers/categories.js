@@ -46,3 +46,9 @@ export const getCategory = (response) => ({
   type: 'GET CATEGIRIES',
   payload: response,
 });
+
+// export const handelProduct = (name) => ({
+//   type: 'UPDATE PRODUCTS',
+//   payload: name,
+// });
+
