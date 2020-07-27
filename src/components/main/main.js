@@ -1,7 +1,9 @@
 import React , { useEffect }from 'react';
-import { Route } from 'react-router-dom';
+import { Route ,useParams } from 'react-router-dom';
 import Categories from '../categories/categories.js';
 import Products from '../products';
+import OneProduct from '../oneProduct';
+import OneCategory from '../oneCategory/oneCategory';
 import Profile from '../profile';
 import Signup from '../signup';
 import Login from '../login';
@@ -12,6 +14,7 @@ import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
 import {  getCategories } from '../../store/reducers/categories';
 const  Main= (props) => {
+
   useEffect(() => {
     props.load();
     props.getCategories();
@@ -19,7 +22,18 @@ const  Main= (props) => {
   }, []);
   return (
     <>
-     
+      <Route exact path="/">
+        <Categories />
+        <Products />
+      </Route>
+
+      <Route exact path ="/searchBy/:category" >
+        <OneCategory/>
+      </Route>
+
+      <Route exact path="/search/:id">
+        <OneProduct/>
+      </Route>
             
       <Route exact path="/user/:username">
         <Profile />
@@ -41,7 +55,8 @@ const  Main= (props) => {
      
     </>
   );
-}
+};
+
 const mapStateToProps = (state) => {
   return { 
         

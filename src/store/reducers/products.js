@@ -4,23 +4,25 @@ const initialState = {
   products : [],
   post:{},
 };
+
 export default (state = initialState ,action) =>{
   const { type , payload } = action;
   switch(type){
   case 'GET':
     return {...state,products : payload};
     ////////////////////// MARAH
-  case 'UPDATE PRODUCTS':
+  case 'FILTER PRODUCTS':
     console.log( type, payload);
-    let products = state.products.filter(
-      (product) => product.categories === payload,
-    );
-    console.log(products);
-    return { ...state, products };
+    return { ...state, products : payload };
     /////////////////////////////
     
   case 'addPost':
     return {...state,post:payload||{}};
+
+    // case 'SELECTED':
+    //   console.log( type, payload);
+    //   return {...state,products : payload};
+
   default:
     return state;
   }
@@ -49,6 +51,26 @@ export const addPost = (username,token,post) => dispatch => {
     });
 };
 
+//////////////////////////// MARAH
+export const getFilteredProducts = (category) => dispatch => {
+  let api = `https://trader401.herokuapp.com//searchBy/${category}`;
+  return superagent.get(api)
+    .then(data => {
+      dispatch(handelProduct( data.body ));
+    });
+};
+///////////////////////////////
+
+// export const getRemoteProduct = (id)  => dispatch => {
+//   let api = `https://trader401.herokuapp.com/search/${id}`;
+//   return superagent.get(api)
+//     .then(data => {
+//       // (console.log(data.body , 'daata.body'))
+//       dispatch( getProduct(data.body));
+//     });
+// };
+
+
 export const getAction = (payload) => {
   return {
     type: 'GET',
@@ -64,9 +86,16 @@ export const addPostAction = (payload) => {
 
 ///////////////////////////////// MARAH
 export const handelProduct = (name) => ({
-  type: 'UPDATE PRODUCTS',
+  type: 'FILTER PRODUCTS',
   payload: name,
 });
 ////////////////////////////////////
 
 
+// export const getProduct = (payload) => {
+//   // console.log(payload)
+//   return {
+//     type: 'SELECTED',
+//     payload: payload,
+//   };
+// };
