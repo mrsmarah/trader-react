@@ -17,6 +17,7 @@ const OneCategory = (props) => {
     <>
       <div>
         <h4>Active category : { props.categories.activeCategory}</h4>
+        
       </div>
     </>
   );
