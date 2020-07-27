@@ -1,7 +1,8 @@
 import superagent from 'superagent';
-
+import axios from 'axios';
 const initialState = {
   products : [],
+  post:{},
 };
 
 export default (state = initialState ,action) =>{
@@ -14,10 +15,13 @@ export default (state = initialState ,action) =>{
     console.log( type, payload);
     return { ...state, products : payload };
     /////////////////////////////
+    
+  case 'addPost':
+    return {...state,post:payload||{}};
 
-  // case 'SELECTED':
-  //   console.log( type, payload);
-  //   return {...state,products : payload};
+    // case 'SELECTED':
+    //   console.log( type, payload);
+    //   return {...state,products : payload};
 
   default:
     return state;
@@ -30,6 +34,20 @@ export const getRemoteData = () => dispatch => {
     .then(data => {
       //   (console.log(data.body , 'daata.body'))
       dispatch(getAction( data.body ));
+    });
+};
+export const addPost = (username,token,post) => dispatch => {
+  console.log('addPost from redux --->',username,token,post);
+  let api = `https://trader401.herokuapp.com/user/${username}`;
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
+    cache: 'no-cache',
+  };
+  axios.post(api,post,options)
+    .then(data => {
+      console.log(data.data , '<--------data.body  add post axios');
+      dispatch(addPostAction( data.data ));
     });
 };
 
@@ -59,6 +77,12 @@ export const getAction = (payload) => {
     payload: payload,
   };
 };
+export const addPostAction = (payload) => {
+  return {
+    type: 'addPost',
+    payload: payload,
+  };
+};
 
 ///////////////////////////////// MARAH
 export const handelProduct = (name) => ({
@@ -75,7 +99,3 @@ export const handelProduct = (name) => ({
 //     payload: payload,
 //   };
 // };
-
-
-
- 

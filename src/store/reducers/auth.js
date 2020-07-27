@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
   case 'setUserIn':
     return {...state,user : payload,loggedIn : true};
   case 'logout':
+    cookie.save('auth', 'token');
     return initialState;
  
   default:
