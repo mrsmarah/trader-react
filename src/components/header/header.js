@@ -2,8 +2,8 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar,Form,FormControl,Button,Nav} from 'react-bootstrap';
-
+import {Navbar,Form,FormControl,Button,Nav,DropdownButton, Dropdown} from 'react-bootstrap';
+import './header.scss'
 
 
 function Header(props) {
@@ -11,23 +11,34 @@ function Header(props) {
   return (
 
     <>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home"><img src="https://www.freelogodesign.org/file/app/client/thumb/f156f027-a1fb-4794-bc61-9ceb176b524f_200x200.png?1595662070517" alt="LOGO" width="100" height="100" padding="20"/></Navbar.Brand>
+      <Navbar bg="light" expand="lg" className="header">
+        <Navbar.Brand href="#home"> T R A D E R </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
             
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/profile">Profile</NavLink>
-            <NavLink to="/log">Log In</NavLink>
-            <NavLink to="/post">Add Post</NavLink>
+            <NavLink className="a-tag" to="/">Home</NavLink>
+            <NavLink className="a-tag" to="/profile">Profile</NavLink>
+            <NavLink className="a-tag" to="/log">Log In</NavLink>
+            <NavLink className="a-tag" to="/post">Add Post</NavLink>
            
           </Nav>
-
+ 
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+            <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2" />
+            <DropdownButton
+              alignRight
+              title="Categories"
+              id="dropdown-menu-align-right"
+            >
+              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
+              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
+              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
+          </DropdownButton>
+            <Button variant="outline-primary" className="buttonn">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

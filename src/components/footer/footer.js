@@ -1,80 +1,31 @@
 import React from 'react';
-import './footer.css';
+import './footer.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Form,FormControl,Button,Nav} from 'react-bootstrap';
 
 const Footer = () => {
   return (
-
-
-
-    <footer>
-      <div className='footer_container'>
-
-        <div>
-          <aside>
-            <h3>Subscribe to our newsletter</h3> 
-            <form>
-              <div>
-                <label>
-                  <input type='text' name='name' placeholder='Name' ></input>
-                </label>
-                <label>
-                  <input type="email" name="email" placeholder="Your email address"></input>
-                </label>
-                <button type="submit" value="Sign up"></button>
-              </div>
-            </form>   
-          </aside>
+    <Navbar bg="light" variant="light" className="footer">
+      <div className="newsletter">
+        <h6 className="newsletterh6">SUBSCRIBE TO OUR NEWSLETTER</h6>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter Your Name" />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+          </Form.Group>
+            <Button variant="light" type="submit" className="buttonnn">
+            Submit
+            </Button>
+        </Form>
         </div>
+    </Navbar>
 
-       
-
-      
-      </div>
-     
-      <div>
-        <p>&copy; 2020 TRADER</p>
-      </div>
-
-    </footer>
   );
 };
 
 export default Footer;
 
-// <MDBFooter color="blue" className="font-small pt-4 mt-4">
-//       <MDBContainer fluid className="text-center text-md-left">
-//         <MDBRow>
-//           <MDBCol md="6">
-//             <h5 className="title">Footer Content</h5>
-//             <p>
-//               Here you can use rows and columns here to organize your footer
-//               content.
-//             </p>
-//           </MDBCol>
-//           <MDBCol md="6">
-//             <h5 className="title">Links</h5>
-//             <ul>
-//               <li className="list-unstyled">
-//                 <a href="#!">Link 1</a>
-//               </li>
-//               <li className="list-unstyled">
-//                 <a href="#!">Link 2</a>
-//               </li>
-//               <li className="list-unstyled">
-//                 <a href="#!">Link 3</a>
-//               </li>
-//               <li className="list-unstyled">
-//                 <a href="#!">Link 4</a>
-//               </li>
-//             </ul>
-//           </MDBCol>
-//         </MDBRow>
-//       </MDBContainer>
-//       <div className="footer-copyright text-center py-3">
-//         <MDBContainer fluid>
-//           &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a>
-//         </MDBContainer>
-//       </div>
-//     </MDBFooter> 

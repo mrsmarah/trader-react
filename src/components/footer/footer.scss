@@ -1,0 +1,81 @@
+
+.btnnn {
+    padding: 4px 6px;
+    height: 28px;
+    border-radius: 0;
+    text-align: center;
+    line-height: 17px;
+    width: 100%;
+  }
+ .footer{
+     margin-top: 8%;
+ }
+ .newsletter{
+     margin: 2% 3%;
+ }
+
+ .newsletterh6{
+    position: relative;
+    padding-bottom: 20px
+ }
+ .newsletterh6::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 40px;
+    background: #417bff;
+    content: '';
+ }
+
+ .buttonnn {
+    text-transform: uppercase;
+    color: #617cff;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: em(18);
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .buttonnn:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid #4889ff85;
+    position: absolute;
+    bottom: -48%;
+    left: -3px;
+    transform: rotate(-45deg) translateX(-50px);
+
+    transition: transform 200ms ease;
+  }
+  
+  .buttonnn:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid #4889ff85;
+    position: absolute;
+    top: -48%;
+    right: -3px;
+    transform: rotate(135deg) translateX(-50px);
+
+    transition: transform 200ms ease;
+  }
+  .buttonnn:hover:before {
+    transform: rotate(-45deg) translateX(0);
+  }
+
+  .buttonnn:hover:after {
+    transform: rotate(135deg) translateX(0);
+    
+  }

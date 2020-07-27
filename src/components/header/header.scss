@@ -1,0 +1,111 @@
+.header{
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+
+}
+
+.navbar-brand{
+    color: #0d0c0c69;
+    font-weight: 700;
+}
+.mr-auto{
+    width: 100%;
+}
+
+.form-inline{
+    display: contents;
+    align-items: center;
+}
+.a-tag{
+    text-decoration: none;
+    
+}
+.a-tag {
+    margin: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #0d0c0c69;
+    letter-spacing: 3px;
+    font-family: "Open Sans";
+    font-weight: lighter;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 15px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  }
+  .a-tag:before, .a-tag:after {
+    position: absolute;
+    content: "";
+    display: block;
+    text-decoration: none;
+
+  }
+  .a-tag:before {
+    top: -120px;
+    left: 50px;
+    z-index: -1;
+    width: calc(100% + 140px);
+    height: 100px;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+    -webkit-transform: skew(70deg);
+            transform: skew(70deg);
+    background: #4889ff59;
+
+   
+  }
+  .a-tag:after {
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border: 1px solid #fff;
+    text-decoration: none;
+    color: white;
+  }
+  .a-tag:hover:before {
+    left: -50px;
+    top: -20px;
+
+  }
+  .a-tag:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+.buttonn{
+    padding: 4px 6px;
+    height: 28px;
+    border-radius: 0;
+    text-align: center;
+    line-height: 17px;
+}
+
+.mr-sm-2{
+    width: 20%;
+    border: 1px solid #417bff;
+    border-radius: 0;
+}
+
+.dropdown-toggle{
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 0;
+    height: 37px;
+    line-height: 16px;
+    color: gray;
+
+}
+.dropdown-toggle:hover{
+    background: none;
+    color: gray;
+}
+.dropdown{
+    // margin-right: 20px;
+}
