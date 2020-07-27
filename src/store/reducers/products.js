@@ -15,8 +15,9 @@ export default (state = initialState ,action) =>{
     return { ...state, products : payload };
     /////////////////////////////
 
-    case 'SELECTED':
-      return {...state,products : payload};
+  // case 'SELECTED':
+  //   console.log( type, payload);
+  //   return {...state,products : payload};
 
   default:
     return state;
@@ -37,20 +38,19 @@ export const getFilteredProducts = (category) => dispatch => {
   let api = `https://trader401.herokuapp.com//searchBy/${category}`;
   return superagent.get(api)
     .then(data => {
-      //   (console.log(data.body , 'daata.body'))
       dispatch(handelProduct( data.body ));
     });
 };
 ///////////////////////////////
 
-export const getRemoteProduct = (id)  => dispatch => {
-  let api = `https://trader401.herokuapp.com/search/${id}`;
-  return superagent.get(api)
-    .then(data => {
-        // (console.log(data.body , 'daata.body'))
-        dispatch( getProduct(data.body));
-    });
-};
+// export const getRemoteProduct = (id)  => dispatch => {
+//   let api = `https://trader401.herokuapp.com/search/${id}`;
+//   return superagent.get(api)
+//     .then(data => {
+//       // (console.log(data.body , 'daata.body'))
+//       dispatch( getProduct(data.body));
+//     });
+// };
 
 
 export const getAction = (payload) => {
@@ -68,13 +68,13 @@ export const handelProduct = (name) => ({
 ////////////////////////////////////
 
 
-export const getProduct = (payload) => {
-  // console.log(payload)
-  return {
-    type: 'SELECTED',
-    payload: payload,
-  };
-};
+// export const getProduct = (payload) => {
+//   // console.log(payload)
+//   return {
+//     type: 'SELECTED',
+//     payload: payload,
+//   };
+// };
 
 
 
