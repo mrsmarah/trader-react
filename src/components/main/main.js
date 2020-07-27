@@ -6,7 +6,7 @@ import Profile from '../profile';
 import Signup from '../signup';
 import Login from '../login';
 // import Auth from '../auth';
-
+import Admin from '../adminPage/index';
 
 function Main() {
   return (
@@ -15,7 +15,7 @@ function Main() {
         <Categories />
         <Products />
       </Route>
-      
+
       <Route exact path="/profile">
         <Profile />
       </Route>
@@ -24,8 +24,10 @@ function Main() {
         <Signup />
         <Login />
       </Route>
+      <Route exact path="/admin">
+        <Admin />
+      </Route>
 
-     
     </>
   );
 }

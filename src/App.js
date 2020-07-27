@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Main from './components/main/main.js';
-
+import Admin from './components/adminPage/index.js';
 function App() {
   return (
     <>
