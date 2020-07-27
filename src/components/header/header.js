@@ -3,8 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Form,FormControl,Button,Nav} from 'react-bootstrap';
-
-
+import { connect } from 'react-redux';
+import * as actions2 from '../../store/reducers/profile';
 
 function Header(props) {
 
@@ -19,7 +19,9 @@ function Header(props) {
           <Nav className="mr-auto">
             
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to= {`/user/${props.username}`} onClick={()=>{props.getUser(props.username);
+              props.getPosts(props.username);
+            }} >Profile</NavLink>
             <NavLink to="/log">Log In</NavLink>
             <NavLink to="/post">Add Post</NavLink>
            
@@ -37,10 +39,19 @@ function Header(props) {
 
 }
 
+const mapStateToProps = (state) => {
+  console.log('state------>',state);
+  return { 
+    username: state.auth.user.username,
+  };
+};
+const mapDispatchToProps = (dispatch, getState) => ({
+  getUser: (username) => dispatch(actions2.getUser(username)),
+  getPosts: (username) => dispatch(actions2.getPosts(username)),
+});
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
 
-
-
-export default Header;
+// export default Header;
 
 // <Nav.Link href="#home">Home</Nav.Link>
 // <Nav.Link href="#profile">profile</Nav.Link>
