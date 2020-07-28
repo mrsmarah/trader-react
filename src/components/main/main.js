@@ -14,9 +14,9 @@ import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
 import {  getCategories } from '../../store/reducers/categories';
 const  Main= (props) => {
-
+  props.load();
   useEffect(() => {
-    props.load();
+    
     props.getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -29,6 +29,7 @@ const  Main= (props) => {
 
       <Route exact path ="/searchBy/:category" >
         <OneCategory/>
+        <Products productsKey = 'FILTER' />
       </Route>
 
       <Route exact path="/search/:id">
@@ -47,6 +48,11 @@ const  Main= (props) => {
       <Route exact path="/post">
         <AddPost />
       </Route>
+
+      <Route exact path="/favList">
+        <Products  productsKey = 'fav'/>
+      </Route>
+  
       
     </>
   );

@@ -22,7 +22,9 @@ export default (state = initialState ,action) =>{
     // case 'SELECTED':
     //   console.log( type, payload);
     //   return {...state,products : payload};
-
+  case 'favAction':
+    return {...state,products:payload||[]};
+    
   default:
     return state;
   }
@@ -51,9 +53,30 @@ export const addPost = (username,token,post) => dispatch => {
     });
 };
 
+
+export const getFav = (username,token) => dispatch => {
+  console.log('gatvaf from redux --->',username,token);
+  let api = `https://trader401.herokuapp.com/user/${username}`;
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
+    cache: 'no-cache',
+  };
+  axios.get(api,options)
+    .then(data => {
+      console.log(data.data , '<--------data.body  favlist  axios');
+      dispatch(favAction( data.data.data ));
+    });
+};
+export const favAction = (payload) => {
+  return {
+    type: 'favAction',
+    payload: payload,
+  };
+};
 //////////////////////////// MARAH
 export const getFilteredProducts = (category) => dispatch => {
-  let api = `https://trader401.herokuapp.com//searchBy/${category}`;
+  let api = `https://trader401.herokuapp.com/searchBy/${category}`;
   return superagent.get(api)
     .then(data => {
       dispatch(handelProduct( data.body ));

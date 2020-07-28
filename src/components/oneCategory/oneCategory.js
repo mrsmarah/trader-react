@@ -3,24 +3,25 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { handelCategory } from '../../store/reducers/categories';
 import { useEffect } from 'react';
-import Products from '../products';
-import {getFilteredProducts} from '../../store/reducers/products';
 
 
 const OneCategory = (props) => {
 
   let{category} = useParams();
-
+  
+  
   useEffect(() => {
+    console.log('CATEGORY',category);
     props.getCategory(category);
+    
   },[]);
 
   return (
     <>
       <div>
         <h4>Active category : { props.categories.activeCategory}</h4>
+        
       </div>
-      <Products />
 
     </>
   );
@@ -34,7 +35,6 @@ const mapStateToProps = (state) => {
   
 const mapDispatchToProps = (dispatch) => ({
   getCategory: (category) => dispatch(handelCategory(category)),
-  getFilteredProducts: (category) => dispatch(getFilteredProducts(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneCategory);
