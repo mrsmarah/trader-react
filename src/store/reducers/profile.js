@@ -1,5 +1,8 @@
 import superagent from 'superagent';
 import axios from 'axios';
+import cookie from 'react-cookies';
+let token = cookie.load('auth');
+
 
 const initialState = {
   user: {},
@@ -35,9 +38,11 @@ export const select = (name) => {
 
 export const getUser = (username) => dispatch => {
   let api = `https://trader401.herokuapp.com/user/${username}`;
+  console.log('token inside profile---->',token);
   const options = {
     mode: 'cors',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' 
+      ,'Authorization': `Bearer ${token}`},
     cache: 'no-cache',
   };
   axios.get(api, options)
@@ -66,7 +71,7 @@ export const getPosts = (username) => dispatch => {
   
   const options = {
     mode: 'cors',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
     cache: 'no-cache',
   };
   axios.get(api,options)
