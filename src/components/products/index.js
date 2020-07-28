@@ -3,18 +3,32 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import cookie from 'react-cookies';
 // import products from '../../store/reducers/products';
 // import * as action from '../../store/reducers/products.js';
-import {getRemoteData} from '../../store/reducers/products';
+import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 
 
 function Products (props){
-
+  // console.log('favlist ------>',props.products);
 
   useEffect(() => {
-    props.get();
-  }, []);
+    console.log('favlist ------>',props.productsKey);
+    setTimeout(function(){while(props.user === {}){}
+      return true;}  , 2000);
+    switch (props.productsKey) {
+    case 'fav':
+      console.log('favlist 222222------>',props.user);
+      props.getFav( props.user.username,cookie.load('auth'));
+      break;
+    
+    default:
+      props.get();
+      break;
+    }
+    
+  },[]);
 
   return (
     <section>
@@ -55,12 +69,15 @@ function Products (props){
 }
 
 const mapStateToProps = (state) =>{
-  return {data : state.products.products};
+  return {
+    data : state.products.products,
+    user :  state.auth.user ,
+  };
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getRemoteData() ),
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
-
+  getFav:(username,token) => dispatch(getFav(username,token)),
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);
