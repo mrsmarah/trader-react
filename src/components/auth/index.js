@@ -4,7 +4,7 @@ import Show from '../show';
 import { connect } from 'react-redux';
 const Auth = (props) =>{
   useEffect(() => {
-    props.load();
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
