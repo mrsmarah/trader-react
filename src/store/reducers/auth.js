@@ -6,6 +6,7 @@ const API = process.env.API_URL || 'https://trader401.herokuapp.com';
 const initialState = {
   loggedIn: false,
   user: {},
+  token: '',
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,7 @@ export default (state = initialState, action) => {
   // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUserIn':
-    return {...state,user : payload,loggedIn : true};
+    return {...state, user:payload.user , loggedIn : true, token: payload.token};
   case 'logout':
     cookie.save('auth', 'token');
     return initialState;
@@ -23,11 +24,11 @@ export default (state = initialState, action) => {
   }
 };
 
-export const setUserIn = (user) => {
+export const setUserIn = (obj) => {
     
   return {
     type: 'setUserIn',
-    payload: user,
+    payload: obj,
   };
 };
 
@@ -37,7 +38,7 @@ const validateToken = (token,dispatch) => {
     console.log('token--->',token);
     let user = jwt.verify(token, 'Dealer5-401+');
     cookie.save('auth', token);
-    dispatch(setUserIn(user));
+    dispatch(setUserIn({user,token}));
 
   } catch (ex) {
     dispatch(logout());

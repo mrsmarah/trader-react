@@ -7,7 +7,7 @@ import { select } from 'react-cookies';
 
 const Admin = (props) => {
   useEffect(() => {
-    props.post();
+    props.post(props.token);
   }, []);
 
   console.log('props.post.adminPost', props.posts.adminPost);
@@ -35,7 +35,7 @@ const Admin = (props) => {
                 <th>{post.title}</th>
                 <th>{post.categories}</th>
                 <th>
-                  <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }); }} value={post.selectValue} name="cars">
+                  <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token ); }} value={post.selectValue} name="cars">
                     <option value="pendding">{post.status}</option>
                     <option value="accepted">accept</option>
                     <option value="rejected">reject</option>
@@ -57,13 +57,14 @@ const Admin = (props) => {
 const mapStateToProps = (state) => {
   return {
     posts: state.admin,
+    token: state.auth.token,
   };
 };
 
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  post: () => dispatch(statusPost()),
-  changeStatus: (id, newPost) => dispatch(changeStatus(id, newPost)),
+  post: (token) => dispatch(statusPost(token)),
+  changeStatus: (id, newPost , token) => dispatch(changeStatus(id, newPost , token)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
 

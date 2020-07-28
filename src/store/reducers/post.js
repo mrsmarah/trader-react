@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const initialState = {
   onePost : '',
-  favList : [],
 };
 
 export default (state = initialState ,action) =>{
@@ -44,8 +43,7 @@ export const getProduct = (payload) => {
 };
 
 
-export const addToFav = (id) => dispatch => {
-  let token =cookie.load('auth');
+export const addToFav = (id , token ) => dispatch => {
 
   console.log('FAV PARAMETERS',id,token);
   let api = `https://trader401.herokuapp.com/addfav/${id}`;

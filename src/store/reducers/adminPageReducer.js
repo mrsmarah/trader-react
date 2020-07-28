@@ -2,7 +2,6 @@
 import React from 'react';
 import axios from 'axios';
 const API = process.env.API_URL || 'https://trader401.herokuapp.com';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1OTIyOTI2LCJleHAiOjE1OTYwMDkzMjZ9.PMJDwUGDkhuf_RHxeMhD3SGtBfGYpPN0B6T6XY5LbwY';
 const initState = {
   adminPost: [],
 };
@@ -29,7 +28,7 @@ export default (state = initState, action) => {
   }
 };
 
-export const statusPost = () => dispatch => {
+export const statusPost = (token) => dispatch => {
   const options = {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
@@ -46,7 +45,7 @@ export const statusPost = () => dispatch => {
 };
 
 
-export const changeStatus = (id, newPost) => dispatch => {
+export const changeStatus = (id, newPost ,token) => dispatch => {
   console.log('newPost >>>>', newPost);
   const options = {
     mode: 'cors',
