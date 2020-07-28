@@ -2,7 +2,6 @@ import React,{useState } from 'react';
 import { connect } from 'react-redux';
 import Show from '../show';
 import * as actions from '../../store/reducers/products';
-import cookie from 'react-cookies';
 
 const AddPost = (props) =>{
   const[post, setPost]=useState({});
@@ -17,8 +16,8 @@ const AddPost = (props) =>{
   
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submit post ', props.user.username,cookie.load('auth'),post);
-    await props.addPost( props.user.username,cookie.load('auth'),post);
+    console.log('submit post ', props.user.username , props.token ,post);
+    await props.addPost( props.user.username, props.token ,post);
   };
   
   //   "images": [],
@@ -80,6 +79,7 @@ const mapStateToProps = (state) => {
     loggedIn: state.auth.loggedIn,
     user:  state.auth.user ,
     categories: state.categories,
+    token: state.auth.token,
   };
 };
     

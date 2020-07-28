@@ -19,7 +19,7 @@ function onePostAdmin(props) {
       <p>DESCRIPTION :{props.post.onePost.description} </p>
       <p>CATEGORY :{props.post.onePost.categories} </p>
       <section className="btnn">
-        <button onClick={} variant="light">Reeject</button>
+        <button variant="light">Reeject</button>
         <button variant="light">Accept</button>
       </section>
 

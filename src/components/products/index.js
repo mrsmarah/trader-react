@@ -3,10 +3,11 @@ import { Link,useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import cookie from 'react-cookies';
+// import cookie from 'react-cookies';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {getFilteredProducts} from '../../store/reducers/products';
+import {addToFav } from '../../store/reducers/post';
 
 
 function Products (props){
@@ -24,7 +25,7 @@ function Products (props){
 
     case 'fav':
       console.log('favlist------>',props.user);
-      props.getFav( props.user.username,cookie.load('auth'));
+      props.getFav( props.user.username, props.token );
       break;
 
     case 'FILTER':
@@ -64,7 +65,9 @@ function Products (props){
                     <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light">
                       <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
                     </Button>
-                    <Button variant="light">Add To Favorite</Button> 
+                    <button onClick={ () =>{
+                      props.addToFav(product._id, props.token );
+                    }} variant="light">Add To Favorite</button> 
                   </section>
 
                 </Card.Body>
@@ -83,6 +86,7 @@ const mapStateToProps = (state) =>{
     categories: state.categories,
     data : state.products.products,
     user :  state.auth.user ,
+    token : state.auth.token ,
   };
 } ;
 
@@ -91,5 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
   getFav:(username,token) => dispatch(getFav(username,token)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
+  addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
+
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);
