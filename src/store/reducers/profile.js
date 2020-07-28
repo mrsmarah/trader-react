@@ -23,6 +23,10 @@ export default (state = initialState, action) => {
   case 'clear':
     console.log('clear......----->');
     return initialState;
+  case 'delete':
+    console.log('delete......----->');
+    let newPosts = state.posts.filter(post=>post._id !== payload._id) ;
+    return {...state,posts : newPosts};
   default:
     return state;
   }
@@ -45,6 +49,7 @@ export const getUser = (username) => dispatch => {
       ,'Authorization': `Bearer ${token}`},
     cache: 'no-cache',
   };
+  console.log('token inside profile / options---->',token,options,api);
   axios.get(api, options)
     .then(data => {
       console.log('getuser',data.data.user);
@@ -80,7 +85,26 @@ export const getPosts = (username) => dispatch => {
       dispatch(setPosts(data.data.data||[]));
     });
 };
-
+export const deletePost = (id) => dispatch => {
+  let api = `https://trader401.herokuapp.com/search/${id}`;
+  
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
+    cache: 'no-cache',
+  };
+  axios.delete(api,options)
+    .then(data => {
+      console.log('deletepost',data||[]);
+      dispatch(delPost(data.data||[]));
+    });
+};
+export const delPost = payload => {
+  return {
+    type: 'delete',
+    payload: payload,
+  };
+};
 export const setPosts = payload => {
   return {
     type: 'setPosts',
