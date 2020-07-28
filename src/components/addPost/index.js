@@ -64,11 +64,6 @@ const AddPost = (props) =>{
            
           </select>
   
-          <input
-            placeholder="role"
-            name="role"
-            onChange={handleChange}
-          />
   
           <button>ADD</button>
         </form>
