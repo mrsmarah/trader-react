@@ -9,8 +9,6 @@ const initState = {
 
 export default (state = initState, action) => {
   const { type, payload } = action;
-  // console.log('payload From Admin Page >>', payload);
-  // console.log('type From Admin Page >>', type);
   switch (type) {
     case 'GETPOST':
       return {
@@ -47,7 +45,6 @@ export const statusPost = () => dispatch => {
 
 
 export const changeStatus = (id, newPost) => dispatch => {
-  console.log('newPost >>>>', newPost);
   const options = {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
@@ -55,7 +52,6 @@ export const changeStatus = (id, newPost) => dispatch => {
   };
   axios.put(`${API}/status/${id}`, newPost, options)
     .then(res => {
-      console.log('Resssssss >>>', res.data);
       dispatch(updatePost(res.data));
       console.log('Post Updated');
     })
