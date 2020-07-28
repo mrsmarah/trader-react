@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 const API = process.env.API_URL || 'https://trader401.herokuapp.com';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1OTIyOTI2LCJleHAiOjE1OTYwMDkzMjZ9.PMJDwUGDkhuf_RHxeMhD3SGtBfGYpPN0B6T6XY5LbwY';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1OTUwNDc2LCJleHAiOjE1OTYwMzY4NzZ9.Al_yZj5slFaMvYT-9C_BkgyKmXs8POBOLAPugUc4fYo';
 const initState = {
   adminPost: [],
 };

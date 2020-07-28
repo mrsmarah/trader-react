@@ -33,6 +33,7 @@ const Admin = (props) => {
                 <th>{post.username}</th>
                 <th>{post.title}</th>
                 <th>{post.categories}</th>
+                <th>View Detalis</th>
                 <th>
                   <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }); }} value={post.selectValue} name="cars">
                     <option value="pendding">{post.status}</option>
@@ -41,6 +42,7 @@ const Admin = (props) => {
                   </select>
                 </th>
                 <th>{post.description}</th>
+                <th><button ><a >View Detalis</a></button> </th>
               </tr>
             </tbody>
 
