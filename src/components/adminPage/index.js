@@ -10,7 +10,6 @@ const Admin = (props) => {
     props.post();
   }, []);
 
-  console.log('props.post.adminPost', props.posts.adminPost);
   return (
     <>
 
