@@ -1,42 +1,50 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { statusPost, changeStatus } from '../../store/reducers/adminPageReducer.js';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const API = process.env.API_URL || 'https://trader401.herokuapp.com';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1ODQwMjg4LCJleHAiOjE1OTU5MjY2ODh9.dQffdtH5tOwFg9mZRJ2Hoejp9JBcaRkntdl_OcSmbEY';
+import { select } from 'react-cookies';
 
 const Admin = (props) => {
   useEffect(() => {
     props.post();
-  }, [props]);
+  }, []);
+
+  console.log('props.post.adminPost', props.posts.adminPost);
   return (
     <>
+
       <h1>Admin Page</h1>
       <Table>
-        <tr>
-          <th>User Name</th>
-          <th>Title</th>
-          <th>Categories</th>
-          <th>Status</th>
-          <th>Descripion</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Title</th>
+            <th>Categories</th>
+            <th>Status</th>
+            <th>Descripion</th>
+          </tr>
+        </thead>
+
         {props.posts.adminPost.map((post) => {
+
           return (
-            <tr>
-              <th>{post.username}</th>
-              <th>{post.title}</th>
-              <th>{post.categories}</th>
-              <th>
-                <select id="cars" name="cars">
-                  <option defaultChecked value="pendding">{post.status}</option>
-                  <option onClick={changeStatus} value="accept">accept</option>
-                  <option onClick={changeStatus} value="reject">reject</option>
-                </select>
-              </th>
-              <th>{post.description}</th>
-            </tr>
+            <tbody key={post._id}>
+              <tr>
+                <th>{post.username}</th>
+                <th>{post.title}</th>
+                <th>{post.categories}</th>
+                <th>
+                  <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }); }} value={post.selectValue} name="cars">
+                    <option value="pendding">{post.status}</option>
+                    <option value="accepted">accept</option>
+                    <option value="rejected">reject</option>
+                  </select>
+                </th>
+                <th>{post.description}</th>
+              </tr>
+            </tbody>
+
           );
         })}
       </Table>
@@ -55,6 +63,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, getState) => ({
   post: () => dispatch(statusPost()),
+  changeStatus: (id, newPost) => dispatch(changeStatus(id, newPost)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
 

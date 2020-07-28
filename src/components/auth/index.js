@@ -1,5 +1,5 @@
 import React , { useEffect }from 'react';
-import * as actions from '../../store/auth';
+import * as actions from '../../store/reducers/auth';
 import Show from '../show';
 import { connect } from 'react-redux';
 const Auth = (props) =>{

@@ -10,11 +10,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  console.log('action ---->',payload,type);
+  // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUserIn':
     return {...state,user : payload,loggedIn : true};
   case 'logout':
+    cookie.save('auth', 'token');
     return initialState;
  
   default:
@@ -39,7 +40,7 @@ const validateToken = (token,dispatch) => {
     dispatch(setUserIn(user));
 
   } catch (ex) {
-    this.logout();
+    dispatch(logout());
     console.log('token Validation error');
   }
 };
@@ -108,7 +109,7 @@ export const logout = () => {
 export const load = () => dispatch => {
   const cookieToken = cookie.load('auth');
   const token = cookieToken || null;
-  validateToken(token);
+  validateToken(token,dispatch);
 };
 
 

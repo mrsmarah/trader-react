@@ -1,5 +1,5 @@
 import superagent from 'superagent';
-
+import axios from 'axios';
 
 const initialState = {
   user: {},
@@ -11,13 +11,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  console.log('action ---->',payload,type);
+  // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUser':
     return {...state,user : payload};
   case 'setPosts':
     return {...state,posts : payload};
- 
+  case 'clear':
+    console.log('clear......----->');
+    return initialState;
   default:
     return state;
   }
@@ -33,9 +35,15 @@ export const select = (name) => {
 
 export const getUser = (username) => dispatch => {
   let api = `https://trader401.herokuapp.com/user/${username}`;
-  return superagent.get(api)
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    cache: 'no-cache',
+  };
+  axios.get(api, options)
     .then(data => {
-      dispatch(setUser(data.user));
+      console.log('getuser',data.data.user);
+      dispatch(setUser(data.data.user));
     });
 };
 
@@ -45,12 +53,26 @@ export const setUser = payload => {
     payload: payload,
   };
 };
+export const clear = () => {
+  console.log('clear....222222..----->');
+  return {
+    type: 'clear',
+    payload: 'nan',
+  };
+};
 
 export const getPosts = (username) => dispatch => {
   let api = `https://trader401.herokuapp.com/user/${username}`;
-  return superagent.get(api)
+  
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    cache: 'no-cache',
+  };
+  axios.get(api,options)
     .then(data => {
-      dispatch(setPosts(data.body));
+      console.log('getposts',data.data.data||[]);
+      dispatch(setPosts(data.data.data||[]));
     });
 };
 

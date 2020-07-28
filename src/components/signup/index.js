@@ -71,6 +71,6 @@ const mapStateToProps = (state) => {
   
   
 const mapDispatchToProps = (dispatch, getState) => ({
-  load: (username, password, email, role) => dispatch(actions.signup(username, password, email, role)),
+  signup: (username, password, email, role) => dispatch(actions.signup(username, password, email, role)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SignUP);
