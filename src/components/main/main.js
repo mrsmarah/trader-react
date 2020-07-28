@@ -12,11 +12,12 @@ import AddPost from '../addPost';
 import { connect } from 'react-redux';
 import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
-import { getCategories } from '../../store/reducers/categories';
-const Main = (props) => {
+
+import {  getCategories } from '../../store/reducers/categories';
+const  Main= (props) => {
   props.load();
   useEffect(() => {
-
+    
     props.getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -27,9 +28,10 @@ const Main = (props) => {
         <Products />
       </Route>
 
-      <Route exact path="/searchBy/:category" >
-        <OneCategory />
-        <Products productsKey='FILTER' />
+
+      <Route exact path ="/searchBy/:category" >
+        <OneCategory/>
+        <Products productsKey = 'FILTER' />
       </Route>
 
       <Route exact path="/search/:id">
@@ -50,10 +52,9 @@ const Main = (props) => {
       </Route>
 
       <Route exact path="/favList">
-        <Products productsKey='fav' />
+        <Products  productsKey = 'fav'/>
       </Route>
-
-
+  
     </>
   );
 };
