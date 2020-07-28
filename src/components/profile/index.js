@@ -10,10 +10,11 @@ const Main = (props) => {
   //   setCount(username1);
   console.log('username profile',username);
  
+
   useEffect(() => {
     console.log('username profile2',username);
-    props.getUser(username);
-    props.getPosts(username);
+    props.getUser(username ,props.token );
+    props.getPosts(username , props.token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // console.log('unmounting...');
     // return () => {
@@ -53,13 +54,14 @@ const mapStateToProps = (state) => {
     user: state.profile.user,
     posts:  state.profile.posts ,
     username: state.auth.username,
+    token : state.auth.token,
   };
 };
 
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  getUser: (username) => dispatch(actions.getUser(username)),
-  getPosts: (username) => dispatch(actions.getPosts(username)),
+  getUser: (username , token) => dispatch(actions.getUser(username ,token )),
+  getPosts: (username ,token ) => dispatch(actions.getPosts(username , token)),
   clear: ()=>dispatch(actions.clear()),
 });
 

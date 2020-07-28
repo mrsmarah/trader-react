@@ -5,10 +5,8 @@ import cookie from 'react-cookies';
 
 const initialState = {
   user: {},
-  posts: [
-  ],
+  posts: [],
   
-
 };
 
 export default (state = initialState, action) => {
@@ -39,8 +37,8 @@ export const select = (name) => {
   };
 };
 
-export const getUser = (username) => dispatch => {
-  const token = cookie.load('auth');
+export const getUser = (username , token) => dispatch => {
+  // const token = cookie.load('auth');
 
   let api = `https://trader401.herokuapp.com/user/${username}`;
   console.log('token inside profile---->',token);
@@ -72,8 +70,8 @@ export const clear = () => {
   };
 };
 
-export const getPosts = (username) => dispatch => {
-  const token = cookie.load('auth');
+export const getPosts = (username ,token ) => dispatch => {
+  // const token = cookie.load('auth');
 
   let api = `https://trader401.herokuapp.com/user/${username}`;
   
