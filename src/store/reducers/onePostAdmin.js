@@ -1,13 +1,16 @@
+/* eslint-disable default-case */
 /* eslint-disable indent */
-import React from 'react';
 import axios from 'axios';
 const API = process.env.API_URL || 'https://trader401.herokuapp.com';
-const initState = {
-  adminPost: [],
-};
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1OTIyOTI2LCJleHAiOjE1OTYwMDkzMjZ9.PMJDwUGDkhuf_RHxeMhD3SGtBfGYpPN0B6T6XY5LbwY';
 
+const initState = {
+  onePostAdmin: '',
+};
 export default (state = initState, action) => {
   const { type, payload } = action;
+  console.log('Type from page onePostAdmin', type);
+  console.log('payload from page onePostAdmin', payload);
   switch (type) {
     case 'GETPOST':
       return {
@@ -20,39 +23,21 @@ export default (state = initState, action) => {
       return {
         ...state,
         adminPost: adminPost,
-      };
-    default:
+      }; default:
       return state;
   }
 };
 
-export const statusPost = (token) => dispatch => {
+export const getPost = (id) => dispatch => {
   const options = {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
     cache: 'no-cache',
   };
-  axios.get(`${API}/status`, options)
+  axios.get(`${API}/status/${id}`, options)
     .then(res => {
-      dispatch(getAdminPost(res.data.results));
-    })
-    .catch(e => {
-      console.log('ERROR GET POSTS');
-      console.error();
-    });
-};
-
-
-export const changeStatus = (id, newPost, token) => dispatch => {
-  console.log('newPost >>>>', newPost);
-  const options = {
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-    cache: 'no-cache',
-  };
-  axios.put(`${API}/status/${id}`, newPost, options)
-    .then(res => {
-      dispatch(updatePost(res.data));
+      console.log('res from onePostAdmin >>>>', res);
+      dispatch(getAdminPost(res.body));
       console.log('Post Updated');
     })
     .catch(e => {
@@ -67,9 +52,10 @@ export const getAdminPost = (post) => {
     payload: post,
   };
 };
-export const updatePost = (post) => {
+
+export const updatePost = (payload) => {
   return {
     type: 'PUTPOST',
-    payload: post,
+    payload: payload,
   };
 };
