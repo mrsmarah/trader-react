@@ -2,9 +2,11 @@ import React , { useEffect } from 'react';
 import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {getRemoteProduct } from '../../store/reducers/post';
+import {addToFav } from '../../store/reducers/fav';
+import cookie from 'react-cookies';
+
 
 function OneProduct (props){
-
   console.log('ONEEEE', props.post);
   
   let{id} = useParams();
@@ -24,7 +26,9 @@ function OneProduct (props){
       <p>CATEGORY :{props.post.onePost.categories} </p>
       
       <section className="btnn">
-        <button variant="light">Add To Favorite</button> 
+        <button onClick={async () =>{
+         await props.addToFav(props.post.onePost._id , cookie.load('auth'));
+        }} variant="light">Add To Favorite</button> 
         <button variant="light">Chat</button>
       </section>
        
@@ -38,5 +42,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => ({
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+  addToFav: (id,token) => dispatch(addToFav(id,token) ),
 });
+
 export default connect(mapStateToProps , mapDispatchToProps )( OneProduct );

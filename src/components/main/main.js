@@ -43,16 +43,11 @@ const  Main= (props) => {
         <Signup />
         <Login />
       </Route>
+
       <Route exact path="/post">
         <AddPost />
       </Route>
-      <Route exact path="/">
-        <Categories />
-        <Products />
-      </Route>
       
-
-     
     </>
   );
 };
