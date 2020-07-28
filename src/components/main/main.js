@@ -6,6 +6,7 @@ import OneProduct from '../oneProduct';
 import OneCategory from '../oneCategory/oneCategory';
 import Profile from '../profile';
 import Signup from '../signup';
+import Admin from '../adminPage';
 import Login from '../login';
 import Auth from '../auth';
 import AddPost from '../addPost';
@@ -27,7 +28,6 @@ const  Main= (props) => {
         <Categories />
         <Products />
       </Route>
-
 
       <Route exact path ="/searchBy/:category" >
         <OneCategory/>
@@ -53,6 +53,10 @@ const  Main= (props) => {
 
       <Route exact path="/favList">
         <Products  productsKey = 'fav'/>
+      </Route>
+
+      <Route exact path="/admin">
+        <Admin />
       </Route>
   
     </>
