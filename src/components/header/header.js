@@ -25,7 +25,7 @@ function Header(props) {
             }} >Profile</NavLink>
             <NavLink to="/log">Log In</NavLink>
             <NavLink to="/post">Add Post</NavLink>
-
+            <NavLink to="/admin">Admin</NavLink>
           </Nav>
 
           <Form inline>
