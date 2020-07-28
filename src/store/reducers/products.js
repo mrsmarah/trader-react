@@ -76,7 +76,7 @@ export const favAction = (payload) => {
 };
 //////////////////////////// MARAH
 export const getFilteredProducts = (category) => dispatch => {
-  let api = `https://trader401.herokuapp.com//searchBy/${category}`;
+  let api = `https://trader401.herokuapp.com/searchBy/${category}`;
   return superagent.get(api)
     .then(data => {
       dispatch(handelProduct( data.body ));

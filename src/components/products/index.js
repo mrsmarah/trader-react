@@ -1,26 +1,35 @@
 import React , { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import cookie from 'react-cookies';
-// import products from '../../store/reducers/products';
-// import * as action from '../../store/reducers/products.js';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
+import {getFilteredProducts} from '../../store/reducers/products';
 
 
 function Products (props){
-  // console.log('favlist ------>',props.products);
+  console.log('products props ------>',props);
+  let{category} = useParams();
 
   useEffect(() => {
-    console.log('favlist ------>',props.productsKey);
+    
+    console.log('PRODUCTS KEY ------>',props.productsKey);
+    
     setTimeout(function(){while(props.user === {}){}
       return true;}  , 2000);
+
     switch (props.productsKey) {
+
     case 'fav':
-      console.log('favlist 222222------>',props.user);
+      console.log('favlist------>',props.user);
       props.getFav( props.user.username,cookie.load('auth'));
+      break;
+
+    case 'FILTER':
+      console.log('FILTER from switch ', category);
+      props.getFilteredProducts(category);
       break;
     
     default:
@@ -69,7 +78,9 @@ function Products (props){
 }
 
 const mapStateToProps = (state) =>{
+  console.log('state from categories------>',state);
   return {
+    categories: state.categories,
     data : state.products.products,
     user :  state.auth.user ,
   };
@@ -79,5 +90,6 @@ const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getRemoteData() ),
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
   getFav:(username,token) => dispatch(getFav(username,token)),
+  getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);

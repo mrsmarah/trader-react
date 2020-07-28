@@ -29,6 +29,7 @@ const  Main= (props) => {
 
       <Route exact path ="/searchBy/:category" >
         <OneCategory/>
+        <Products productsKey = 'FILTER' />
       </Route>
 
       <Route exact path="/search/:id">
@@ -43,16 +44,16 @@ const  Main= (props) => {
         <Signup />
         <Login />
       </Route>
+
       <Route exact path="/post">
         <AddPost />
       </Route>
+
       <Route exact path="/favList">
         <Products  productsKey = 'fav'/>
       </Route>
   
       
-
-     
     </>
   );
 };

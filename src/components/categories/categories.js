@@ -33,8 +33,6 @@ const Categories = (props) => {
           );
         })}
       </div>
-
-      <h4>Active category : { props.categories.activeCategory}</h4>
               
     </>
   );
