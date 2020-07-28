@@ -1,7 +1,6 @@
 import superagent from 'superagent';
 import axios from 'axios';
 import cookie from 'react-cookies';
-let token = cookie.load('auth');
 
 
 const initialState = {
@@ -37,6 +36,8 @@ export const select = (name) => {
 };
 
 export const getUser = (username) => dispatch => {
+  const token = cookie.load('auth');
+
   let api = `https://trader401.herokuapp.com/user/${username}`;
   console.log('token inside profile---->',token);
   const options = {
@@ -67,6 +68,8 @@ export const clear = () => {
 };
 
 export const getPosts = (username) => dispatch => {
+  const token = cookie.load('auth');
+
   let api = `https://trader401.herokuapp.com/user/${username}`;
   
   const options = {

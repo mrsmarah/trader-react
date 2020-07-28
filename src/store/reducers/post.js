@@ -1,5 +1,7 @@
 import superagent from 'superagent';
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InlhemFuIiwiX2lkIjoiNWVmMzBjODQwODBkMWQwMDE3MTFlMzFjIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTk1OTI4NTI1LCJleHAiOjE1OTYwMTQ5MjV9.pki44LSw8Qw-lIXyuoT9hHla_bz9YGqBssksW2CQdCA';
+import cookie from 'react-cookies';
+import axios from 'axios';
+
 
 const initialState = {
   onePost : '',
@@ -14,9 +16,9 @@ export default (state = initialState ,action) =>{
     console.log( type, payload);
     return {...state, onePost : payload};
 
-  case 'ADD FAV':
-    console.log( type, payload);
-    return {...state, favList : [ ...state.favList , payload]};
+  // case 'ADD FAV':
+  //   console.log( type, payload);
+  //   return {...state, favList : [ ...state.favList , payload]};
 
   default:
     return state;
@@ -43,26 +45,26 @@ export const getProduct = (payload) => {
 
 
 export const addToFav = (id) => dispatch => {
+  let token =cookie.load('auth');
+
   console.log('FAV PARAMETERS',id,token);
   let api = `https://trader401.herokuapp.com/addfav/${id}`;
-  const options = {
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
-    cache: 'no-cache',
-  };
-  return superagent.get(api,options)
-    .then(data => {
-      console.log(data.data , 'DATA BODY');
-      dispatch(addFav( data.data ));
+  
+  superagent.get(api)
+    .set('Content-Type', 'application/json' )
+    .set('Authorization',`Bearer ${token}`)
+    .then(res => {
+      console.log(res.text , 'DATA BODY');
+      // dispatch(addFav( res.data ));
     });
 };
 
-export const addFav = (payload) => {
-  return {
-    type: 'ADD FAV',
-    payload: payload,
-  };
-};
+// export const addFav = (payload) => {
+//   return {
+//     type: 'ADD FAV',
+//     payload: payload,
+//   };
+// };
 
 
 
