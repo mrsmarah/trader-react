@@ -88,7 +88,7 @@ export const getPosts = (username) => dispatch => {
       dispatch(setPosts(data.data.data||[]));
     });
 };
-export const deletePost = (id) => dispatch => {
+export const deletePost = (id,token) => dispatch => {
   let api = `https://trader401.herokuapp.com/search/${id}`;
   
   const options = {

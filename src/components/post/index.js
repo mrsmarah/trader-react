@@ -9,7 +9,7 @@ const Post = (props) => {
       <p>{props.data.title}</p>
       <p>{props.data.description}</p>
       <NavLink to= {`/edit/${props.data._id}`} >edit </NavLink>
-      <button onClick={()=>props.deletePost(props.data._id)}>delete</button>
+      <button onClick={()=>props.deletePost(props.data._id,props.token)}>delete</button>
     </div>
   );
 };
@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
     user: state.profile.user,
     posts:  state.profile.posts ,
     username: state.auth.username,
+    token: state.auth.token,
   };
 };
 
@@ -27,7 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, getState) => ({
   getUser: (username) => dispatch(actions.getUser(username)),
   getPosts: (username) => dispatch(actions.getPosts(username)),
-  deletePost: (id)=>dispatch(actions.deletePost(id)),
+  deletePost: (id,token)=>dispatch(actions.deletePost(id,token)),
 });
 
 // const mapDispatchToProps = { select };

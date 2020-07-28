@@ -58,6 +58,10 @@ const  Main= (props) => {
       <Route exact path="/admin">
         <Admin />
       </Route>
+
+      <Route exact path="/edit/:id">
+        <AddPost mode = 'edit'/>
+      </Route>
   
     </>
   );
