@@ -4,10 +4,10 @@ import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Main from './components/main/main.js';
 import { connect } from 'react-redux';
-import * as actions from './store/reducers/auth'; 
+import * as actions from './store/reducers/auth';
 import * as actions2 from './store/reducers/profile';
-import {  getCategories } from './store/reducers/categories';
-const  App=(props)=> {
+import { getCategories } from './store/reducers/categories';
+const App = (props) => {
   useEffect(() => {
     props.load();
     props.getCategories();
@@ -18,19 +18,19 @@ const  App=(props)=> {
       <Header />
 
       <Main />
-      
+
       <Footer />
     </>
   );
 }
 const mapStateToProps = (state) => {
-  return { 
-        
+  return {
+
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   load: () => dispatch(actions.load()),
-  clear: ()=>actions2.clear(),
+  clear: () => actions2.clear(),
   getCategories: () => dispatch(getCategories()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

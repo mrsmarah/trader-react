@@ -1,5 +1,5 @@
-import React , { useEffect }from 'react';
-import { Route ,useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, useParams } from 'react-router-dom';
 import Categories from '../categories/categories.js';
 import Products from '../products';
 import OneProduct from '../oneProduct';
@@ -10,8 +10,9 @@ import Login from '../login';
 import Auth from '../auth';
 import AddPost from '../addPost';
 import { connect } from 'react-redux';
-import * as actions from '../../store/reducers/auth'; 
+import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
+
 import {  getCategories } from '../../store/reducers/categories';
 const  Main= (props) => {
   props.load();
@@ -27,15 +28,16 @@ const  Main= (props) => {
         <Products />
       </Route>
 
+
       <Route exact path ="/searchBy/:category" >
         <OneCategory/>
         <Products productsKey = 'FILTER' />
       </Route>
 
       <Route exact path="/search/:id">
-        <OneProduct/>
+        <OneProduct />
       </Route>
-            
+
       <Route exact path="/user/:username">
         <Profile />
       </Route>
@@ -53,20 +55,18 @@ const  Main= (props) => {
         <Products  productsKey = 'fav'/>
       </Route>
   
-      
     </>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { 
-        
+  return {
+
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   load: () => dispatch(actions.load()),
-  clear: ()=>actions2.clear(),
+  clear: () => actions2.clear(),
   getCategories: () => dispatch(getCategories()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
-
