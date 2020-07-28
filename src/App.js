@@ -7,10 +7,20 @@ import { connect } from 'react-redux';
 import * as actions from './store/reducers/auth';
 import * as actions2 from './store/reducers/profile';
 import { getCategories } from './store/reducers/categories';
+import * as actions3 from './store/reducers/profile';
 const App = (props) => {
-  useEffect(() => {
+  let first =  ()=>{
     props.load();
     props.getCategories();
+  };
+  // componentWillMount(){
+  //   first();
+  // }
+  useEffect( () => {
+    first();
+    console.log('app  --------->',props);
+    props.getUser(props.user.username ,props.token );
+    props.getPosts(props.user.username , props.token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -25,13 +35,15 @@ const App = (props) => {
 }
 const mapStateToProps = (state) => {
   return {
-
+    user: state.auth.user,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   load: () => dispatch(actions.load()),
   clear: () => actions2.clear(),
   getCategories: () => dispatch(getCategories()),
+  getUser: (username , token) => dispatch(actions3.getUser(username ,token )),
+  getPosts: (username ,token ) => dispatch(actions3.getPosts(username , token)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // export default App;
