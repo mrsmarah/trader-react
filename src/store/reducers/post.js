@@ -15,9 +15,9 @@ export default (state = initialState ,action) =>{
     console.log( type, payload);
     return {...state, onePost : payload};
 
-  // case 'ADD FAV':
-  //   console.log( type, payload);
-  //   return {...state, favList : [ ...state.favList , payload]};
+    // case 'ADD FAV':
+    //   console.log( type, payload);
+    //   return {...state, favList : [ ...state.favList , payload]};
 
   default:
     return state;
@@ -25,11 +25,14 @@ export default (state = initialState ,action) =>{
 };
 
 
-export const getRemoteProduct = (id)  => dispatch => {
+export const getRemoteProduct = (id,token='0')  => dispatch => {
+  // console.log('getRemoteProduct id token------> ',id,token);
   let api = `https://trader401.herokuapp.com/search/${id}`;
   return superagent.get(api)
+    .set('Content-Type', 'application/json' )
+    .set('Authorization',`Bearer ${token}`)
     .then(data => {
-    //   (console.log('DATA',data.body ));
+      // (console.log('getRemoteProduct DATA -------->',data.body ));
       dispatch( getProduct(data.body));
     });
 };

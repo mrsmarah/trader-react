@@ -37,7 +37,7 @@ const Main = (props) => {
         </Card.Body>
       </Card>
       {props.posts.map(post=>{
-          console.log('post data in profile',post);
+        console.log('post data in profile',post);
         return(    
           <Post key={post.id} data={post} />
         );

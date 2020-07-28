@@ -8,18 +8,20 @@ import cookie from 'react-cookies';
 
 const AddPost = (props) =>{
   let{id} = useParams();
-  props.getRemoteProduct(id); 
+ 
   const[post, setPost]=useState({});
-  console.log('hi from add post',post,id);
+  //   if(props.mode==='edit'){
+  //     let currentPost = props.posts.filter(post=>post._id === id) ;
+  //     setPost(currentPost);
+  //   }
+  //   console.log('hi from add post post , id------>',post,id,props);
  
 
 
   useEffect(() => {
     if(props.mode==='edit'){
-       
-      console.log('hi from add post props.post',props.post,id);
-      return setPost(props.post.onePost);
-      
+      let currentPost = props.posts.filter(post=>post._id === id) ;
+      setPost(currentPost[0]||{});
     }
   },[]);
   
@@ -30,8 +32,16 @@ const AddPost = (props) =>{
   
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submit post ', props.user.username,cookie.load('auth'),post);
-    await props.addPost( props.user.username,props.token,post);
+    console.log('submit post ', props.user.username,props.token,post);
+    if(props.mode!=='edit'){
+      console.log('adding ....');
+      await props.addPost( props.user.username,props.token,post);
+    }else{
+      console.log('updating ....');
+      props.updatePost( id,props.token,post);   
+    }
+    
+   
   };
   
   //   "images": [],
@@ -48,13 +58,14 @@ const AddPost = (props) =>{
   //   "__v": 0
   return (
     <>
+      {console.log('add post before render -----> ',post)}
       <Show condition={props.loggedIn}>
         <form onSubmit={handleSubmit} >
           <input
             placeholder="title"
             name="title"
             onChange={handleChange}
-            value = {post.title}
+            value = {post.title||''}
           />
           <input
             placeholder="description"
@@ -80,10 +91,17 @@ const AddPost = (props) =>{
             })}
            
           </select>
-  
-  
-          <button>ADD</button>
+      
+          <Show condition={props.mode!=='edit'}>
+            <button>ADD</button>
+          </Show>
+          <Show condition={props.mode==='edit'}>
+            <button >update</button>
+          </Show>
+          
         </form>
+
+        
       </Show>
     </>
   );
@@ -98,13 +116,14 @@ const mapStateToProps = (state) => {
     user:  state.auth.user ,
     categories: state.categories,
     token: state.auth.token,
-    post : state.post,
+    posts:  state.profile.posts ,
   };
 };
     
     
 const mapDispatchToProps = (dispatch, getState) => ({
   addPost: (username,token ,post) => dispatch(actions.addPost(username,token ,post)),
-  getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+  getRemoteProduct: (id,token) => dispatch(getRemoteProduct(id,token) ),
+  updatePost: (id,token ,post) => dispatch(actions.updatePost(id,token ,post)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AddPost);
