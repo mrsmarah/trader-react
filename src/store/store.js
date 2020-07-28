@@ -10,7 +10,7 @@ import admin from './reducers/adminPageReducer';
 import profile from './reducers/profile';
 import auth from './reducers/auth';
 
-const reducers = combineReducers({ categories, products, profile, auth, post ,admin });
+const reducers = combineReducers({ categories, products, profile, auth, post ,admin  });
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
