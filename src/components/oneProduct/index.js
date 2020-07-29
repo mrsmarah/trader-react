@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {addToFav } from '../../store/reducers/post';
-// import Comment from './comment.js';
+import Comment from './comment.js';
 
 
 function OneProduct (props){
@@ -34,7 +34,7 @@ function OneProduct (props){
         
         <button variant="light">Chat</button>
 
-        {/* <Comment /> */}
+        <Comment />
 
       </section>
        
