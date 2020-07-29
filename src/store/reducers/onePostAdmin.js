@@ -28,23 +28,7 @@ export default (state = initState, action) => {
   }
 };
 
-export const getPost = (id) => dispatch => {
-  const options = {
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-    cache: 'no-cache',
-  };
-  axios.get(`${API}/status/${id}`, options)
-    .then(res => {
-      console.log('res from onePostAdmin >>>>', res);
-      dispatch(getAdminPost(res.body));
-      console.log('Post Updated');
-    })
-    .catch(e => {
-      console.log('ERROR UPDATE POSTS');
-      console.error();
-    });
-};
+
 
 export const getAdminPost = (post) => {
   return {

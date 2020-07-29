@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const initialState = {
-  onePost : '',
+  onePost : {},
 };
 
 export default (state = initialState ,action) =>{
@@ -14,7 +14,10 @@ export default (state = initialState ,action) =>{
   case 'SELECTED':
     console.log( type, payload);
     return {...state, onePost : payload};
-
+  case 'GETONEPOST':
+    console.log( type, payload);
+    return {...state, onePost : payload||{}};
+    
     // case 'ADD FAV':
     //   console.log( type, payload);
     //   return {...state, favList : [ ...state.favList , payload]};
@@ -58,6 +61,32 @@ export const addToFav = (id , token ) => dispatch => {
       console.log(res.text , 'DATA BODY');
       // dispatch(addFav( res.data ));
     });
+};
+
+export const getPost = (id,token) => dispatch => {
+  const API = process.env.API_URL || 'https://trader401.herokuapp.com';
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+    cache: 'no-cache',
+  };
+  console.log('getPost---------------->', token,id);
+  axios.get(`${API}/status/${id}`, options)
+    .then(res => {
+      console.log('res from onePostAdmin >>>>', res);
+      dispatch(getOnePost(res.data[0]));
+      console.log('Post Updated');
+    })
+    .catch(e => {
+      console.log('ERROR UPDATE POSTS');
+      console.error();
+    });
+};
+export const getOnePost = (post) => {
+  return {
+    type: 'GETONEPOST',
+    payload: post,
+  };
 };
 
 // export const addFav = (payload) => {
