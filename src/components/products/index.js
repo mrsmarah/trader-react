@@ -18,7 +18,7 @@ function Products (props){
   useEffect(() => {
     
     console.log('PRODUCTS KEY ------>',props.productsKey);
-    
+   
     setTimeout(function(){while(props.user === {}){}
       return true;}  , 2000);
 

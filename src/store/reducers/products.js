@@ -52,7 +52,20 @@ export const addPost = (username,token,post) => dispatch => {
       dispatch(addPostAction( data.data ));
     });
 };
-
+export const updatePost = (username,token,post) => dispatch => {
+  console.log('updatePost from redux --->',username,token,post);
+  let api = `https://trader401.herokuapp.com/user/${username}`;
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
+    cache: 'no-cache',
+  };
+  axios.put(api,post,options)
+    .then(data => {
+      console.log(data.data , '<--------data.body  update post axios');
+      dispatch(addPostAction( data.data ));
+    });
+};
 
 export const getFav = (username,token) => dispatch => {
   console.log('gatvaf from redux --->',username,token);
