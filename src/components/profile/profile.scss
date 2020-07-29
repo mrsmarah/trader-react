@@ -1,0 +1,18 @@
+
+
+.imagepro{
+    width: 25vh;
+}
+.sideBySide{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+.user{
+    width: 35%; 
+    margin: 4%;
+}
+
+.card-img-top .imagepro{
+    margin: auto;
+}
