@@ -3,14 +3,12 @@ import { statusPost, changeStatus } from '../../store/reducers/adminPageReducer.
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { select } from 'react-cookies';
-
+import { Link } from 'react-router-dom';
 const Admin = (props) => {
   useEffect(() => {
     props.post(props.token);
   }, []);
 
-  console.log('props.post.adminPost', props.posts.adminPost);
   return (
     <>
 
@@ -22,7 +20,8 @@ const Admin = (props) => {
             <th>Title</th>
             <th>Categories</th>
             <th>Status</th>
-            <th>Descripion</th>
+            <th>Description</th>
+            <th>Details</th>
           </tr>
         </thead>
 
@@ -34,14 +33,17 @@ const Admin = (props) => {
                 <th>{post.username}</th>
                 <th>{post.title}</th>
                 <th>{post.categories}</th>
+                {/* <th>View Detalis</th> */}
                 <th>
-                  <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token ); }} value={post.selectValue} name="cars">
+                  <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token); }} value={post.selectValue} name="cars">
                     <option value="pendding">{post.status}</option>
                     <option value="accepted">accept</option>
                     <option value="rejected">reject</option>
                   </select>
                 </th>
                 <th>{post.description}</th>
+                <th><Link to={`/status/${post._id}`}>View Details</Link></th>
+               
               </tr>
             </tbody>
 
@@ -64,7 +66,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, getState) => ({
   post: (token) => dispatch(statusPost(token)),
-  changeStatus: (id, newPost , token) => dispatch(changeStatus(id, newPost , token)),
+  changeStatus: (id, newPost, token) => dispatch(changeStatus(id, newPost, token)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
 
