@@ -4,7 +4,8 @@ import { handelCategory, getCategories } from '../../store/reducers/categories';
 import { getFilteredProducts } from '../../store/reducers/products';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-
+import {Carousel} from 'react-bootstrap';
+import './categories.scss'
 
 const Categories = (props) => {
 
@@ -14,25 +15,33 @@ const Categories = (props) => {
 
   return (
     <>
-      <h3>Categories:</h3>
-
-      <div>
+        
+        <Carousel>
         {props.categories.categories.map((category) => {
           return (
-            <ul>
-              <li key={category.categories} onClick={() => {
+       
+                <Carousel.Item  key={category.categories} onClick={() =>{
                 props.handelCategory(category.categories);
                 props.getFilteredProducts(category.categories);
               }}>
-                <Link to={`/searchBy/${category.categories}`} >
-                  {category.categories}
-                </Link>
-
-              </li>
-            </ul>
+                  <img
+                    className="d-block w-100"
+                    src="https://buranosa.com/wp-content/themes/velo/assets/img/placeholder/full.png"
+                    alt="First slide"
+                  />
+                 
+                  <Carousel.Caption>
+                     <h3 className="h-three">
+                        <Link to={`/searchBy/${category.categories}`} >
+                         {category.categories}
+                        </Link>
+                     </h3>
+                     <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </Carousel.Caption>
+               </Carousel.Item>
           );
         })}
-      </div>
+       </Carousel>
 
     </>
   );

@@ -3,11 +3,12 @@ import { Link,useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import cookie from 'react-cookies';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {getFilteredProducts} from '../../store/reducers/products';
 import {addToFav } from '../../store/reducers/post';
+import { MDBIcon } from "mdbreact";
+import './product.scss'
 
 
 function Products (props){
@@ -42,40 +43,54 @@ function Products (props){
 
   return (
     <section>
-      <ul className='pro'>
         {/* {console.log('hello------->', props.data)} */}
         {
           props.data.map((product , i) =>{
             // console.log('hello')
             return (
+              <>
+                <div className="grid">
+                <div class="hover">
+                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" onClick={ () =>{
+                      props.addToFav(product._id, props.token );
+                    }} />
+                <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
+                <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
+                </div>
               <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
-                <Card.Img className='imagepro' variant="top" src={product.img} />
                 <Card.Body>
-                  <Card.Title>{product.title}</Card.Title>
+                  <Card.Title>
+                    <h3>
+                    {product.title}
+                      </h3></Card.Title>
                   <Card.Text>
+                  <h5>
             POSTED BY: <br/>
-                    {product.price}$ 
+            </h5>
+                    {product.username}
                   </Card.Text>
                   <Card.Text>
-            description: <br/>
+                    <h5>
+            DESCRIPTION: <br/>
+            </h5>
                     {product.description}
                   </Card.Text>
 
-                  <section className="btnn">
-                    <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light">
-                      <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
-                    </Button>
-                    <button onClick={ () =>{
-                      props.addToFav(product._id, props.token );
-                    }} variant="light">Add To Favorite</button> 
-                  </section>
-
+           
+                       <section className="btnn">
+                       <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
+                         <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
+                       </Button>
+                       {/* <Button variant="light" className="hoverBtn" >Add To Favorite</Button>  */}
+                       
+                     </section>
                 </Card.Body>
               </Card>
+                </div>
+                     </>
             );
           })
         }
-      </ul>
     </section>
   );
 }
