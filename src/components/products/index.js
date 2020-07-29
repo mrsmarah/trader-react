@@ -1,23 +1,45 @@
 import React , { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import products from '../../store/reducers/products';
-// import * as action from '../../store/reducers/products.js';
-// import FavoriteIcon from 'react-bootstrap/FavoriteIcon'
-import {getRemoteData} from '../../store/reducers/products';
+import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
+import {getFilteredProducts} from '../../store/reducers/products';
+import {addToFav } from '../../store/reducers/post';
 import { MDBIcon } from "mdbreact";
 import './product.scss'
 
 
 function Products (props){
-
+  console.log('products props ------>',props);
+  let{category} = useParams();
 
   useEffect(() => {
-    props.get();
-  }, []);
+    
+    console.log('PRODUCTS KEY ------>',props.productsKey);
+    
+    setTimeout(function(){while(props.user === {}){}
+      return true;}  , 2000);
+
+    switch (props.productsKey) {
+
+    case 'fav':
+      console.log('favlist------>',props.user);
+      props.getFav( props.user.username, props.token );
+      break;
+
+    case 'FILTER':
+      console.log('FILTER from switch ', category);
+      props.getFilteredProducts(category);
+      break;
+    
+    default:
+      props.get();
+      break;
+    }
+    
+  },[]);
 
   return (
     <section>
@@ -29,7 +51,9 @@ function Products (props){
               <>
                 <div className="grid">
                 <div class="hover">
-                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" />
+                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" onClick={ () =>{
+                      props.addToFav(product._id, props.token );
+                    }} />
                 <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
                 <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
                 </div>
@@ -72,12 +96,21 @@ function Products (props){
 }
 
 const mapStateToProps = (state) =>{
-  return {data : state.products.products};
+  console.log('state from categories------>',state);
+  return {
+    categories: state.categories,
+    data : state.products.products,
+    user :  state.auth.user ,
+    token : state.auth.token ,
+  };
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getRemoteData() ),
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+  getFav:(username,token) => dispatch(getFav(username,token)),
+  getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
+  addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
 
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handelCategory, getCategories } from '../../store/reducers/categories';
-import {getFilteredProducts} from '../../store/reducers/products';
+import { getFilteredProducts } from '../../store/reducers/products';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import {Carousel} from 'react-bootstrap';
@@ -11,7 +11,7 @@ const Categories = (props) => {
 
   useEffect(() => {
     props.getCategories();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -43,19 +43,18 @@ const Categories = (props) => {
         })}
        </Carousel>
 
-      <h4>Active category : { props.categories.activeCategory}</h4>
-              
     </>
   );
 };
- 
+
 
 const mapStateToProps = (state) => {
-  return { categories: state.categories,
-    products: state.products.products ,
+  return {
+    categories: state.categories,
+    products: state.products.products,
   };
 };
-  
+
 const mapDispatchToProps = (dispatch) => ({
   handelCategory: (category) => dispatch(handelCategory(category)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category)),
@@ -63,6 +62,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
-  
-
-

@@ -8,16 +8,21 @@ import { useEffect } from 'react';
 const OneCategory = (props) => {
 
   let{category} = useParams();
-
+  
+  
   useEffect(() => {
+    console.log('CATEGORY',category);
     props.getCategory(category);
+    
   },[]);
 
   return (
     <>
       <div>
         <h4>Active category : { props.categories.activeCategory}</h4>
+        
       </div>
+
     </>
   );
 };

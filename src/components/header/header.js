@@ -1,10 +1,10 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Form,FormControl,Button,Nav,DropdownButton, Dropdown} from 'react-bootstrap';
 import './header.scss'
-
+import { connect } from 'react-redux';
+import * as actions2 from '../../store/reducers/profile';
 
 function Header(props) {
 
@@ -19,10 +19,13 @@ function Header(props) {
           <Nav className="mr-auto">
             
             <NavLink className="a-tag" to="/">Home</NavLink>
-            <NavLink className="a-tag" to="/profile">Profile</NavLink>
+            <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
+              props.getUser(props.username);
+              props.getPosts(props.username);
+            }} >Profile</NavLink>
             <NavLink className="a-tag" to="/log">Log In</NavLink>
             <NavLink className="a-tag" to="/post">Add Post</NavLink>
-           
+            <NavLink className="a-tag" to="/admin">Admin</NavLink>
           </Nav>
           <div class="search-bar  p-3 p-lg-1 pl-lg-4">
               
@@ -79,10 +82,19 @@ function Header(props) {
 
 }
 
+const mapStateToProps = (state) => {
+  console.log('state------>', state);
+  return {
+    username: state.auth.user.username,
+  };
+};
+const mapDispatchToProps = (dispatch, getState) => ({
+  getUser: (username) => dispatch(actions2.getUser(username)),
+  getPosts: (username) => dispatch(actions2.getPosts(username)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
-
-
-export default Header;
+// export default Header;
 
 // <Nav.Link href="#home">Home</Nav.Link>
 // <Nav.Link href="#profile">profile</Nav.Link>

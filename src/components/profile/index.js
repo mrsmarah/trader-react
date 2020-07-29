@@ -1,21 +1,48 @@
-import React , { useEffect }from 'react';
+import React , { useEffect,useState }from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/reducers/profile';
 import Post from '../post'; 
-
+import {useParams} from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 const Main = (props) => {
+  // const [username, setCount] = useState();
+  let {username} = useParams();
+  //   setCount(username1);
+  console.log('username profile',username);
+
   useEffect(() => {
-    props.getUser(props.username);
-    props.getPosts(props.username);
+    console.log('username profile2',username);
+    props.getUser(username ,props.token );
+    props.getPosts(username , props.token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // console.log('unmounting...');
+    // return () => {
+    //   console.log('unmounting...');
+    //   props.clear();  
+    // };
   }, []);
+  
   return (
-    props.posts.map(post=>{
-      return(    
-        <Post key={post.id} data={post} />
-      );
-    })
+    <>
+      <Card style={{ width: '18rem' }}className = {`cards user`} >
+        <Card.Img className='imagepro' variant="top" src={props.img||'default'} />
+        <Card.Body>
+          <Card.Title>{props.user.fullName||props.user.username}</Card.Title>
+          <Card.Text>
+        Email: <br/>
+            {props.user.email}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      {props.posts.map(post=>{
+        return(    
+          <Post key={post.id} data={post} />
+        );
+      })}
+ 
+    </>
   );
+  
 };
 
 const mapStateToProps = (state) => {
@@ -23,14 +50,16 @@ const mapStateToProps = (state) => {
   return { 
     user: state.profile.user,
     posts:  state.profile.posts ,
-    username: state.user.username,
+    username: state.auth.username,
+    token : state.auth.token,
   };
 };
 
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  getUser: (username) => dispatch(actions.getUser(username)),
-  getPosts: (username) => dispatch(actions.getPosts(username)),
+  getUser: (username , token) => dispatch(actions.getUser(username ,token )),
+  getPosts: (username ,token ) => dispatch(actions.getPosts(username , token)),
+  clear: ()=>dispatch(actions.clear()),
 });
 
 // const mapDispatchToProps = { select };
