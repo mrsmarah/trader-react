@@ -9,8 +9,9 @@ import post from './reducers/post';
 import admin from './reducers/adminPageReducer';
 import profile from './reducers/profile';
 import auth from './reducers/auth';
+import upload from './reducers/upload';
 
-const reducers = combineReducers({ categories, products, profile, auth, post ,admin  });
+const reducers = combineReducers({ categories, products, profile, auth, post ,admin,upload  });
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
