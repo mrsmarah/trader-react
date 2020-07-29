@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
-
+import './signup.css';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 const SignUP = (props) => {
   const state = {
     username: '',
@@ -28,33 +31,39 @@ const SignUP = (props) => {
   return (
     <>
       <Show condition={!props.loggedIn}>
-        <form onSubmit={handleSubmit} >
-          <Form.Control
-            placeholder="userName"
-            name="username"
-            onChange={handleChange}>
-          </Form.Control>
-          <Form.Control
-            placeholder="password"
-            name="password"
-            onChange={handleChange}
-          >
-          </Form.Control>
-          <Form.Control
-            placeholder="email"
-            name="email"
-            onChange={handleChange}
-          >
-          </Form.Control>
-          <Form.Control
-            placeholder="role"
-            name="role"
-            onChange={handleChange}
-          >
-          </Form.Control>
-          <button>SignUP</button>
-        </form>
+        <div className='flexRight'>
+          <form className='signup' onSubmit={handleSubmit}  >
+            <label>Signup</label>
+            <Form.Control
+              placeholder="userName"
+              name="username"
+              onChange={handleChange}>
+            </Form.Control>
+            <Form.Control
+              placeholder="password"
+              name="password"
+              onChange={handleChange}
+            >
+            </Form.Control>
+            <Form.Control
+              placeholder="email"
+              name="email"
+              onChange={handleChange}
+            >
+            </Form.Control>
+            <Form.Control
+              placeholder="role"
+              name="role"
+              onChange={handleChange}
+            >
+            </Form.Control>
+            <button>SignUP</button>
+          </form>
+        </div>
+
+
       </Show>
+
     </>
   );
 
