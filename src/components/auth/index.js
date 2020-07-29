@@ -12,9 +12,9 @@ const Auth = (props) =>{
   let okToRender = false;
 
   try {
-    okToRender = this.props.loggedIn && (
-      this.props.capability ?
-        this.props.user.capabilities.includes(this.props.capability)
+    okToRender = props.loggedIn && (
+      props.capability ?
+        props.user.role.includes(props.capability)
         : true
     );
   } catch (e) {
@@ -23,7 +23,7 @@ const Auth = (props) =>{
 
   return (
     <Show condition={okToRender}>
-      {this.props.children}
+      {props.children}
     </Show>
   );
  
