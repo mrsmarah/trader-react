@@ -1,83 +1,114 @@
 section{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-evenly;
 }
 
 .hover{
-    height:300px;
+  height:300px;
+  display: flex;
+  width: 300px;
 }
-
+.cards{
+// margin-top: 5%;
+border: none;
+}
 
 .firstPic{
-    position: absolute;
+  position: absolute;
 }
 .secPic{
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.7s ease;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.7s ease;
 }
 .secPic:hover{
-    opacity: 1;
+  opacity: 1;
 }
 
 .card-title{
-    font-variant: all-petite-caps;
+  font-variant: all-petite-caps;
 }
 .card-body{
-    text-align: center;
-    display: grid;
+  text-align: center;
+  display: grid;
 }
 
 .hoverBtn {
-    text-transform: uppercase;
-    color: #617cff;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-size: em(18);
-    background-color: white;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hoverBtn:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-right: 30px solid #4889ff59;
-    position: absolute;
-    bottom: -37%;
-    left: -2px;
-    transform: rotate(-45deg) translateX(-50px);
+  text-transform: uppercase;
+  color: #617cff;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: em(18);
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+}
 
-    transition: transform 200ms ease;
-  }
-  
-  .hoverBtn:after{
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-right: 30px solid #4889ff59;
-    position: absolute;
-    top: -37%;
-    right: -3px;
-    transform: rotate(135deg) translateX(-50px);
+.hoverBtn:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid #4889ff59;
+  position: absolute;
+  bottom: -52%;
+  left: -4px;
+  transform: rotate(-45deg) translateX(-50px);
 
-    transition: transform 200ms ease;
-  }
-  .hoverBtn:hover:before {
-    transform: rotate(-45deg) translateX(0);
-  }
+  transition: transform 200ms ease;
+}
 
-  .hoverBtn:hover:after {
-    transform: rotate(135deg) translateX(0);
-  }
- a:hover{
-     text-decoration: none;
- }
+.hoverBtn:after{
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid #4889ff59;
+  position: absolute;
+  top: -52%;
+  right: -5px;
+  transform: rotate(135deg) translateX(-50px);
+
+  transition: transform 200ms ease;
+}
+.hoverBtn:hover:before {
+  transform: rotate(-45deg) translateX(0);
+}
+
+.hoverBtn:hover:after {
+  transform: rotate(135deg) translateX(0);
+}
+a:hover{
+   text-decoration: none;
+}
+
+.indigo-text{
+  z-index: 99;
+  // overflow: hidden;
+}
+
+
+.indigo-text {
+  margin: 5%;
+    font-size: 29px;
+    color: white;
+}
+
+.redHeart{
+  color: red($color: #000000);
+}
+.grid{
+  display: flex;
+   width: 50%; 
+  justify-content: space-evenly;
+  margin: 5% auto;
+}
+.carousel .slide{
+  width: fit-content;
+}

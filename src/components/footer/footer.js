@@ -22,6 +22,36 @@ const Footer = () => {
             </Button>
         </Form>
         </div>
+
+        <div className="links">
+        <h6 className="newsletterh6">USEFUL LINKS</h6>
+        <Nav className="mr-auto">
+      <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="#features">Features</Nav.Link>
+      <Nav.Link href="#pricing">Pricing</Nav.Link>
+      <Nav.Link href="#pricing">Pricing</Nav.Link>
+    </Nav>
+        </div>
+        <div className="connect">
+        <h6 className="newsletterh6">CONTACT US</h6>
+            <span>Amman jordan </span>
+            <span>info@trader.com</span>
+            <span>+971 50 650 0690</span>
+            <span>T R A D E R &copy; </span>
+        </div>  
+
+        <div class="footer-social-icons">
+        <h6 className="newsletterh6">FOLLOW US ON</h6>
+    {/* <h4 class="_14">Follow us on</h4> */}
+    <ul class="social-icons">
+        <li><a href="" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-rss"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
+    </ul>
+</div> 
     </Navbar>
 
   );

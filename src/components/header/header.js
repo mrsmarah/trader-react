@@ -24,8 +24,39 @@ function Header(props) {
             <NavLink className="a-tag" to="/post">Add Post</NavLink>
            
           </Nav>
- 
-          <Form inline>
+          <div class="search-bar  p-3 p-lg-1 pl-lg-4">
+              
+          <Form action="#">
+                <div className="row">
+                  <div className="col-lg-4 d-flex align-items-center form-group">
+                  <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2 form-control border-0 shadow-0" />
+                  </div>
+                  <div className="col-lg-3 d-flex align-items-center form-group no-divider">
+                  <DropdownButton
+              alignRight
+              title="Categories"
+              id="dropdown-menu-align-right"
+              className="dropdown bootstrap-select selectpicker"
+            >
+              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
+          </DropdownButton>
+          </div>
+                  <div className="col-lg-2">
+                    <Button className="btn btn-primary btn-block rounded-xl h-100" type="submit">Search </Button>
+                  </div>
+                </div>
+              </Form>
+              </div>
+
+
+
+          {/* <Form inline>
             <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2" />
             <DropdownButton
               alignRight
@@ -39,7 +70,7 @@ function Header(props) {
               <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
           </DropdownButton>
             <Button variant="outline-primary" className="buttonn">Search</Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
       </Navbar>
 

@@ -5,8 +5,10 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 // import products from '../../store/reducers/products';
 // import * as action from '../../store/reducers/products.js';
+// import FavoriteIcon from 'react-bootstrap/FavoriteIcon'
 import {getRemoteData} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
+import { MDBIcon } from "mdbreact";
 import './product.scss'
 
 
@@ -24,11 +26,14 @@ function Products (props){
           props.data.map((product , i) =>{
             // console.log('hello')
             return (
-              <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
+              <>
+                <div className="grid">
                 <div class="hover">
-                <Card.Img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
-                <Card.Img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
+                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" />
+                <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
+                <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
                 </div>
+              <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
                 <Card.Body>
                   <Card.Title>
                     <h3>
@@ -47,15 +52,18 @@ function Products (props){
                     {product.description}
                   </Card.Text>
 
-                  <section className="btnn">
-                    <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
-                      <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
-                    </Button>
-                    <Button variant="light" className="hoverBtn" >Add To Favorite</Button> 
-                  </section>
-
+           
+                       <section className="btnn">
+                       <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
+                         <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
+                       </Button>
+                       {/* <Button variant="light" className="hoverBtn" >Add To Favorite</Button>  */}
+                       
+                     </section>
                 </Card.Body>
               </Card>
+                </div>
+                     </>
             );
           })
         }
