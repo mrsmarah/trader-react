@@ -3,12 +3,16 @@ import {connect} from 'react-redux';
 import io from 'socket.io-client';
 
 const client = io.connect('https://trader401.herokuapp.com/');
-
+var cnt = 0;
 function ClientComponent(props) {
 //   const [response, setResponse] = useState('');
   const [state, setState] = useState({ message: '', name: '' });
-  const [chat, setChat] = useState([]);
+  const [chat, setchat] = useState([]);
   const [room ,setRoom] = useState('');
+  console.log('cnt',cnt++,chat);
+  let arrayTest = [];
+
+  
 
   useEffect(() => {
 
@@ -22,9 +26,13 @@ function ClientComponent(props) {
       //     setChat([...chat, { name, message }]);
       //   });
 
-      client.on('message', (payload)  => {
+      client.on('message',  (payload)=> {
         console.log('payload>>>>' ,payload);
-        setChat([...chat, payload ]);
+        console.log('chat before >>>>' ,chat);
+        arrayTest.push(payload);
+        setTimeout(() => {  setchat(arrayTest);; }, 700);
+        
+        console.log('chat after >>>>' ,chat,arrayTest);
       });
     });
 
@@ -49,13 +57,14 @@ function ClientComponent(props) {
   };
 
   const renderChat = () => {
-    console.log('chaaaat>>>>>>>>>>>>' , chat);
-    return chat.map(({ username, text, time  }, index) => (
+    console.log('chaaaat   map>>>>>>>>>>>>' , chat.length);
+    // { username, text, time,payload,sender  }
+    return chat.map((msg, index) => (
       <div key={index}>
         <h3>
-          {username}: <span>{text}</span>
+          {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
         </h3>
-        <p>{time}</p>
+        <p>{msg.time}</p>
       </div>
     ));
   };
