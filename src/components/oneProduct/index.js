@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {getRemoteProduct,getPost } from '../../store/reducers/post';
 import Show from '../show';
 import {addToFav } from '../../store/reducers/post';
-// import Comment from './comment.js';
+import Comment from './comment.js';
 
 
 function OneProduct (props){
@@ -39,7 +39,8 @@ function OneProduct (props){
         
           <button variant="light">Chat</button>
 
-          {/* <Comment /> */}
+
+        <Comment />
 
         </section>
       </Show>
