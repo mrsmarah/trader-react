@@ -4,6 +4,7 @@ import * as actions from '../../store/reducers/profile';
 import Post from '../post'; 
 import {useParams,NavLink } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import './profile.scss'
 const Main = (props) => {
   // const [username, setCount] = useState();
   let {username} = useParams();
@@ -26,7 +27,8 @@ const Main = (props) => {
   return (
     <>
       <Card style={{ width: '18rem' }}className = {`cards user`} >
-        <Card.Img className='imagepro' variant="top" src={props.img||'default'} />
+        <div className='sideBySide'>
+        <Card.Img className='imagepro' variant="top" src={props.img||'https://lh3.googleusercontent.com/proxy/3HxpFmif7VVizd08qluFlpc7nxT8AVDKHfp-h74ZvQh7Q34SAbCtQEcM9zhOx1TSmntCeqkvxyU7VzECHwBUuw'} />
         <Card.Body>
           <Card.Title>{props.user.fullName||props.user.username}</Card.Title>
           <Card.Text>
@@ -35,6 +37,7 @@ const Main = (props) => {
           </Card.Text>
           <NavLink to="/favList">Fav List</NavLink>
         </Card.Body>
+        </div>
       </Card>
       {props.posts.map(post=>{
         console.log('post data in profile',post);
