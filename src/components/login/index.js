@@ -2,11 +2,8 @@ import React from 'react';
 import * as actions from '../../store/reducers/auth';
 import { connect } from 'react-redux';
 import Show from '../show';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import './login.css';
 const Login = (props) => {
   const state = {
@@ -32,33 +29,36 @@ const Login = (props) => {
         <button onClick={props.logout}>Logout</button>
       </Show>
       <Show condition={!props.loggedIn}>
-        <div className='flexLeft'>
-          <form className='login' onSubmit={handleSubmit}  >
-            <label>Sign in</label>
-            <Form.Control
-              placeholder="userName"
-              name="username"
-              id='username'
-              type='text'
-              onChange={handleChange}>
-            </Form.Control>
-            <Form.Control
-              placeholder="password"
-              name="password"
-              id='password'
-              type='password'
-              onChange={handleChange}>
-            </Form.Control>
-            <button>Sign in</button>
-          </form>
-        </div>
 
+        <form className='login' >
+          <label id='inLabel'>Sign in</label>
+          <TextField
+            label="userName"
+            name="username"
+            type='text'
+            onChange={handleChange}
+            id='username'
+          />
+          <TextField id="password"
+            label="password"
+            name="password"
+            type='text'
+            onChange={handleChange}
+          />
+          <a href='#' className='forget'>Forget Password</a>
+          <Button onClick={handleSubmit} variant="contained" color="primary">
+            Sign In
+          </Button><br></br>
+          <a href='#' className='forget'> <span id='member' >Not a member?</span>
+          Sign Up </a>
+          <br></br>
+          <span id='or'>or SignIn With :</span>
+        </form>
       </Show>
-      <Show condition={props.loggedIn} className='clear'>
-        <button onClick={props.logout}>Logout</button>
-      </Show>
+
     </>
   );
+
 
 
 };

@@ -1,8 +1,29 @@
 .signup {
   width: 29vw;
   padding: 3vw;
-  height: 30vw;
-  margin-top: 9vw;
+  height: 37vw;
+  margin-top: 5vw;
   margin-left: -61%;
-  box-shadow: 0vw 1vw 3vw grey;
+  box-shadow: 0vw 0vw 7px grey;
+}
+#signUpBtn {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgb(132 145 232)
+  );
+  /* background-color: white; */
+  width: 23vw;
+  margin-top: 2vw;
+}
+.form-control {
+  margin-top: 4%;
+}
+#upLabel {
+  margin-left: 36%;
+  font-size: larger;
+}
+.inputInfo {
+  width: 23vw;
+  margin-right: 10px;
 }

@@ -2,11 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Show from '../show';
 import * as actions from '../../store/reducers/auth';
-import Form from 'react-bootstrap/Form';
 import './signup.css';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 const SignUP = (props) => {
   const state = {
     username: '',
@@ -15,11 +13,9 @@ const SignUP = (props) => {
     role: '',
   };
 
-
-
-
   const handleChange = e => {
     state[e.target.name] = e.target.value;
+    console.log('handle Change>>>>', state);
   };
 
   const handleSubmit = e => {
@@ -32,32 +28,35 @@ const SignUP = (props) => {
     <>
       <Show condition={!props.loggedIn}>
         <div className='flexRight'>
-          <form className='signup' onSubmit={handleSubmit}  >
-            <label>Signup</label>
-            <Form.Control
-              placeholder="userName"
+          <form className='signup'  >
+            <label id='upLabel' >Signup</label>
+            <TextField id="standard-basic" label="userName"
               name="username"
-              onChange={handleChange}>
-            </Form.Control>
-            <Form.Control
-              placeholder="password"
+              onChange={handleChange}
+              className='inputInfo'
+            >
+            </TextField>
+            <TextField id="standard-basic" label="password"
               name="password"
               onChange={handleChange}
+              className='inputInfo'
             >
-            </Form.Control>
-            <Form.Control
-              placeholder="email"
-              name="email"
+            </TextField>
+            <TextField id="standard-basic" label="email"
               onChange={handleChange}
+              name="email"
+              className='inputInfo'
             >
-            </Form.Control>
-            <Form.Control
-              placeholder="role"
+            </TextField>
+            <TextField id="standard-basic" label="role"
               name="role"
               onChange={handleChange}
+              className='inputInfo'
             >
-            </Form.Control>
-            <button>SignUP</button>
+            </TextField>
+            <Button onClick={handleSubmit} variant="contained" color="primary">
+              Sign Up
+            </Button>
           </form>
         </div>
 
@@ -65,6 +64,10 @@ const SignUP = (props) => {
       </Show>
 
     </>
+
+
+
+
   );
 
 

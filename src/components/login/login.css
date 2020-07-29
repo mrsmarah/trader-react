@@ -1,10 +1,10 @@
 .login {
   width: 29vw;
   padding: 3vw;
-  height: 30vw;
+  height: 37vw;
   margin-left: 16vw;
-  margin-top: 9vw;
-  box-shadow: 0vw 1vw 3vw grey;
+  margin-top: 5vw;
+  box-shadow: 0vw 0vw 7px grey;
 }
 aside.form-elegant {
   /* background-color: brown; */
@@ -18,4 +18,49 @@ aside.form-elegant {
 }
 footer {
   clear: both;
+}
+
+#signInBtn {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgb(132 145 232)
+  );
+  width: 23vw;
+  border-radius: 20px;
+  border: 0;
+}
+input#username {
+  width: 23vw;
+  margin-right: 10px;
+}
+input#password {
+  width: 23vw;
+  margin-right: 10px;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+  margin-top: 15%;
+  border-radius: 20px;
+  width: 23vw;
+}
+a.forget {
+  float: right;
+  margin-right: 15%;
+  font-size: 11px;
+  margin-top: 2%;
+}
+.MuiFormControl-root.MuiTextField-root {
+  margin-top: 8%;
+}
+#member {
+  color: gray;
+}
+#inLabel {
+  margin-left: 36%;
+  font-size: larger;
+}
+span#or {
+  font-size: 70%;
+  margin-left: 32%;
+  color: gray;
 }
