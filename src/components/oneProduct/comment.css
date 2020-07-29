@@ -121,5 +121,11 @@ form.form-block {
 .form-group textarea.form-input {
   height: 150px;
 }
-.commentSection {
+input#comment {
+  width: 163vh;
+}
+#addComment {
+  margin-left: 40%;
+  border: 0;
+  height: 20%;
 }

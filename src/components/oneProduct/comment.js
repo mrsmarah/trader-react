@@ -21,11 +21,10 @@ function Comment(props) {
     await props.addComment(props.post.onePost._id, props.token, comment);
   };
   let commentArray = props.post.onePost.comment.length;
-  console.log('commentArray >>>', commentArray);
   return (
     <>
       <section className='commentSection'>
-        <h2 className='comments-title'>Comments {commentArray}</h2>
+        <h2 className='comments-title'>Comments ({commentArray})</h2>
         {props.post.onePost.comment.map((comment, i) => {
           return (
             <div className='container'>
@@ -58,11 +57,13 @@ function Comment(props) {
                 label="comment"
                 name="theComment"
                 onChange={handleChange}
+                id='comment'
               >
               </TextField>
             </div>
           </div>
-          <button id='addComment'>Add Comment</button>
+          <button id='addComment' className="hoverBtn" >Add Comment</button>
+
         </form>
       </section>
     </>

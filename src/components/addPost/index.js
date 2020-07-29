@@ -4,19 +4,66 @@ import { useParams } from 'react-router-dom';
 import Show from '../show';
 import * as actions from '../../store/reducers/products';
 import { getRemoteProduct } from '../../store/reducers/post';
-import cookie from 'react-cookies';
-import Button from '@material-ui/core/Button';
-import './addPost.css';
+// import {storage} from '../firebase/firebase';
+import Upload from '../upload';
 import TextField from '@material-ui/core/TextField';
 const AddPost = (props) => {
   let { id } = useParams();
 
   const [post, setPost] = useState({});
+
+  //   const allInputs = {imgUrl: ''};
+  //   const [imageAsFile, setImageAsFile] = useState('');
+  //   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+
+
+  //   console.log('imageAsFile---->',imageAsFile);
+
+
+
+  //   const handleImageAsFile = async (e) => {
+  //     const image = e.target.files[0];
+  //     await setImageAsFile(imageFile => (image));
+  //     console.log('imageAsFile222---->',imageAsFile);
+  //     console.log('imageAsFile333---->',image);
+  //     await handleFireBaseUpload(e);
+
+  //   };
   //   if(props.mode==='edit'){
   //     let currentPost = props.posts.filter(post=>post._id === id) ;
   //     setPost(currentPost);
   //   }
   //   console.log('hi from add post post , id------>',post,id,props);
+
+  //   const handleFireBaseUpload = (e) => {
+  //     e.preventDefault();
+  //     console.log('start of upload');
+  //     // async magic goes here...
+  //     if(imageAsFile === '') {
+  //       console.error(`not an image, the image file is a ${typeof(imageAsFile)}`);
+  //     }
+  //     const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
+  //     //initiates the firebase side uploading 
+  //     uploadTask.on('state_changed', 
+  //       (snapShot) => {
+  //         //takes a snap shot of the process as it is happening
+  //         console.log(snapShot);
+  //       }, (err) => {
+  //         //catches the errors
+  //         console.log(err);
+  //       }, () => {
+  //         // gets the functions from storage refences the image storage in firebase by the children
+  //         // gets the download url then sets the image from firebase as the value for the imgUrl key:
+  //         storage.ref('images').child(imageAsFile.name).getDownloadURL()
+  //           .then(fireBaseUrl => {
+  //             setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}));
+
+  //           });
+  //           console.log('ImageAsUrl--->',imageAsUrl);
+  //       });
+  //   };
+
+
 
 
 
@@ -35,6 +82,7 @@ const AddPost = (props) => {
   const handleSubmit = async e => {
     e.preventDefault();
     console.log('submit post ', props.user.username, props.token, post);
+    // const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
     if (props.mode !== 'edit') {
       console.log('adding ....');
       await props.addPost(props.user.username, props.token, post);
@@ -75,15 +123,17 @@ const AddPost = (props) => {
             name="description"
             onChange={handleChange}
             value={post.description}
-          >
-          </TextField>
-          <TextField
-            label="images"
+          />
+
+          {/* <input
+            placeholder="images"
             name="images"
-            onChange={handleChange}
-            value={post.images}
-          >
-          </TextField>
+            multiple
+            type="file"
+            onChange={handleImageAsFile} 
+            value = {post.images}
+          /> */}
+          <Upload />
           <select class="custom-select" id="inputGroupSelect01" name="categories" onChange={handleChange}
             value={post.categories}>
             <option selected>categories</option>
