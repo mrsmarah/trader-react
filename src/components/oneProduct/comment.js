@@ -1,39 +1,50 @@
-import React , { useEffect } from 'react';
+import React , { useEffect,useState } from 'react';
 import {connect} from 'react-redux';
-import { useParams } from 'react-router-dom';
-import {getRemoteProduct } from '../../store/reducers/post';
-import {addToFav } from '../../store/reducers/post';
+import {addComment} from '../../store/reducers/post';
 
 
 function Comment (props){
 
-  console.log('ONEEEE', props.post);
-  
-  let{id} = useParams();
+  const[comment, setComment]= useState({});
 
-  useEffect(() => {
-    props.getRemoteProduct(id);
-  }, []);
-  
+  const handleChange = e => {
+    setComment({...comment,[e.target.name]:e.target.value});
+  };
+      
+  const handleSubmit = async e => {
+    e.preventDefault();
+    e.target.reset();
+    // console.log('submit comment ', props.post.onePost._id , props.token , comment);
+    await props.addComment( props.post.onePost._id , props.token , comment);
+  };
 
   return (
     <section>
-     
-        <section>
-          {props.post.onePost.comment.map((comment,i) =>{
-            <ul>
-              <li>
-                <p>{comment.username}</p>
-                <p>{comment.theComment}</p>
-              </li>
-            </ul>;
-          })}
-        </section>
+      
+      <ul>
+        {props.post.onePost.comment.map((comment,i) =>{
+          return(
+            <li>
+              <p>{comment.username}</p>
+              <p>{comment.theComment}</p>
+            </li>
+          );
+        })}
+      </ul>
 
+      <form onSubmit={handleSubmit} >
 
-      </section>
-       
-  
+        <input
+          placeholder="comment"
+          name="theComment"
+          onChange={handleChange}
+        />
+
+        <button >Add Comment</button> 
+
+      </form>
+
+    </section>
   );
 }
 
@@ -45,8 +56,7 @@ const mapStateToProps = (state) =>{
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
-  getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
-  addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
+  addComment: ( id , token , comment )  => dispatch(addComment( id , token , comment ) ),
 });
 
 export default connect(mapStateToProps , mapDispatchToProps )( Comment );
