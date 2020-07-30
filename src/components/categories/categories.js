@@ -36,7 +36,7 @@ const Categories = (props) => {
                          {category.categories}
                         </Link>
                      </h3>
-                     <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                     {/* <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                   </Carousel.Caption>
                </Carousel.Item>
           );

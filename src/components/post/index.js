@@ -10,7 +10,7 @@ const Post = (props) => {
     //   <p>{props.data.description}</p>
       
     // </div>
-    <div className="grid">
+    <div className="gridd">
     <div class="hover">
 
     <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
