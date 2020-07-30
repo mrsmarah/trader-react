@@ -1,0 +1,21 @@
+.login {
+  width: 29vw;
+  padding: 3vw;
+  height: 30vw;
+  margin-left: 16vw;
+  margin-top: 9vw;
+  box-shadow: 0vw 1vw 3vw grey;
+}
+aside.form-elegant {
+  /* background-color: brown; */
+  width: 29vw;
+  padding: 3vw;
+  height: 30vw;
+  margin-left: 25vw;
+}
+.flexRight {
+  float: right;
+}
+footer {
+  clear: both;
+}

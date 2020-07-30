@@ -1,5 +1,4 @@
-/* eslint-disable indent */
-import React from 'react';
+
 import axios from 'axios';
 const API = process.env.API_URL || 'https://trader401.herokuapp.com';
 const initState = {
@@ -9,20 +8,20 @@ const initState = {
 export default (state = initState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'GETPOST':
-      return {
-        ...state,
-        adminPost: payload,
-      };
-    case 'PUTPOST':
-      let adminPost = state.adminPost.map((post) =>
-        post._id === payload._id ? payload : post);
-      return {
-        ...state,
-        adminPost: adminPost,
-      };
-    default:
-      return state;
+  case 'GETPOST':
+    return {
+      ...state,
+      adminPost: payload,
+    };
+  case 'PUTPOST':
+    let adminPost = state.adminPost.map((post) =>
+      post._id === payload._id ? payload : post);
+    return {
+      ...state,
+      adminPost: adminPost,
+    };
+  default:
+    return state;
   }
 };
 
@@ -34,7 +33,7 @@ export const statusPost = (token) => dispatch => {
   };
   axios.get(`${API}/status`, options)
     .then(res => {
-      dispatch(getAdminPost(res.data.results));
+      dispatch(getAdminPost(res.data.results)); 
     })
     .catch(e => {
       console.log('ERROR GET POSTS');
@@ -61,6 +60,24 @@ export const changeStatus = (id, newPost, token) => dispatch => {
     });
 };
 
+export const getPost = (id,token) => dispatch => {
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+    cache: 'no-cache',
+  };
+  axios.get(`${API}/status/${id}`, options)
+    .then(res => {
+      console.log('res from onePostAdmin >>>>', res);
+      dispatch(getAdminPost(res.body));
+      console.log('Post Updated');
+    })
+    .catch(e => {
+      console.log('ERROR UPDATE POSTS');
+      console.error();
+    });
+};
+
 export const getAdminPost = (post) => {
   return {
     type: 'GETPOST',
@@ -70,6 +87,12 @@ export const getAdminPost = (post) => {
 export const updatePost = (post) => {
   return {
     type: 'PUTPOST',
+    payload: post,
+  };
+};
+export const getOnePost = (post) => {
+  return {
+    type: 'GETONEPOST',
     payload: post,
   };
 };

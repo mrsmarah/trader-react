@@ -105,7 +105,7 @@ DESCRIPTION: <br/>
 </h5>
     {props.data.description}
   </Card.Text>
-  {/* <button onClick={()=>props.deletePost(props.data._id,props.token)}>delete</button> */}
+  <button onClick={()=>props.deletePost(props.data._id,props.token)}>delete</button>
 </Card.Body>
 </Card>
 </div>
@@ -128,8 +128,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, getState) => ({
   getUser: (username) => dispatch(actions.getUser(username)),
   getPosts: (username) => dispatch(actions.getPosts(username)),
-  // deletePost: (id,token)=>dispatch(actions.deletePost(id,token)),
+  deletePost: (id,token)=>dispatch(actions.deletePost(id,token)),
 });
 
 // const mapDispatchToProps = { select };
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
+

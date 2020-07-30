@@ -1,19 +1,24 @@
 import React , { useEffect } from 'react';
 import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {getRemoteProduct } from '../../store/reducers/post';
+import {getRemoteProduct,getPost } from '../../store/reducers/post';
+import Show from '../show';
 import {addToFav } from '../../store/reducers/post';
 import Comment from './comment.js';
 
 
 function OneProduct (props){
-
-  console.log('ONEEEE', props.post);
+  
   
   let{id} = useParams();
-
+  console.log('ONEEEE---------------->', props.post,id);
   useEffect(() => {
-    props.getRemoteProduct(id);
+    if(props.show === 'admin'){
+      props.getPost(id,props.token);
+    }else{
+      props.getRemoteProduct(id);
+    }
+    
   }, []);
   
 
@@ -25,19 +30,20 @@ function OneProduct (props){
       <p>PRICE : {props.post.onePost.price} </p>
       <p>DESCRIPTION :{props.post.onePost.description} </p>
       <p>CATEGORY :{props.post.onePost.categories} </p>
-      
-      <section className="btnn">
+      <Show condition={props.show !== 'admin'}>
+        <section className="btnn">
 
-        <button onClick={ () =>{
-          props.addToFav(props.post.onePost._id , props.token );
-        }} variant="light">Add To Favorite</button> 
+          <button onClick={ () =>{
+            props.addToFav(props.post.onePost._id , props.token );
+          }} variant="light">Add To Favorite</button> 
         
-        <button variant="light">Chat</button>
+          <button variant="light">Chat</button>
+
 
         <Comment />
 
-      </section>
-       
+        </section>
+      </Show>
     </section>
   );
 }
@@ -51,7 +57,9 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => ({
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+ 
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
+  getPost:(id ,token ) => dispatch(getPost(id ,token)),
 });
 
 export default connect(mapStateToProps , mapDispatchToProps )( OneProduct );

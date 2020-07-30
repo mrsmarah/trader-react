@@ -3,8 +3,7 @@ import { statusPost, changeStatus } from '../../store/reducers/adminPageReducer.
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { select } from 'react-cookies';
-
+import { Link } from 'react-router-dom';
 const Admin = (props) => {
   useEffect(() => {
     props.post(props.token);
@@ -21,7 +20,8 @@ const Admin = (props) => {
             <th>Title</th>
             <th>Categories</th>
             <th>Status</th>
-            <th>Descripion</th>
+            <th>Description</th>
+            <th>Details</th>
           </tr>
         </thead>
 
@@ -33,7 +33,7 @@ const Admin = (props) => {
                 <th>{post.username}</th>
                 <th>{post.title}</th>
                 <th>{post.categories}</th>
-                <th>View Detalis</th>
+                {/* <th>View Detalis</th> */}
                 <th>
                   <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token); }} value={post.selectValue} name="cars">
                     <option value="pendding">{post.status}</option>
@@ -42,7 +42,8 @@ const Admin = (props) => {
                   </select>
                 </th>
                 <th>{post.description}</th>
-                <th><button onClick ><a >View Detalis</a></button> </th>
+                <th><Link to={`/status/${post._id}`}>View Details</Link></th>
+               
               </tr>
             </tbody>
 

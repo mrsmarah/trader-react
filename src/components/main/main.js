@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
 import Parallax from '../parallax/parallax';
+import AdminState from '../oneProduct/stateHeader';
 import {  getCategories } from '../../store/reducers/categories';
 const  Main= (props) => {
   props.load();
@@ -58,6 +59,17 @@ const  Main= (props) => {
 
       <Route exact path="/admin">
         <Admin />
+      </Route>
+
+      <Route exact path="/edit/:id">
+        <AddPost mode = 'edit'/>
+      </Route>
+  
+      <Route exact path="/status/:id">
+        <Auth capability='admin'>
+          <AdminState/>
+          <OneProduct show = 'admin'/>
+        </Auth>
       </Route>
   
     </>
