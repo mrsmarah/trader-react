@@ -3,15 +3,21 @@ import {connect} from 'react-redux';
 import io from 'socket.io-client';
 
 const client = io.connect('https://trader401.herokuapp.com/');
-
+var cnt = 0;
 function ClientComponent(props) {
 //   const [response, setResponse] = useState('');
   const [state, setState] = useState({ message: '', name: '' });
   const [chat, setChat] = useState([]);
+  const [msg, setMsg] = useState({});
   const [room ,setRoom] = useState('');
+  console.log('cnt',cnt++,chat,room );
+  let arrayTest = [];
 
-  useEffect(() => {
+  
 
+  useEffect( () => {
+   
+    console.log('useeffect chat',chat);
     client.on('connect', () => {
       client.on('joined', (joinedRoom) => {
         console.log('joinedRoom' ,joinedRoom);
@@ -22,13 +28,27 @@ function ClientComponent(props) {
       //     setChat([...chat, { name, message }]);
       //   });
 
-      client.on('message', (payload)  => {
+      client.on('message', (payload)=> {
         console.log('payload>>>>' ,payload);
-        setChat([...chat, payload ]);
+        // console.log('chat before >>>>' ,chat);[]
+        // arrayTest.push(payload);
+        // setChat([...chat,payload]);
+        setMsg(payload);
+        // setTimeout(() => {  setChat(arrayTest);; }, 0);
+        
+        console.log('msg after >>>>' ,msg);
       });
     });
-
+  
   }, []);
+
+
+  useEffect(() => {
+
+    setChat([...chat,msg]);
+
+  }, [msg]);
+
 
   useEffect(() => {
 
@@ -49,13 +69,14 @@ function ClientComponent(props) {
   };
 
   const renderChat = () => {
-    console.log('chaaaat>>>>>>>>>>>>' , chat);
-    return chat.map(({ username, text, time  }, index) => (
+    console.log('chaaaat   map>>>>>>>>>>>>' , chat);
+    // { username, text, time,payload,sender  }
+    return chat.map((msg, index) => (
       <div key={index}>
         <h3>
-          {username}: <span>{text}</span>
+          {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
         </h3>
-        <p>{time}</p>
+        <p>{msg.time}</p>
       </div>
     ));
   };

@@ -43,54 +43,54 @@ function Products (props){
 
   return (
     <section>
-        {/* {console.log('hello------->', props.data)} */}
-        {
-          props.data.map((product , i) =>{
-            // console.log('hello')
-            return (
-              <>
-                <div className="grid">
+      {/* {console.log('hello------->', props.data)} */}
+      {
+        props.data.map((product , i) =>{
+          // console.log('hello')
+          return (
+            <>
+              <div className="grid">
                 <div class="hover">
-                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" onClick={ () =>{
-                      props.addToFav(product._id, props.token );
-                    }} />
-                <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
-                <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
+                  <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" onClick={ () =>{
+                    props.addToFav(product._id, props.token );
+                  }} />
+                  <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
+                  <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
                 </div>
-              <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
-                <Card.Body>
-                  <Card.Title>
-                    <h3>
-                    {product.title}
+                <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
+                  <Card.Body>
+                    <Card.Title>
+                      <h3>
+                        {product.title}
                       </h3></Card.Title>
-                  <Card.Text>
-                  <h5>
+                    <Card.Text>
+                      <h5>
             POSTED BY: <br/>
-            </h5>
-                    {product.username}
-                  </Card.Text>
-                  <Card.Text>
-                    <h5>
+                      </h5>
+                      {product.username}
+                    </Card.Text>
+                    <Card.Text>
+                      <h5>
             DESCRIPTION: <br/>
-            </h5>
-                    {product.description}
-                  </Card.Text>
+                      </h5>
+                      {product.description}
+                    </Card.Text>
 
            
-                       <section className="btnn">
-                       <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
-                         <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
-                       </Button>
-                       {/* <Button variant="light" className="hoverBtn" >Add To Favorite</Button>  */}
+                    <section className="btnn">
+                      <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
+                        <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
+                      </Button>
+                      {/* <Button variant="light" className="hoverBtn" >Add To Favorite</Button>  */}
                        
-                     </section>
-                </Card.Body>
-              </Card>
-                </div>
-                     </>
-            );
-          })
-        }
+                    </section>
+                  </Card.Body>
+                </Card>
+              </div>
+            </>
+          );
+        })
+      }
     </section>
   );
 }

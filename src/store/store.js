@@ -9,10 +9,10 @@ import post from './reducers/post';
 import admin from './reducers/adminPageReducer';
 import profile from './reducers/profile';
 import auth from './reducers/auth';
+import upload from './reducers/upload';
 import pagination from './reducers/pagination';
 
-
-const reducers = combineReducers({ categories, products, profile, auth, post ,admin ,pagination });
+const reducers = combineReducers({ categories, products, profile, auth, post ,admin,upload ,pagination });
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
