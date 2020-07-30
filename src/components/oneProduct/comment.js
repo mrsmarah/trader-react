@@ -39,19 +39,17 @@ function Comment(props) {
                     <span className='be-comment-name'>
                       {comment.username}
                     </span>
-                    <p className="be-comment-text">
+                    <p className="be-comment-text" >
                       {comment.theComment}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-
-
           );
         })}
         <form className='form-block' onSubmit={handleSubmit} >
-          <div className='col-xs-12'>
+          <div id='commentText' className='col-xs-12'>
             <div className='form-group'>
               <TextField
                 label="comment"

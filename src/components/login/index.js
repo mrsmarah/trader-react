@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Show from '../show';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
+
 import './login.css';
 const Login = (props) => {
   const state = {
@@ -33,19 +35,20 @@ const Login = (props) => {
         <form className='login' >
           <label id='inLabel'>Sign in</label>
           <TextField
+            id='username'
             label="userName"
             name="username"
             type='text'
             onChange={handleChange}
-            id='username'
-          />
-          <TextField id="password"
+          /><br></br>
+          <TextField
+            id="password"
             label="password"
             name="password"
             type='text'
             onChange={handleChange}
-          />
-          <a href='#' className='forget'>Forget Password</a>
+          /><br></br>
+          <a href='#' className='forget'>Forget Password</a><br></br>
           <Button onClick={handleSubmit} variant="contained" color="primary">
             Sign In
           </Button><br></br>

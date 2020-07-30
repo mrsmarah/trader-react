@@ -11,7 +11,7 @@
   color: #262626;
   margin-left: 14%;
   margin-top: 3%;
-  margin-bottom: 15px;
+  margin-bottom: 5%;
   font-family: "Conv_helveticaneuecyr-bold";
 }
 form.form-block {
@@ -24,10 +24,7 @@ form.form-block {
   float: left;
   margin-bottom: 15px;
 }
-.MuiFormControl-root.MuiTextField-root {
-  width: 50%;
-  /* margin-left: 15%; */
-}
+
 .be-ava-comment {
   width: 60px;
   height: 60px;
@@ -128,4 +125,10 @@ input#comment {
   margin-left: 40%;
   border: 0;
   height: 20%;
+}
+.be-comment-text {
+  border-radius: 35px;
+}
+#commentText {
+  margin-top: -125px;
 }

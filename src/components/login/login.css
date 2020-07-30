@@ -52,6 +52,7 @@ a.forget {
 }
 .MuiFormControl-root.MuiTextField-root {
   margin-top: 8%;
+  width: 100%;
 }
 #member {
   color: gray;

@@ -4,6 +4,7 @@ import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import './signup.css';
 import Button from '@material-ui/core/Button';
+
 import TextField from '@material-ui/core/TextField';
 const SignUP = (props) => {
   const state = {
@@ -62,6 +63,7 @@ const SignUP = (props) => {
 
 
       </Show>
+
 
     </>
 
