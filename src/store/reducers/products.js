@@ -15,6 +15,11 @@ export default (state = initialState ,action) =>{
     console.log( type, payload);
     return { ...state, products : payload };
     /////////////////////////////
+   
+    // case 'PAGINATION':
+    //   console.log( type, payload);
+    //   return { ...state, products : payload.currentItems };
+   
     
   case 'addPost':
     return {...state,post:payload||{}};

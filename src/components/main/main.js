@@ -8,6 +8,7 @@ import Profile from '../profile';
 import Signup from '../signup';
 import Admin from '../adminPage';
 import Login from '../login';
+import Providers from '../login/signWith';
 import Auth from '../auth';
 import AddPost from '../addPost';
 import { connect } from 'react-redux';
@@ -15,6 +16,8 @@ import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
 import AdminState from '../oneProduct/stateHeader';
 import {  getCategories } from '../../store/reducers/categories';
+import PaginationComponent from '../pagination/pagination';
+
 const  Main= (props) => {
   props.load();
   useEffect(() => {
@@ -45,6 +48,7 @@ const  Main= (props) => {
       <Route exact path="/log">
         <Signup />
         <Login />
+        <Providers />
       </Route>
 
       <Route exact path="/post">
@@ -76,7 +80,7 @@ const  Main= (props) => {
 
 const mapStateToProps = (state) => {
   return {
-
+    products : state.products.products,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
