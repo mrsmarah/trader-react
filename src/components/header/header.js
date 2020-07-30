@@ -27,9 +27,9 @@ function Header(props) {
             <NavLink className="a-tag" to="/post">Add Post</NavLink>
             <NavLink className="a-tag" to="/admin">Admin</NavLink>
           </Nav>
-          <div class="search-bar  p-3 p-lg-1 pl-lg-4">
+          {/* <div class="search-bar  p-3 p-lg-1 pl-lg-4"> */}
               
-          <Form action="#">
+          {/* <Form action="#">
                 <div className="row">
                   <div className="col-lg-4 d-flex align-items-center form-group">
                   <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2 form-control border-0 shadow-0" />
@@ -54,8 +54,8 @@ function Header(props) {
                     <Button className="btn btn-primary btn-block rounded-xl h-100" type="submit">Search </Button>
                   </div>
                 </div>
-              </Form>
-              </div>
+              </Form> */}
+              {/* </div> */}
 
 
 

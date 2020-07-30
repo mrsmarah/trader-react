@@ -6,6 +6,7 @@ import {Navbar,Form,FormControl,Button,Nav} from 'react-bootstrap';
 const Footer = () => {
   return (
     <Navbar bg="light" variant="light" className="footer">
+    <section className="footer">
       <div className="newsletter">
         <h6 className="newsletterh6">SUBSCRIBE TO OUR NEWSLETTER</h6>
         <Form>
@@ -26,10 +27,12 @@ const Footer = () => {
         <div className="links">
         <h6 className="newsletterh6">USEFUL LINKS</h6>
         <Nav className="mr-auto">
+        <section className="linkss">
       <Nav.Link href="#home">Home</Nav.Link>
       <Nav.Link href="#features">Features</Nav.Link>
       <Nav.Link href="#pricing">Pricing</Nav.Link>
       <Nav.Link href="#pricing">Pricing</Nav.Link>
+    </section>
     </Nav>
         </div>
         <div className="connect">
@@ -52,6 +55,7 @@ const Footer = () => {
         <li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
     </ul>
 </div> 
+</section>
     </Navbar>
 
   );

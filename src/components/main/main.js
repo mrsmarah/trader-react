@@ -13,7 +13,7 @@ import AddPost from '../addPost';
 import { connect } from 'react-redux';
 import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
-
+import Parallax from '../parallax/parallax';
 import {  getCategories } from '../../store/reducers/categories';
 const  Main= (props) => {
   props.load();
@@ -27,6 +27,7 @@ const  Main= (props) => {
       <Route exact path="/">
         <Categories />
         <Products />
+        <Parallax/>
       </Route>
 
       <Route exact path ="/searchBy/:category" >

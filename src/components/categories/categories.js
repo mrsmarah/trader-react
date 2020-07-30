@@ -31,11 +31,11 @@ const Categories = (props) => {
                   />
                  
                   <Carousel.Caption>
-                     <h3 className="h-three">
-                        <Link to={`/searchBy/${category.categories}`} >
+                     {/* <h3 className="h-three"> */}
+                        <Link to={`/searchBy/${category.categories}`} className="h-three">
                          {category.categories}
                         </Link>
-                     </h3>
+                     {/* </h3> */}
                      {/* <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                   </Carousel.Caption>
                </Carousel.Item>

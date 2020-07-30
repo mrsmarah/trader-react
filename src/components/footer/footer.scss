@@ -9,10 +9,15 @@
     width: 100%;
   }
  .footer{
-     margin-top: 8%;
+    //  margin-top: 8%;
+    position: relative;
      display: grid;
-    grid-column: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 25% 25% 25% 25%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 1rem;
+    grid-template-columns: 25% 25% 25% 25% ;
+    width: 100%;
 }
 
 
@@ -36,11 +41,11 @@
  }
  .links{
   text-align: center;
-  margin: 2% 4% 17.2%;
+  margin: 2% 4% 23.2%;
 }
 .connect{
   text-align: center;
-  margin: 2% 4% 27.2%;
+  margin: 2% 4% 32.2%;
   display: grid;
 }
 .connect span{
@@ -59,6 +64,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+    margin-left: 0px;
   }
   
   .buttonnn:before {
@@ -131,7 +137,7 @@ ul {
 }
 .footer-social-icons {
     display:block;
-    margin: 2% 4% 40.2%;
+    margin: 2% 4% 48.2%;
 
 }
 .social-icon {
@@ -224,4 +230,13 @@ ul.social-icons {
 
 .fa{
     border-radius: 10rem;
+}
+.fa {
+    //  font-family: "Font Awesome 5 Free"; 
+}
+.linkss{
+    display: block;
+}
+.navbar-expand .navbar-nav {
+    justify-content: center;
 }
