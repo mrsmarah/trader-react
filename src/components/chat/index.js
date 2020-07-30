@@ -7,15 +7,17 @@ var cnt = 0;
 function ClientComponent(props) {
 //   const [response, setResponse] = useState('');
   const [state, setState] = useState({ message: '', name: '' });
-  const [chat, setchat] = useState([]);
+  const [chat, setChat] = useState([]);
+  const [msg, setMsg] = useState({});
   const [room ,setRoom] = useState('');
-  console.log('cnt',cnt++,chat);
+  console.log('cnt',cnt++,chat,room );
   let arrayTest = [];
 
   
 
-  useEffect(() => {
-
+  useEffect( () => {
+   
+    console.log('useeffect chat',chat);
     client.on('connect', () => {
       client.on('joined', (joinedRoom) => {
         console.log('joinedRoom' ,joinedRoom);
@@ -26,17 +28,27 @@ function ClientComponent(props) {
       //     setChat([...chat, { name, message }]);
       //   });
 
-      client.on('message',  (payload)=> {
+      client.on('message', (payload)=> {
         console.log('payload>>>>' ,payload);
-        console.log('chat before >>>>' ,chat);
-        arrayTest.push(payload);
-        setTimeout(() => {  setchat(arrayTest);; }, 700);
+        // console.log('chat before >>>>' ,chat);[]
+        // arrayTest.push(payload);
+        // setChat([...chat,payload]);
+        setMsg(payload);
+        // setTimeout(() => {  setChat(arrayTest);; }, 0);
         
-        console.log('chat after >>>>' ,chat,arrayTest);
+        console.log('msg after >>>>' ,msg);
       });
     });
-
+  
   }, []);
+
+
+  useEffect(() => {
+
+    setChat([...chat,msg]);
+
+  }, [msg]);
+
 
   useEffect(() => {
 
@@ -57,7 +69,7 @@ function ClientComponent(props) {
   };
 
   const renderChat = () => {
-    console.log('chaaaat   map>>>>>>>>>>>>' , chat.length);
+    console.log('chaaaat   map>>>>>>>>>>>>' , chat);
     // { username, text, time,payload,sender  }
     return chat.map((msg, index) => (
       <div key={index}>
