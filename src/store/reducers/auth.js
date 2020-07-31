@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
   case 'setUserIn':
     return {...state, user:payload.user , loggedIn : true, token: payload.token};
   case 'logout':
-    cookie.save('auth', 'token');
+    cookie.save('auth', 'token',{ path: '/' });
     return initialState;
  
   default:
@@ -37,7 +37,7 @@ const validateToken = (token,dispatch) => {
   try {
     console.log('token--->',token);
     let user = jwt.verify(token, 'Dealer5-401+');
-    cookie.save('auth', token);
+    cookie.save('auth', token, { path: '/' });
     dispatch(setUserIn({user,token}));
 
   } catch (ex) {
