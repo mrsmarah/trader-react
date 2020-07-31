@@ -70,15 +70,12 @@ const Main = (props) => {
   <h4>
     posts
   </h4>
-  <span>
-  {props.posts.map(post=>{
-        return(    
+
           <span >
-            {post.lengh}
+            {props.posts.length}
             </span>
-        );
-      })}
-  </span>
+
+ 
 </section>
 
 <section className="following">
@@ -92,10 +89,10 @@ const Main = (props) => {
 
 <section className="followers">
   <h4>
-  following
+  followers
   </h4>
   <span>
-  0
+ 2
   </span>
 </section>
 

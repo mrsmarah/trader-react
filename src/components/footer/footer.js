@@ -12,6 +12,7 @@ const Footer = () => {
       <ClientComponent secondUser='ahmad' />
 
       <Navbar bg="light" variant="light" className="footer">
+        <section className="footer">
         <div className="newsletter">
           <h6 className="newsletterh6">SUBSCRIBE TO OUR NEWSLETTER</h6>
           <Form>
@@ -60,6 +61,7 @@ const Footer = () => {
             <li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
           </ul>
         </div> 
+        </section>
       </Navbar>
     </>
   );

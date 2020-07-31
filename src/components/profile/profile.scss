@@ -17,20 +17,23 @@
     margin: auto;
 }
 .avatar{
+    display: grid;
     padding: 20px;
     transform: translate(0%, -50%);
     width: 70%;
     margin: auto;
-    background-color: #fff;
+    background-color: #dbe1e4de;
     border-left: solid 20px transparent; 
     border-right: solid 20px transparent; 
-    border-bottom: solid 20px #fff;
-    box-shadow: 0 0 15px 0 #333;
-
+    // border-bottom: solid 20px #fff;
+    box-shadow: 0 -18px 9px -1px #6c6c6c8c;
 }
+
+
+
 .imgAvatar{
     // padding: 20px;
-    transform: translate(180%, -50%);
+    transform: translate(0%, -50%);
     // width: 70%;
     margin: auto;    
 }
@@ -52,4 +55,7 @@ h3{
     grid-template-columns: 33% 33% 33%;
     margin: auto 20%; 
     justify-content: center;
+}
+#root {
+    background-color: #dbe1e4;
 }
