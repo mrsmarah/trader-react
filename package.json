@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
+    "firebase": "^7.17.1",
     "jsonwebtoken": "^8.5.1",
     "mdbreact": "^4.27.0",
     "node-sass": "^4.14.1",
@@ -28,6 +29,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "superagent": "^5.3.1"
   },
   "scripts": {
