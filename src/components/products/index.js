@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {getFilteredProducts} from '../../store/reducers/products';
-import {addToFav } from '../../store/reducers/post';
+import {addToFav ,ratePost} from '../../store/reducers/post';
 import { MDBIcon,MDBCol,MDBCardTitle, MDBBtn,MDBCard,MDBCardBody,MDBCardImage,MDBCardText } from 'mdbreact';
 import './product.scss';
 import ParallaxHeader from './parallaxHeader.js';
@@ -106,6 +106,19 @@ function Products (props){
                         </p>
 
                       </MDBCardText>
+
+                      <MDBCardText>
+                        <h5>
+                      RATE: <br/>
+                        </h5>
+                        <button onClick={() =>{
+                          props.ratePost(product._id, props.token , {'theRate':'+'} );
+                        }}>+</button>
+                        <button onClick={() =>{
+                          props.ratePost(product._id, props.token , {'theRate':'-'});
+                        }}>-</button>
+                      </MDBCardText>
+
                       <MDBIcon
                         icon='heart'
                         className='cyan-text'
@@ -135,7 +148,7 @@ function Products (props){
 
         <MDBCard className="card-image" style={{
           backgroundImage:
-          "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
+          'url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)',
         }}>
           <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
             <div className="black">
@@ -155,7 +168,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        "url('https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg')"
+        'url(\'https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg\')',
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -176,7 +189,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        "url('https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg')"
+        'url(\'https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg\')',
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -197,7 +210,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        "url('https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg')"
+        'url(\'https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg\')',
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -238,6 +251,7 @@ const mapDispatchToProps = (dispatch) => ({
   getFav:(username,token) => dispatch(getFav(username,token)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
+  ratePost: ( id , token , rate ) => dispatch(ratePost(id , token , rate)),
 
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);
