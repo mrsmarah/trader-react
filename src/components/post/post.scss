@@ -1,3 +1,84 @@
-.grid{
-    margin: 5%;
+.gridd{
+    margin: 3%;
+    display: flex;
+    width: 50%; 
+   justify-content: space-evenly;
+
 }
+
+.paragraph{
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.card-title{
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.sc-AxheI {
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease;
+    border: none;
+    margin: 5px;
+     background-color: none; 
+    font-size: 1.3em;
+    content: "";
+    height: 10px;
+    width: 10px;
+    box-shadow: 0 0 0px 0px rgba(0,0,0,0.5); 
+    border-radius: 50%;
+    outline: none;
+}
+.kyQlHw{
+    border-radius: 1.25rem;
+}
+
+.sc-Axmtr .QmVdP , .sc-Axmtr .dautGI  {
+    box-sizing: content-box;
+    /* flex: 0 1 auto; */
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    opacity: .5;
+    transition: opacity .6s ease;
+    box-shadow: 0 0 0px 0px rgba(0,0,0,0.5);
+}
+
+.dautGI{
+      box-shadow: 0 0 0px 0px rgba(0,0,0,0.5);
+}
+.dautGI:hover, .dautGI:focus {
+    cursor: pointer;
+    box-shadow: 0 0 0px 0px rgba(183, 181, 187, 0.5); 
+}
+
+.QmVdP:hover, .QmVdP:focus {
+    cursor: pointer;
+    box-shadow: 0 0 0px 0px rgba(183, 181, 187, 0.5);  
+}
+.QmVdP{
+    box-shadow: 0 0 0px 0px rgba(0,0,0,0.5);
+}
+i.fa.fa-trash.fa-3x.cyan-text{
+    display: flex;
+      justify-content: flex-end;
+      font-size: xx-large;
+      color: #dbe1e4;
+  }
+  
+  i.fa.fa-trash.fa-3x.cyan-text:hover{
+      color: #080707;
+  }
