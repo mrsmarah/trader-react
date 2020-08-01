@@ -32,6 +32,8 @@ function OneProduct (props){
       <p>PRICE : {props.post.onePost.price} </p>
       <p>DESCRIPTION :{props.post.onePost.description} </p>
       <p>CATEGORY :{props.post.onePost.categories} </p>
+
+      
       <Show condition={props.show !== 'admin'}>
         <section className="btnn">
 
