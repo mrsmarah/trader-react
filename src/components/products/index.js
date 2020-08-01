@@ -114,9 +114,11 @@ function Products (props){
                         <button onClick={() =>{
                           props.ratePost(product._id, props.token , {'theRate':'+'} );
                         }}>+</button>
+                        <p>{product.positiveRateUser.length}</p>
                         <button onClick={() =>{
                           props.ratePost(product._id, props.token , {'theRate':'-'});
                         }}>-</button>
+                        <p>{product.negativeRateUser.length}</p>
                       </MDBCardText>
 
                       <MDBIcon
