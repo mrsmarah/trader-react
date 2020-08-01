@@ -4,15 +4,21 @@
   z-index: 9999;
   top: 0;
 }
-
+.bg-light {
+  background-color: #080808cf ;
+}
 .navbar-brand{
     color: #0d0c0c69;
     font-weight: 700;
 }
 .navbar.header{
-
     position: sticky;
-
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 100%;
 }
 .navbar-light .navbar-nav .nav-link {
   background: none;
@@ -27,7 +33,7 @@
   line-height: 10%;
 }
 .mr-auto.navbar-nav {
-  margin: auto;
+  margin: 0 auto;
 }
 
 .form-inline{
@@ -82,7 +88,7 @@
     z-index: -2;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
-    border: 1px solid #fff;
+    // border: 1px solid #fff;
     text-decoration: none;
     color: white;
   }
@@ -91,6 +97,16 @@
     top: -20px;
 
   }
+  .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: none; 
+    /* border-right: .3em solid transparent; */
+    /* border-bottom: 0; */
+    /* border-left: .3em solid transparent; */
+}
   .a-tag:hover {
     text-decoration: none;
     color: white;
@@ -120,6 +136,9 @@ button.btn-primary.btn.Ripple-parent.dropdown-toggle span{
 }
 .show.basic.dropdown-menu {
   min-width: 8rem;
+}
+.input-group-text{
+  padding: .250rem .75rem;
 }
   form {
     display: block;
