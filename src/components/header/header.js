@@ -1,79 +1,88 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink ,Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar,Form,FormControl,Button,Nav,DropdownButton, Dropdown} from 'react-bootstrap';
+import {Navbar,Nav, NavItem ,NavDropdown} from 'react-bootstrap';
 import './header.scss'
+import * as actions from '../../store/reducers/auth';
+import Auth from '../auth';
+import Show from '../show';
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
-
+import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol} from 'mdbreact';
 function Header(props) {
 
   return (
-
     <>
       <Navbar bg="light" expand="lg" className="header">
-        <Navbar.Brand href="#home"> T R A D E R </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand>
+          <p className="neon">
+            <Link to="/" className="aNeon">
+                  T R A D E R </Link></p></Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
-            
-            <NavLink className="a-tag" to="/">Home</NavLink>
-            <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
+            <MDBCol md="6">
+              <div className="input-group md-form form-sm form-1 pl-0">
+                <div className="input-group-prepend">
+                  <span className="input-group-text purple lighten-3" id="basic-text1">
+                    <MDBIcon className="text-white" icon="search" />
+                  </span>
+                </div>
+                <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" />
+              </div>
+            </MDBCol>
+          </Nav>
+          {/* <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
               props.getUser(props.username);
               props.getPosts(props.username);
-            }} >Profile</NavLink>
-            <NavLink className="a-tag" to="/log">Log In</NavLink>
-            <NavLink className="a-tag" to="/post">Add Post</NavLink>
-            <NavLink className="a-tag" to="/admin">Admin</NavLink>
-          </Nav>
-          <div class="search-bar  p-3 p-lg-1 pl-lg-4">
+            }} >{props.username || 'Profile'}
+            </NavLink>  */}
+
+          <MDBDropdown >
+            <MDBDropdownToggle caret color="primary" className="a-tag" >
+              <span> <img src={props.image || 'https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png'} alt="img" style={{
+                height:'35px',
+                borderRadius:'50%'
+              }}/></span>
+              <Show condition={props.loggedIn}>
+                <span className="togleSpan">
+                  {props.username }
+                </span>
+              </Show>
+              <Show condition={!props.loggedIn}>
+                <span >
+                  <NavLink to="/log">Log In</NavLink>
+                </span>
+              </Show>
+              <Show condition={props.loggedIn}>
+                <span>
+                  <MDBIcon icon="chevron-down" />
+                </span>
+              </Show>
               
-          <Form action="#">
-                <div className="row">
-                  <div className="col-lg-4 d-flex align-items-center form-group">
-                  <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2 form-control border-0 shadow-0" />
-                  </div>
-                  <div className="col-lg-3 d-flex align-items-center form-group no-divider">
-                  <DropdownButton
-              alignRight
-              title="Categories"
-              id="dropdown-menu-align-right"
-              className="dropdown bootstrap-select selectpicker"
-            >
-              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
-          </DropdownButton>
-          </div>
-                  <div className="col-lg-2">
-                    <Button className="btn btn-primary btn-block rounded-xl h-100" type="submit">Search </Button>
-                  </div>
-                </div>
-              </Form>
-              </div>
+            </MDBDropdownToggle>
+            <Show condition={props.loggedIn}>
+              <MDBDropdownMenu basic>
+                <MDBDropdownItem > 
+                  <NavLink to={`/user/${props.username}`} onClick={() => {
+                    props.getUser(props.username);
+                    props.getPosts(props.username);
+                  }} >Profile
+                  </NavLink></MDBDropdownItem>
+                {/* <MDBDropdownItem> 
+                <NavLink to="/log">Log In</NavLink>
+              </MDBDropdownItem> */}
+                <Auth capability="admin">
+                  <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem>
+                </Auth>
+                {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
+                <MDBDropdownItem divider />
+                <MDBDropdownItem onClick={props.logout}>logout</MDBDropdownItem>
+              </MDBDropdownMenu>
+                 
+            </Show>
+          </MDBDropdown>
 
-
-
-          {/* <Form inline>
-            <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2" />
-            <DropdownButton
-              alignRight
-              title="Categories"
-              id="dropdown-menu-align-right"
-            >
-              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
-              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
-              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
-          </DropdownButton>
-            <Button variant="outline-primary" className="buttonn">Search</Button>
-          </Form> */}
         </Navbar.Collapse>
       </Navbar>
 
@@ -86,11 +95,13 @@ const mapStateToProps = (state) => {
   console.log('state------>', state);
   return {
     username: state.auth.user.username,
+    loggedIn: state.auth.loggedIn,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   getUser: (username) => dispatch(actions2.getUser(username)),
   getPosts: (username) => dispatch(actions2.getPosts(username)),
+  logout: () => dispatch(actions.logout()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

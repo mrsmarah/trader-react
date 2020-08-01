@@ -1,19 +1,41 @@
 import React , { useEffect } from 'react';
 import { Link,useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// import Card from 'react-bootstrap/Card';
+// import Button from 'react-bootstrap/Button';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {getFilteredProducts} from '../../store/reducers/products';
-import {addToFav } from '../../store/reducers/post';
-import { MDBIcon } from "mdbreact";
-import './product.scss'
-
+import {addToFav ,ratePost} from '../../store/reducers/post';
+import { MDBIcon,MDBCol,MDBCardTitle, MDBBtn,MDBCard,MDBCardBody,MDBCardImage,MDBCardText } from 'mdbreact';
+import './product.scss';
+import ParallaxHeader from './parallaxHeader.js';
+import ParallaxFooter from './parallaxFooter.js';
+import Pagination from '../pagination/pagination';
 
 function Products (props){
   console.log('products props ------>',props);
   let{category} = useParams();
+
+  ////////////////////////////////// PAGINATION
+  let currentItems = [];
+  let pageNumbers = [];
+  let itemPerPage= 9;
+
+  if (props.currentPage) {
+    let idxOfLastItem = props.currentPage * itemPerPage;
+    let idxOfFirstItem = idxOfLastItem - itemPerPage;
+    
+    currentItems = props.data.slice(idxOfFirstItem, idxOfLastItem);    
+    for (let i = 1; i <= Math.ceil(props.data.length / itemPerPage); i++) {
+      pageNumbers.push(i);
+    }
+  }
+  if (!currentItems.length) {
+    console.log('empty');
+    currentItems= props.data;
+  };
+  ///////////////////////////////////////
 
   useEffect(() => {
     
@@ -42,56 +64,173 @@ function Products (props){
   },[]);
 
   return (
-    <section>
-        {/* {console.log('hello------->', props.data)} */}
-        {
-          props.data.map((product , i) =>{
-            // console.log('hello')
-            return (
-              <>
-                <div className="grid">
-                <div class="hover">
-                <MDBIcon icon="heart" size="3x" className="indigo-text pr-3" onClick={ () =>{
-                      props.addToFav(product._id, props.token );
-                    }} />
-                <img className='firstPic' variant="top" src="https://via.placeholder.com/300" />
-                <img className='secPic' variant="top" src="https://aosa.org/wp-content/uploads/2019/04/image-placeholder-350x350-300x300.png" />
-                </div>
-              <Card style={{ width: '18rem' }}className = {`cards ${product.title}`} key = {i}>
-                <Card.Body>
-                  <Card.Title>
-                    <h3>
-                    {product.title}
-                      </h3></Card.Title>
-                  <Card.Text>
-                  <h5>
-            POSTED BY: <br/>
-            </h5>
-                    {product.username}
-                  </Card.Text>
-                  <Card.Text>
-                    <h5>
-            DESCRIPTION: <br/>
-            </h5>
-                    {product.description}
-                  </Card.Text>
 
-           
-                       <section className="btnn">
-                       <Button onClick={()=> props.getRemoteProduct(product._id)} variant="light" className="hoverBtn" >
-                         <Link to={`/search/${product._id}`} >ONE PRODUCT</Link>
-                       </Button>
-                       {/* <Button variant="light" className="hoverBtn" >Add To Favorite</Button>  */}
-                       
-                     </section>
-                </Card.Body>
-              </Card>
-                </div>
-                     </>
-            );
-          })
+    <section className="allProduct">
+      {/* <ParallaxHeader/> */}
+      <section className="productContainer">
+        {/* {props.data.map((product , i) =>{ */}
+        {currentItems.map((product , i) =>{
+          return (
+            <>
+
+              <div className="shadow-box-example hoverable">
+
+
+                <MDBCol md="4">
+                  <MDBCard cascade>
+                    <MDBCardImage
+                      cascade
+                      className='img-fluid'
+                      overlay="white-light"
+                      hover
+                      src= {'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'}
+                    />
+                    <MDBBtn
+                      floating
+                      tag='a'
+                      className='ml-auto mr-4 lighten-3 mdb-coalor'
+                      action onClick={()=> props.getRemoteProduct(product._id)}
+                    ><Link to={`/search/${product._id}`}>
+                        <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/></Link>
+                     
+                    </MDBBtn>
+                    <MDBCardBody cascade>
+                      <MDBCardTitle>{product.title}</MDBCardTitle>
+                      <hr/>
+                      <MDBCardText>
+                        <h5>
+                       DESCRIPTION: <br/>
+                        </h5>
+                        <p className="paragraph">
+                          {product.description}
+                        </p>
+
+                      </MDBCardText>
+
+                      <MDBCardText>
+                        <h5>
+                      RATE: <br/>
+                        </h5>
+                        <button onClick={() =>{
+                          props.ratePost(product._id, props.token , {'theRate':'+'} );
+                        }}>+</button>
+                        <button onClick={() =>{
+                          props.ratePost(product._id, props.token , {'theRate':'-'});
+                        }}>-</button>
+                      </MDBCardText>
+
+                      <MDBIcon
+                        icon='heart'
+                        className='cyan-text'
+                        size='3x'
+                        style={{ cursor: 'pointer' }}
+                        onClick={() =>{
+                          props.addToFav(product._id, props.token );
+                        }}
+                      />
+                      <hr/>
+
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </div>
+
+            </>
+          );
+        })
         }
+      </section>
+
+      <Pagination pageNumbers={pageNumbers}/>
+
+      <MDBCol md="12" className="mb-4">
+
+
+        <MDBCard className="card-image" style={{
+          backgroundImage:
+          'url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)',
+        }}>
+          <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
+            <div className="black">
+              <h3 className="py-3 font-weight-bold">
+                <strong> What's Special</strong>
+              </h3>
+              <h6 className="purple-text">
+                <strong> For today?</strong>
+              </h6>
+            </div>
+          </div>
+        </MDBCard>
+      </MDBCol>
+      <section className="threeCard">
+        <MDBCol>
+          <MDBCard
+            className="card-image imageCard"
+            style={{
+              backgroundImage:
+        'url(\'https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg\')',
+            }}
+          >
+            <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
+              <div>
+                <h5 className="pink-text">
+                  <MDBIcon icon="percent" /> SALE
+                </h5>
+                <MDBCardTitle tag="h3" className="pt-2">
+                  <strong>DISCOUNT 30%</strong>
+                </MDBCardTitle>
+              </div>
+            </div>
+          </MDBCard>
+        </MDBCol>
+
+        <MDBCol>
+          <MDBCard
+            className="card-image imageCard"
+            style={{
+              backgroundImage:
+        'url(\'https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg\')',
+            }}
+          >
+            <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
+              <div>
+                <h5 className="pink-text">
+                  <MDBIcon icon="truck" /> Shipping
+                </h5>
+                <MDBCardTitle tag="h3" className="pt-2">
+                  <strong>FREE DELIVERY</strong>
+                </MDBCardTitle>
+              </div>
+            </div>
+          </MDBCard>
+        </MDBCol>
+
+        <MDBCol>
+          <MDBCard
+            className="card-image imageCard"
+            style={{
+              backgroundImage:
+        'url(\'https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg\')',
+            }}
+          >
+            <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
+              <div>
+                <h5 className="pink-text">
+                  <MDBIcon icon="fire" /> Limited
+                </h5>
+                <MDBCardTitle tag="h3" className="pt-2">
+                  <strong>special gifts</strong>
+                </MDBCardTitle>
+              </div>
+            </div>
+          </MDBCard>
+        </MDBCol>
+
+      </section>
+
+      <ParallaxFooter/>
     </section>
+
   );
 }
 
@@ -100,6 +239,7 @@ const mapStateToProps = (state) =>{
   return {
     categories: state.categories,
     data : state.products.products,
+    currentPage: state.pagination.currentPage,
     user :  state.auth.user ,
     token : state.auth.token ,
   };
@@ -111,6 +251,7 @@ const mapDispatchToProps = (dispatch) => ({
   getFav:(username,token) => dispatch(getFav(username,token)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
+  ratePost: ( id , token , rate ) => dispatch(ratePost(id , token , rate)),
 
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);

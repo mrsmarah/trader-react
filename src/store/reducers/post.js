@@ -16,17 +16,12 @@ export default (state = initialState ,action) =>{
     return {...state, onePost : payload};
 
   case 'GETONEPOST':
-    console.log( type, payload);
+    // console.log( type, payload);
     return {...state, onePost : payload||{}};
-    
-    // case 'ADD FAV':
-    //   console.log( type, payload);
-    //   return {...state, favList : [ ...state.favList , payload]};
 
   case 'ADD COMMENT':
     // console.log( type, payload);
     return { onePost : payload };
-    // return { onePost : {...state.onePost , comment:[...state.onePost.comment , payload] } };
 
   default:
     return state;
@@ -95,13 +90,6 @@ export const getOnePost = (post) => {
   };
 };
 
-// export const addFav = (payload) => {
-//   return {
-//     type: 'ADD FAV',
-//     payload: payload,
-//   };
-// };
-
 export const addComment = ( id , token , comment ) => dispatch => {
   // console.log('ADD COMMENT ACTION --->', id , token , comment );
   let api = `https://trader401.herokuapp.com/comment/${id}`;
@@ -123,6 +111,30 @@ export const addCommentAction = (payload) => {
     payload: payload,
   };
 };
+
+
+export const ratePost = ( id , token , rate ) => dispatch => {
+  console.log('INSIDE RATE ACTION --->', id , token , rate );
+  let api = `https://trader401.herokuapp.com/rate/${id}`;
+  const options = {
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
+    cache: 'no-cache',
+  };
+  axios.post(api,rate,options)
+    .then(data => {
+      console.log('RATE DATA ------>',data.data );
+      // dispatch(rateAction( data.data ));
+    });
+};
+
+export const rateAction = (payload) => {
+  return {
+    type: 'RATE',
+    payload: payload,
+  };
+};
+
 
 
 

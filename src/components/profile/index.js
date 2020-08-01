@@ -5,12 +5,21 @@ import Post from '../post';
 import {useParams,NavLink } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import './profile.scss'
-const Main = (props) => {
+import Parallax from './parallaxAvatar.js';
+import Carousel from 'react-elastic-carousel';
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
+];
+
+const Profile = (props) => {
   // const [username, setCount] = useState();
   let {username} = useParams();
   //   setCount(username1);
   console.log('username profile',username);
- 
 
   useEffect(() => {
     console.log('username profile2',username);
@@ -26,7 +35,10 @@ const Main = (props) => {
   
   return (
     <>
-      <Card style={{ width: '18rem' }}className = {`cards user`} >
+
+
+
+      {/* <Card style={{ width: '18rem' }}className = {`cards user`} >
         <div className='sideBySide'>
         <Card.Img className='imagepro' variant="top" src={props.img||'https://lh3.googleusercontent.com/proxy/3HxpFmif7VVizd08qluFlpc7nxT8AVDKHfp-h74ZvQh7Q34SAbCtQEcM9zhOx1TSmntCeqkvxyU7VzECHwBUuw'} />
         <Card.Body>
@@ -44,8 +56,62 @@ const Main = (props) => {
         return(    
           <Post key={post.id} data={post} />
         );
-      })}
+      })} */}
  
+      <Parallax/>
+      <div className="avatar">
+        <img src="https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png" alt="img" className="imgAvatar"/>
+        <h3>
+          {props.user.fullName||props.user.username}
+        </h3>
+        <div className="headerProfile">
+          <section className="posts">
+            <h4>
+    posts
+            </h4>
+
+            <span >
+              {props.posts.length}
+            </span>
+
+ 
+          </section>
+
+          <section className="following">
+            <h4>
+  following
+            </h4>
+            <span>
+  0
+            </span>
+          </section>
+
+          <section className="followers">
+            <h4>
+  followers
+            </h4>
+            <span>
+ 2
+            </span>
+          </section>
+
+        </div>
+
+      </div>
+      <div>
+
+        <div className="App">
+          <Carousel breakPoints={breakPoints}>
+            {props.posts.map(post=>{
+              console.log('post data in profile',post);
+              return(    
+                <Post key={post.id} data={post} />
+              );
+            })}
+          </Carousel>
+        </div>
+
+      </div>
     </>
   );
   
@@ -69,4 +135,4 @@ const mapDispatchToProps = (dispatch, getState) => ({
 });
 
 // const mapDispatchToProps = { select };
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

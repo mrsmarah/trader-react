@@ -1,16 +1,144 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+
+.carousel.slide {
+width: 100%;
+}
 
 .h-three{
-    // position: absolute;
-    // top: -251%;
-    // left: 42%;
-    color: white;
-    font-size: 45px;
     text-transform: uppercase;
+    font-weight: bolder;
+    margin: 0;
 }
 
 .h-three a{
     text-decoration: none;
     color: white;
 }
+.carousel-caption{
+    // position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    opacity: .5;
+    transition: opacity .15s ease;
 
+}
+.w-100 {
+    height: 80vh;
+    object-fit: fill;
+}
+.h-three-para{
+display: grid;
+}
+
+
+.svg-wrapper {
+    text-align:center;
+  }
+  
+  .shape {
+    fill: transparent;
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 8px;
+    stroke: #228DFF;
+  }
+  .para {
+    color: #000000;
+    font-size: 25px;
+}
+  .text {
+    color: #000000;
+    font-family: 'Roboto Condensed';
+    font-size: 22px;
+    letter-spacing: 8px;
+    line-height: 32px;
+    position: relative;
+    top: -48px;
+  }
+  svg {
+    background: #ffffff;
+}
+.text-white {
+    justify-content: center;
+    margin: 10%5%;
+}
+.black{
+    color: black;
+}
+.black h3 strong{
+    font-family: 'Kaushan Script', cursive;
+    // font-size: larger;
+    font-weight: 900;
+    font-size: xx-large;
+    color: #fff;
+}
+.black h6 strong{
+    font-family: 'Kaushan Script', cursive;
+    font-size: larger;
+    color: #fff;
+}
+.col-md-12.mb-4 {
+    padding: 0;
+}
+div#root {
+    background-color: #f7f7f7;
+}
+.black h3 strong:after {
+    content: ' ';
+    display: block;
+    margin: .35714rem -3.1rem;
+    width: 126%;
+    font-size: 0;
+    height: 0;
+    border-bottom: 1px solid #ffffff;
+}
+  @keyframes draw {
+    0% {
+      stroke-dasharray: 140 540;
+      stroke-dashoffset: -474;
+      stroke-width: 8px;
+    }
+    100% {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 0;
+      stroke-width: 2px;
+    }
+  }
+  
+  .svg-wrapper:hover .shape {
+    -webkit-animation: 0.5s draw linear forwards;
+    animation: 0.5s draw linear forwards;
+  }
+  .card-image{
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  section.threeCard {
+    height: 60vh;
+    margin: auto 4%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.card.card-image.imageCard {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+.divImg{
+    margin: 0;
+    background-color: #10101052;
+    height: 100%;
+}
