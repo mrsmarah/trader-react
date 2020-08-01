@@ -86,13 +86,13 @@ function Products (props){
                       src= {'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'}
                     />
                     <MDBBtn
-                      href={`/search/${product._id}`}
                       floating
                       tag='a'
                       className='ml-auto mr-4 lighten-3 mdb-coalor'
                       action onClick={()=> props.getRemoteProduct(product._id)}
-                    >
-                      <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
+                    ><Link to={`/search/${product._id}`}>
+                        <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/></Link>
+                     
                     </MDBBtn>
                     <MDBCardBody cascade>
                       <MDBCardTitle>{product.title}</MDBCardTitle>
