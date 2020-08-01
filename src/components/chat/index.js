@@ -30,7 +30,7 @@ function ClientComponent(props) {
       //   client.on('message', ({ name, message })  => {
       //     setChat([...chat, { name, message }]);
       //   });
-
+      client.emit('joinRoom',{ token: props.token , secondUser: username });
       client.on('message', (payload)=> {
         console.log('payload>>>>' ,payload);
         // console.log('chat before >>>>' ,chat);[]
@@ -42,7 +42,7 @@ function ClientComponent(props) {
         console.log('msg after >>>>' ,msg);
       });
     });
-  
+    // client.emit('joinRoom',{ token: props.token , secondUser: username });
   }, []);
 
 
