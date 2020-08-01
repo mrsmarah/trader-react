@@ -56,7 +56,7 @@ function ClientComponent(props) {
   useEffect(() => {
 
     client.emit('joinRoom',{ token: props.token , secondUser: username });
-
+    setChat([]);
   }, [username]);
 
   const onTextChange = e => {
