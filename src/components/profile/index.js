@@ -7,7 +7,6 @@ import Card from 'react-bootstrap/Card';
 import './profile.scss'
 import Parallax from './parallaxAvatar.js';
 import Carousel from 'react-elastic-carousel';
-import Pagination from '../pagination/pagination';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -21,26 +20,6 @@ const Profile = (props) => {
   let {username} = useParams();
   //   setCount(username1);
   console.log('username profile',username);
-
-  ////////////////////////////////// PAGINATION
-  let currentItems = [];
-  let pageNumbers = [];
-  let itemPerPage= 4;
-
-  if (props.currentPage) {
-    let idxOfLastItem = props.currentPage * itemPerPage;
-    let idxOfFirstItem = idxOfLastItem - itemPerPage;
-   
-    currentItems = props.posts.slice(idxOfFirstItem, idxOfLastItem);    
-    for (let i = 1; i <= Math.ceil(props.posts.length / itemPerPage); i++) {
-      pageNumbers.push(i);
-    }
-  }
-  if (!currentItems.length) {
-    console.log('empty');
-    currentItems= props.posts;
-  };
-  ///////////////////////////////////////
 
   useEffect(() => {
     console.log('username profile2',username);
@@ -123,8 +102,7 @@ const Profile = (props) => {
 
         <div className="App">
           <Carousel breakPoints={breakPoints}>
-            {/* {props.posts.map(post=>{ */}
-            {currentItems.map(post=>{
+            {props.posts.map(post=>{
               console.log('post data in profile',post);
               return(    
                 <Post key={post.id} data={post} />
@@ -133,7 +111,6 @@ const Profile = (props) => {
           </Carousel>
         </div>
 
-        <Pagination pageNumbers={pageNumbers}/>
       </div>
     </>
   );
@@ -145,7 +122,6 @@ const mapStateToProps = (state) => {
   return { 
     user: state.profile.user,
     posts:  state.profile.posts ,
-    currentPage: state.pagination.currentPage,
     username: state.auth.username,
     token : state.auth.token,
   };
