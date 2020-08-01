@@ -1,83 +1,72 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar,Form,FormControl,Button,Nav,DropdownButton, Dropdown} from 'react-bootstrap';
+import {Navbar,Nav, NavItem ,NavDropdown} from 'react-bootstrap';
 import './header.scss'
 import Auth from '../auth';
 
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
-
+import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown} from "mdbreact";
 function Header(props) {
 
   return (
 
     <>
       <Navbar bg="light" expand="lg" className="header">
-        <Navbar.Brand href="#home"> T R A D E R </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand href="/">
+          <p className="neon">
+            <a href="/" className="aNeon">
+                  T R A D E R </a></p> </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
             
-            <NavLink className="a-tag" to="/">Home</NavLink>
-            <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
+            {/* <NavLink className="a-tag" to="/">categories</NavLink> */}
+            {/* <NavLink className="a-tag" to="/log">Log In</NavLink> */}
+            {/* <NavDropdown className="a-tag" title="categories" id="basic-nav-dropdown">
+        <NavDropdown.Item  href="#action/3.1">CARS</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">ELECTRONICS</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">FASHION</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.4">FURNITURES</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.5">MOBILES</NavDropdown.Item>
+      </NavDropdown> */}
+            {/* <NavLink className="a-tag" to="/admin">Admin</NavLink> */}
+          </Nav>
+          {/* <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
               props.getUser(props.username);
               props.getPosts(props.username);
-            }} >Profile</NavLink>
-            <NavLink className="a-tag" to="/log">Log In</NavLink>
-            <NavLink className="a-tag" to="/post">Add Post</NavLink>
-            {/* <Auth capability='admin'> */}
-            <NavLink className="a-tag" to="/admin">Admin</NavLink>
-            {/* <Auth /> */}
-          </Nav>
-          <div class="search-bar  p-3 p-lg-1 pl-lg-4">
-              
-          <Form action="#">
-                <div className="row">
-                  <div className="col-lg-4 d-flex align-items-center form-group">
-                  <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2 form-control border-0 shadow-0" />
-                  </div>
-                  <div className="col-lg-3 d-flex align-items-center form-group no-divider">
-                  <DropdownButton
-              alignRight
-              title="Categories"
-              id="dropdown-menu-align-right"
-              className="dropdown bootstrap-select selectpicker"
-            >
-              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
-          </DropdownButton>
-          </div>
-                  <div className="col-lg-2">
-                    <Button className="btn btn-primary btn-block rounded-xl h-100" type="submit">Search </Button>
-                  </div>
-                </div>
-              </Form>
-              </div>
+            }} >{props.username || 'Profile'}
+            </NavLink>  */}
+            <MDBDropdown >
+      <MDBDropdownToggle caret color="primary" className="a-tag" >
+      <span> <img src={props.image || "https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png"} style={{
+        height:'35px',
+        borderRadius:'50%'
+      }}/></span>
+      <span className="togleSpan">
+      {props.username }
+      </span>
+      <span>
+      <MDBIcon icon="chevron-down" />
+      </span>
+      </MDBDropdownToggle>
+      <MDBDropdownMenu basic>
+        <MDBDropdownItem > 
+          <NavLink to={`/user/${props.username}`} onClick={() => {
+              props.getUser(props.username);
+              props.getPosts(props.username);
+            }} >Profile
+            </NavLink></MDBDropdownItem>
+        <MDBDropdownItem> 
+          <NavLink to="/log">Log In</NavLink>
+          </MDBDropdownItem>
+        <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem>
+        <MDBDropdownItem divider />
+        <MDBDropdownItem>logout</MDBDropdownItem>
+      </MDBDropdownMenu>
+    </MDBDropdown>
 
-
-
-          {/* <Form inline>
-            <FormControl type="text" placeholder="Search 🔍" className="mr-sm-2" />
-            <DropdownButton
-              alignRight
-              title="Categories"
-              id="dropdown-menu-align-right"
-            >
-              <Dropdown.Item eventKey="1">cars</Dropdown.Item>
-              <Dropdown.Item eventKey="2">electronics</Dropdown.Item>
-              <Dropdown.Item eventKey="3">mobiles</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">furniture</Dropdown.Item>
-          </DropdownButton>
-            <Button variant="outline-primary" className="buttonn">Search</Button>
-          </Form> */}
         </Navbar.Collapse>
       </Navbar>
 
