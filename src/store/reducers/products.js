@@ -28,6 +28,7 @@ export default (state = initialState ,action) =>{
     //   console.log( type, payload);
     //   return {...state,products : payload};
   case 'favAction':
+    console.log( type, payload);
     return {...state,products:payload||[]};
     
   default:
@@ -72,9 +73,9 @@ export const updatePost = (username,token,post) => dispatch => {
     });
 };
 
-export const getFav = (username,token) => dispatch => {
-  console.log('gatvaf from redux --->',username,token);
-  let api = `https://trader401.herokuapp.com/user/${username}`;
+export const getFav = (token) => dispatch => {
+  console.log('gatvaf from redux --->',token);
+  let api = `https://trader401.herokuapp.com/fav`;
   const options = {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${token}`},
@@ -82,8 +83,8 @@ export const getFav = (username,token) => dispatch => {
   };
   axios.get(api,options)
     .then(data => {
-      console.log(data.data , '<--------data.body  favlist  axios');
-      dispatch(favAction( data.data.data ));
+      console.log(data.data , '<--------FAVLIST DATA');
+      dispatch(favAction( data.data ));
     });
 };
 export const favAction = (payload) => {

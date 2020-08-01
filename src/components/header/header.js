@@ -67,13 +67,17 @@ function Header(props) {
                   <NavLink to={`/user/${props.username}`} onClick={() => {
                     props.getUser(props.username);
                     props.getPosts(props.username);
-                  }} >Profile
+                  }} >Profile Page
                   </NavLink></MDBDropdownItem>
+                <MDBDropdownItem > 
+                  <NavLink to="/favList">Favorite List
+                  </NavLink>
+                </MDBDropdownItem>
                 {/* <MDBDropdownItem> 
                 <NavLink to="/log">Log In</NavLink>
               </MDBDropdownItem> */}
                 <Auth capability="admin">
-                  <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem>
+                  <MDBDropdownItem><NavLink to="/admin">Admin Page</NavLink></MDBDropdownItem>
                 </Auth>
                 {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
                 <MDBDropdownItem divider />
