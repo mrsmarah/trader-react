@@ -76,7 +76,7 @@ function ClientComponent(props) {
         <h3>
           {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
         </h3>
-        <p>{msg.time}</p>
+        <p>{msg.time||msg.date}</p>
       </div>
     ));
   };
