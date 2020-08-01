@@ -197,6 +197,7 @@ const mapStateToProps = (state) =>{
   return {
     categories: state.categories,
     data : state.products.products,
+    // data: state.pagination.currentItems,//pagination
     user :  state.auth.user ,
     token : state.auth.token ,
   };

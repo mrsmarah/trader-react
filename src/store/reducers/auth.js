@@ -1,3 +1,4 @@
+import superagent from 'superagent';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
@@ -15,8 +16,9 @@ export default (state = initialState, action) => {
   switch (type) {
   case 'setUserIn':
     return {...state, user:payload.user , loggedIn : true, token: payload.token};
+  
   case 'logout':
-    cookie.save('auth', 'token');
+    cookie.save('auth', 'token',{ path: '/' });
     return initialState;
  
   default:
@@ -24,8 +26,7 @@ export default (state = initialState, action) => {
   }
 };
 
-export const setUserIn = (obj) => {
-    
+export const setUserIn = (obj) => { 
   return {
     type: 'setUserIn',
     payload: obj,
@@ -33,11 +34,10 @@ export const setUserIn = (obj) => {
 };
 
 const validateToken = (token,dispatch) => {
-
   try {
     console.log('token--->',token);
     let user = jwt.verify(token, 'Dealer5-401+');
-    cookie.save('auth', token);
+    cookie.save('auth', token, { path: '/' });
     dispatch(setUserIn({user,token}));
 
   } catch (ex) {
@@ -45,6 +45,7 @@ const validateToken = (token,dispatch) => {
     console.log('token Validation error');
   }
 };
+
 export const signup = (username, password, email, role) => dispatch => {
   const options = {
     mode: 'cors',
@@ -111,6 +112,55 @@ export const load = () => dispatch => {
   const cookieToken = cookie.load('auth');
   const token = cookieToken || null;
   validateToken(token,dispatch);
+};
+
+
+export const signWithGoogle = () => dispatch => {
+  // console.log('username, password---------------->',username, password);
+  // const options = {
+  //   mode: 'cors',
+  //   headers: { 'Content-Type': 'application/json' ,'Authorization': `Basic ${btoa(`${username}:${password}` )}`},
+  //   cache: 'no-cache',
+  // };
+  superagent.get(`${API}/oauth`)
+    .then(res => {
+      console.log('GOOGLE RES--->',res);
+      // validateToken(res.data.token,dispatch);
+    })
+    .catch(e => {
+      console.log('ERROR GOOGLE');
+      console.error();
+    });
+};
+
+export const googleAction = () => {
+  return {
+    type: 'GOOGLE',
+    payload: 'payload',
+  };
+};
+
+export const signWithFacebook = () => dispatch => {
+  // console.log('username, password---------------->',username, password);
+  // const options = {
+  //   mode: 'cors',
+  //   headers: { 'Content-Type': 'application/json' ,'Authorization': `Basic ${btoa(`${username}:${password}` )}`},
+  //   cache: 'no-cache',
+  // };
+  axios.post(`${API}/login-with-facebook`)
+    .then(res => {
+      console.log('FACEBOOK RES--->',res);
+    // validateToken(res.data.token,dispatch);
+    }).catch(e => {
+      console.log('ERROR FACEBOOK');
+      console.error();
+    });
+};
+export const facebookAction = () => {
+  return {
+    type: 'FACEBOOK',
+    payload: 'payload',
+  };
 };
 
 

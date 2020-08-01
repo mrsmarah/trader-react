@@ -10,18 +10,19 @@ import { getCategories } from './store/reducers/categories';
 import * as actions3 from './store/reducers/profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const App = (props) => {
-  let first = () => {
-    props.load();
-    props.getCategories();
-  };
+ 
   // componentWillMount(){
   //   first();
   // }
   useEffect(() => {
-    first();
     console.log('app  --------->', props);
     props.getUser(props.user.username, props.token);
     props.getPosts(props.user.username, props.token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.token]);
+  useEffect(() => {
+    props.load();
+    props.getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -33,10 +34,11 @@ const App = (props) => {
       <Footer />
     </>
   );
-}
+};
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    token: state.auth.token,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({

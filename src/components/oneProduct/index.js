@@ -5,6 +5,8 @@ import {getRemoteProduct,getPost } from '../../store/reducers/post';
 import Show from '../show';
 import {addToFav } from '../../store/reducers/post';
 import Comment from './comment.js';
+import { Link } from 'react-router-dom';
+import {getRooms} from '../../store/reducers/chat-Reducer';
 
 
 function OneProduct (props){
@@ -37,10 +39,10 @@ function OneProduct (props){
             props.addToFav(props.post.onePost._id , props.token );
           }} variant="light">Add To Favorite</button> 
         
-          <button variant="light">Chat</button>
+          <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button>
 
 
-        <Comment />
+          <Comment />
 
         </section>
       </Show>
@@ -51,13 +53,14 @@ function OneProduct (props){
 const mapStateToProps = (state) =>{
   return {post : state.post,
     token : state.auth.token,
-  
+    rooms : state.rooms.chatRooms ,
+
   };
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
- 
+  getRooms:(token) => dispatch(getRooms(token)),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
   getPost:(id ,token ) => dispatch(getPost(id ,token)),
 });

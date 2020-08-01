@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Nav, NavItem ,NavDropdown} from 'react-bootstrap';
 import './header.scss'
+import Auth from '../auth';
+
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
 import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown} from "mdbreact";

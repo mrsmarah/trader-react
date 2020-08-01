@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
 import io from 'socket.io-client';
+import { useParams } from 'react-router-dom';
 
 const client = io.connect('https://trader401.herokuapp.com/');
 var cnt = 0;
 function ClientComponent(props) {
+
+  let{username} = useParams();
 //   const [response, setResponse] = useState('');
   const [state, setState] = useState({ message: '', name: '' });
   const [chat, setChat] = useState([]);
@@ -52,9 +55,9 @@ function ClientComponent(props) {
 
   useEffect(() => {
 
-    client.emit('joinRoom',{ token: props.token , secondUser: props.secondUser });
-
-  }, [props.secondUser]);
+    client.emit('joinRoom',{ token: props.token , secondUser: username });
+    setChat([]);
+  }, [username]);
 
   const onTextChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -76,7 +79,7 @@ function ClientComponent(props) {
         <h3>
           {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
         </h3>
-        <p>{msg.time}</p>
+        <p>{msg.time||msg.date}</p>
       </div>
     ));
   };
@@ -93,7 +96,7 @@ function ClientComponent(props) {
           <input
             name="name"
             onChange={e => onTextChange(e)}
-            value={props.secondUser}
+            value={username}
           />
         </div>
 
