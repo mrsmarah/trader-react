@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
   case 'ADD IMAGES':
-    return { ...state, ...payload };
+    return { ...state, images:[...state.images,payload] };
   case 'PROGRESS':
     return { ...state, ...payload };
   default:
@@ -38,7 +38,7 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 export const uploadImages = (images) => ({
   type: 'ADD IMAGES',
-  payload: { images },
+  payload:  images ,
 });
 
 export const setProgress = (progress) => ({
@@ -47,7 +47,7 @@ export const setProgress = (progress) => ({
 });
 
 export const handleUpload = function (spaceName, files) {
-  return async (dispatch) => {
+  return  (dispatch) => {
     let images = [];
     for (let i = 0; i < files.length; i++) {
       const uploadTask = storage
@@ -65,19 +65,20 @@ export const handleUpload = function (spaceName, files) {
         (error) => {
           console.log(error);
         },
-        async () => {
-          await storage
+        () => {
+          storage
             .ref(spaceName)
             .child(files[i].name)
             .getDownloadURL()
-            .then((url) => {
-              console.log(url, 'jfdskjfkldskjl');
-              images.push(url);
-              dispatch(uploadImages(images));
+            .then(async (url) => {
+              await images.push(url);
+              dispatch(uploadImages(url));
               dispatch(setProgress(0));
             });
         });
-
+      
     }
+    
+    
   };
 };

@@ -12,56 +12,56 @@ const AddPost = (props) =>{
  
   const[post, setPost]=useState({});
 
-//   const allInputs = {imgUrl: ''};
-//   const [imageAsFile, setImageAsFile] = useState('');
-//   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  //   const allInputs = {imgUrl: ''};
+  //   const [imageAsFile, setImageAsFile] = useState('');
+  //   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
 
 
-//   console.log('imageAsFile---->',imageAsFile);
+  //   console.log('imageAsFile---->',imageAsFile);
 
 
 
-//   const handleImageAsFile = async (e) => {
-//     const image = e.target.files[0];
-//     await setImageAsFile(imageFile => (image));
-//     console.log('imageAsFile222---->',imageAsFile);
-//     console.log('imageAsFile333---->',image);
-//     await handleFireBaseUpload(e);
+  //   const handleImageAsFile = async (e) => {
+  //     const image = e.target.files[0];
+  //     await setImageAsFile(imageFile => (image));
+  //     console.log('imageAsFile222---->',imageAsFile);
+  //     console.log('imageAsFile333---->',image);
+  //     await handleFireBaseUpload(e);
 
-//   };
+  //   };
   //   if(props.mode==='edit'){
   //     let currentPost = props.posts.filter(post=>post._id === id) ;
   //     setPost(currentPost);
   //   }
   //   console.log('hi from add post post , id------>',post,id,props);
  
-//   const handleFireBaseUpload = (e) => {
-//     e.preventDefault();
-//     console.log('start of upload');
-//     // async magic goes here...
-//     if(imageAsFile === '') {
-//       console.error(`not an image, the image file is a ${typeof(imageAsFile)}`);
-//     }
-//     const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
-//     //initiates the firebase side uploading 
-//     uploadTask.on('state_changed', 
-//       (snapShot) => {
-//         //takes a snap shot of the process as it is happening
-//         console.log(snapShot);
-//       }, (err) => {
-//         //catches the errors
-//         console.log(err);
-//       }, () => {
-//         // gets the functions from storage refences the image storage in firebase by the children
-//         // gets the download url then sets the image from firebase as the value for the imgUrl key:
-//         storage.ref('images').child(imageAsFile.name).getDownloadURL()
-//           .then(fireBaseUrl => {
-//             setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}));
+  //   const handleFireBaseUpload = (e) => {
+  //     e.preventDefault();
+  //     console.log('start of upload');
+  //     // async magic goes here...
+  //     if(imageAsFile === '') {
+  //       console.error(`not an image, the image file is a ${typeof(imageAsFile)}`);
+  //     }
+  //     const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
+  //     //initiates the firebase side uploading 
+  //     uploadTask.on('state_changed', 
+  //       (snapShot) => {
+  //         //takes a snap shot of the process as it is happening
+  //         console.log(snapShot);
+  //       }, (err) => {
+  //         //catches the errors
+  //         console.log(err);
+  //       }, () => {
+  //         // gets the functions from storage refences the image storage in firebase by the children
+  //         // gets the download url then sets the image from firebase as the value for the imgUrl key:
+  //         storage.ref('images').child(imageAsFile.name).getDownloadURL()
+  //           .then(fireBaseUrl => {
+  //             setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}));
             
-//           });
-//           console.log('ImageAsUrl--->',imageAsUrl);
-//       });
-//   };
+  //           });
+  //           console.log('ImageAsUrl--->',imageAsUrl);
+  //       });
+  //   };
 
 
 
@@ -73,6 +73,10 @@ const AddPost = (props) =>{
       setPost(currentPost[0]||{});
     }
   },[]);
+  useEffect(() => {
+ 
+    setPost({...post,images:props.images});
+  },[props.images]);
   
   const handleChange = e => {
     setPost({...post,[e.target.name]:e.target.value});
@@ -132,7 +136,7 @@ const AddPost = (props) =>{
             onChange={handleImageAsFile} 
             value = {post.images}
           /> */}
-            <Upload />
+          <Upload />
           <select class="custom-select" id="inputGroupSelect01" name="categories" onChange={handleChange} 
             value = {post.categories}>
             <option selected>categories</option>
@@ -169,6 +173,7 @@ const mapStateToProps = (state) => {
     categories: state.categories,
     token: state.auth.token,
     posts:  state.profile.posts ,
+    images: state.upload.images,
   };
 };
     
