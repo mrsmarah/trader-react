@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 var cnt = 0;
 function ClientComponent(props) {
-  const client = io.connect('https://trader401.herokuapp.com/');
+  // const client = io.connect('https://trader401.herokuapp.com/');
   let{username} = useParams();
   //   const [response, setResponse] = useState('');
   const [state, setState] = useState({ message: '', name: '' });
@@ -21,20 +21,19 @@ function ClientComponent(props) {
   useEffect( () => {
    
     console.log('useeffect chat',chat);
-    client.emit('joinRoom',{ token: props.token , secondUser: username });
-    client.on('connect', () => {
+    props.client.on('connect', () => {
       console.log('before emit',username);
       
 
-      client.on('joined', (joinedRoom) => {
+      props.client.on('joined', (joinedRoom) => {
         console.log('joinedRoom' ,joinedRoom);
         setRoom(joinedRoom);
       });
     
-      //   client.on('message', ({ name, message })  => {
+      //  props. client.on('message', ({ name, message })  => {
       //     setChat([...chat, { name, message }]);
       //   });
-      client.on('message', (payload)=> {
+      props.client.on('message', (payload)=> {
         console.log('payload>>>>' ,payload);
         // console.log('chat before >>>>' ,chat);[]
         // arrayTest.push(payload);
@@ -51,9 +50,11 @@ function ClientComponent(props) {
         
         console.log('msg after >>>>' ,msg);
       });
+      // props.client.emit('joinRoom',{ token: props.token , secondUser: username });
+
     });
-    // client.emit('joinRoom',{ token: props.token , secondUser: username });
-  }, []);
+    //props. client.emit('joinRoom',{ token: props.token , secondUser: username });
+  }, [username]);
 
 
   useEffect(() => {
@@ -64,8 +65,13 @@ function ClientComponent(props) {
 
 
   useEffect(() => {
-
-    client.emit('joinRoom',{ token: props.token , secondUser: username });
+    
+    props.client.emit('unsubscribe',room);
+    props.client.disconnect();
+    props.client.connect();
+    setChat([]);
+    console.log('username changed >>>>',username );
+    props.client.emit('joinRoom',{ token: props.token , secondUser: username });
     setChat([]);
   }, [username]);
 
@@ -76,8 +82,8 @@ function ClientComponent(props) {
   const onMessageSubmit = e => {
     e.preventDefault();
     const { name, message } = state;
-    // client.emit('message', { name, message });
-    client.emit('chatMessage', {msg : message , room: room});
+    //props. client.emit('message', { name, message });
+    props.client.emit('chatMessage', {msg : message , room: room});
     setState({ message: '', name });
   };
 
@@ -135,7 +141,7 @@ function ClientComponent(props) {
 const mapStateToProps = (state) =>{
   return {post : state.post,
     token : state.auth.token,
-    
+    client: state.auth.client,
   };
 } ;
   
