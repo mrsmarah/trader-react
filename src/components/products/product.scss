@@ -30,15 +30,25 @@
   grid-template-columns: 33.3% 33.3% 33.3% ;
   display: grid;
 }
-
+.card.card-image.imageCard {
+  border-radius: 0;
+}
 .col-md-4 {
   max-width: 100%;
   margin: 8% auto;
   border: 0px solid transparent;
 }
-
+a.btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
+  margin-top: 2%;
+}
 .card{
   border-radius: 1.25rem;
+}
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .img-fluid {
   border-radius: 1.25rem;
@@ -55,6 +65,7 @@
 
 .shadow-box-example:hover{
    background-color: white ;
+   border: 1px solid #08080861;
 }
 .card:hover{
     box-shadow: none;
@@ -116,6 +127,7 @@ section.productContainer {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   width: 100%;
+  // margin: 0 6% 4%;
 
 }
 
@@ -130,6 +142,10 @@ section.productContainer {
 .threeDivFooter{
   display: grid;
   grid-template-columns: 33% 33% 33%;
+
+}
+section.threeCard{
+  margin: 0 6% 4%
 }
 
 .firstSection , .secSection ,.thirdSection {
@@ -317,6 +333,7 @@ i.fa.fa-heart.fa-3x.cyan-text{
     justify-content: flex-end;
     font-size: xx-large;
     color: #dbe1e4;
+    width: 13%;
 }
 
 i.fa.fa-heart.fa-3x.cyan-text:hover{

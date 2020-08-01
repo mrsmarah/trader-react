@@ -94,6 +94,8 @@ function Products (props){
                 props.addToFav(product._id, props.token );
               }}
       />
+            <hr/>
+
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
@@ -107,7 +109,7 @@ function Products (props){
 
 <MDBCard className="card-image" style={{
         backgroundImage:
-          "url(https://www.pngitem.com/pimgs/m/82-821547_watercolour-splash-background-for-header-pastel-watercolor-splash.png)"
+          "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
       }}>
   <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
     <div className="black">

@@ -7,7 +7,7 @@ import Auth from '../auth';
 
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
-import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown} from "mdbreact";
+import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol} from "mdbreact";
 function Header(props) {
 
   return (
@@ -21,17 +21,16 @@ function Header(props) {
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
-            
-            {/* <NavLink className="a-tag" to="/">categories</NavLink> */}
-            {/* <NavLink className="a-tag" to="/log">Log In</NavLink> */}
-            {/* <NavDropdown className="a-tag" title="categories" id="basic-nav-dropdown">
-        <NavDropdown.Item  href="#action/3.1">CARS</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">ELECTRONICS</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">FASHION</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.4">FURNITURES</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.5">MOBILES</NavDropdown.Item>
-      </NavDropdown> */}
-            {/* <NavLink className="a-tag" to="/admin">Admin</NavLink> */}
+          <MDBCol md="6">
+      <div className="input-group md-form form-sm form-1 pl-0">
+        <div className="input-group-prepend">
+          <span className="input-group-text purple lighten-3" id="basic-text1">
+            <MDBIcon className="text-white" icon="search" />
+          </span>
+        </div>
+        <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" />
+      </div>
+    </MDBCol>
           </Nav>
           {/* <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
               props.getUser(props.username);
@@ -45,7 +44,7 @@ function Header(props) {
         borderRadius:'50%'
       }}/></span>
       <span className="togleSpan">
-      {props.username }
+      {props.username || 'log in'}
       </span>
       <span>
       <MDBIcon icon="chevron-down" />
