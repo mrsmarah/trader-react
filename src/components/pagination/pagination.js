@@ -6,26 +6,11 @@ import Pagination from 'react-bootstrap/Pagination';
 
 function PaginationComponent(props) {
 
-  let currentItems = [];
-  let pageNumbers = [];
-  if (props.currentPage && props.itemPerPage) {
-    let idxOfLastItem = props.currentPage * props.itemPerPage;
-    let idxOfFirstItem = idxOfLastItem - props.itemPerPage;
-    
-    currentItems = props.products.slice(idxOfFirstItem, idxOfLastItem);    
-    console.log('PROPSSS', props.itemPerPage, currentItems);
-    for (let i = 1; i <= Math.ceil(props.products.length / props.itemPerPage); i++) {
-      pageNumbers.push(i);
-    }
-  }
-  if (!currentItems.length) {
-    console.log('empty');
-    currentItems= props.products;
-  };
+  
   return (
     <Pagination>
-      {pageNumbers.map(number => (
-        <Pagination.Item key={number} onClick={()=>props.getPagination(number, 3, currentItems)}>
+      {props.pageNumbers.map(number => (
+        <Pagination.Item key={number} onClick={()=>props.getPagination(number)}>
           {number}
         </Pagination.Item>
       ))}
@@ -34,16 +19,15 @@ function PaginationComponent(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('pagination', state);
   return {
-    products: state.products.products,
-    currentPage: state.pagination.currentPage,
-    itemPerPage: state.pagination.itemPerPage,
-    currentItems: state.pagination.currentItems,
+    // products: state.products.products,
+    // currentPage: state.pagination.currentPage,
+    // itemPerPage: state.pagination.itemPerPage,
+    // currentItems: state.pagination.currentItems,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
-  getPagination : (currentPage, itemPerPage, currentItems) => dispatch(getPagination(currentPage, itemPerPage, currentItems)),
+  getPagination : (currentPage) => dispatch(getPagination(currentPage)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaginationComponent);
