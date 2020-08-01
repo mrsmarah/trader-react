@@ -1,7 +1,6 @@
 let initialState = {
   currentPage:1,
-  itemPerPage:3,
-  currentItems: [],
+ 
 };
   
 export default (state = initialState, action) => {
@@ -16,10 +15,10 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getPagination = function (currentPage, itemPerPage, currentItems) {
+export const getPagination = function (currentPage) {
   return (dispatch) => { 
-    console.log('PAGINATION ACTION >>>>>> ',currentPage, itemPerPage, currentItems);
-    dispatch(paginationAction({ currentPage, itemPerPage, currentItems }));
+    console.log('PAGINATION ACTION >>>>>> ',currentPage);
+    dispatch(paginationAction({ currentPage}));
   };
 };
 
