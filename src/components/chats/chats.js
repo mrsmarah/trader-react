@@ -26,7 +26,7 @@ function Chats (props){
                   <Link to={`/chat/${props.username === room.firstUser ? room.secondUser : room.firstUser}`}>
                     {props.username === room.firstUser ? room.secondUser : room.firstUser}
                   </Link>
-                  <p>{room.messages[0] ? room.messages[0].payload:''}</p>
+                  {/* <p>{room.messages[0] ? room.messages[0].payload:''}</p> */}
                 </li>
                
               </>
