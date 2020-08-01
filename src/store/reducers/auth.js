@@ -42,7 +42,7 @@ const validateToken = (token,dispatch) => {
 
   } catch (ex) {
     dispatch(logout());
-    console.log('token Validation error');
+    console.log('token Validation error',ex);
   }
 };
 
