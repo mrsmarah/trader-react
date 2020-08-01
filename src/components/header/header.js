@@ -1,35 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar,Nav, NavItem ,NavDropdown} from 'react-bootstrap';
+import {Navbar,Nav, NavItem ,NavDropdown } from 'react-bootstrap';
 import './header.scss'
 import Auth from '../auth';
 
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
-import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol} from "mdbreact";
+import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol , MDBFormInline} from "mdbreact";
 function Header(props) {
 
   return (
 
     <>
       <Navbar bg="light" expand="lg" className="header">
-        <Navbar.Brand href="/">
+        <Navbar.Brand  >
           <p className="neon">
-            <a href="/" className="aNeon">
-                  T R A D E R </a></p> </Navbar.Brand>
+            <Link to="/" className="aNeon">
+                  T R A D E R </Link></p> </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
           <MDBCol md="6">
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
-        </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" />
-      </div>
+      <MDBFormInline className="md-form">
+        <MDBIcon icon="search" />
+        <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" />
+      </MDBFormInline>
     </MDBCol>
           </Nav>
           {/* <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
