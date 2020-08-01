@@ -12,7 +12,6 @@ import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropd
 function Header(props) {
 
   return (
-
     <>
       <Navbar bg="light" expand="lg" className="header">
         <Navbar.Brand>
