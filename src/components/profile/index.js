@@ -6,7 +6,8 @@ import {useParams,NavLink } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import './profile.scss'
 import Parallax from './parallaxAvatar.js';
-import Carousel from "react-elastic-carousel";
+import Carousel from 'react-elastic-carousel';
+import Pagination from '../pagination/pagination';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -15,12 +16,31 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 },
 ];
 
-const Main = (props) => {
+const Profile = (props) => {
   // const [username, setCount] = useState();
   let {username} = useParams();
   //   setCount(username1);
   console.log('username profile',username);
- 
+
+  ////////////////////////////////// PAGINATION
+  let currentItems = [];
+  let pageNumbers = [];
+  let itemPerPage= 4;
+
+  if (props.currentPage) {
+    let idxOfLastItem = props.currentPage * itemPerPage;
+    let idxOfFirstItem = idxOfLastItem - itemPerPage;
+   
+    currentItems = props.posts.slice(idxOfFirstItem, idxOfLastItem);    
+    for (let i = 1; i <= Math.ceil(props.posts.length / itemPerPage); i++) {
+      pageNumbers.push(i);
+    }
+  }
+  if (!currentItems.length) {
+    console.log('empty');
+    currentItems= props.posts;
+  };
+  ///////////////////////////////////////
 
   useEffect(() => {
     console.log('username profile2',username);
@@ -59,59 +79,62 @@ const Main = (props) => {
         );
       })} */}
  
-<Parallax/>
-<div className="avatar">
-<img src="https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png" className="imgAvatar"/>
-<h3>
-{props.user.fullName||props.user.username}
-</h3>
-<div className="headerProfile">
-<section className="posts">
-  <h4>
+      <Parallax/>
+      <div className="avatar">
+        <img src="https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png" alt="img" className="imgAvatar"/>
+        <h3>
+          {props.user.fullName||props.user.username}
+        </h3>
+        <div className="headerProfile">
+          <section className="posts">
+            <h4>
     posts
-  </h4>
+            </h4>
 
-          <span >
-            {props.posts.length}
+            <span >
+              {props.posts.length}
             </span>
 
  
-</section>
+          </section>
 
-<section className="following">
-  <h4>
+          <section className="following">
+            <h4>
   following
-  </h4>
-  <span>
+            </h4>
+            <span>
   0
-  </span>
-</section>
+            </span>
+          </section>
 
-<section className="followers">
-  <h4>
+          <section className="followers">
+            <h4>
   followers
-  </h4>
-  <span>
+            </h4>
+            <span>
  2
-  </span>
-</section>
+            </span>
+          </section>
 
-</div>
+        </div>
 
-</div>
-<div>
-
-      <div className="App">
-        <Carousel breakPoints={breakPoints}>
-        {props.posts.map(post=>{
-        console.log('post data in profile',post);
-        return(    
-          <Post key={post.id} data={post} />
-        );
-      })}
-        </Carousel>
       </div>
-</div>
+      <div>
+
+        <div className="App">
+          <Carousel breakPoints={breakPoints}>
+            {/* {props.posts.map(post=>{ */}
+            {currentItems.map(post=>{
+              console.log('post data in profile',post);
+              return(    
+                <Post key={post.id} data={post} />
+              );
+            })}
+          </Carousel>
+        </div>
+
+        <Pagination pageNumbers={pageNumbers}/>
+      </div>
     </>
   );
   
@@ -122,6 +145,7 @@ const mapStateToProps = (state) => {
   return { 
     user: state.profile.user,
     posts:  state.profile.posts ,
+    currentPage: state.pagination.currentPage,
     username: state.auth.username,
     token : state.auth.token,
   };
@@ -135,4 +159,4 @@ const mapDispatchToProps = (dispatch, getState) => ({
 });
 
 // const mapDispatchToProps = { select };
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
