@@ -39,6 +39,7 @@ const mapStateToProps = (state) => {
     products: state.products.products,
     currentPage: state.pagination.currentPage,
     itemPerPage: state.pagination.itemPerPage,
+    currentItems: state.pagination.currentItems,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
