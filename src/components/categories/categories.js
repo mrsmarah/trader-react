@@ -26,8 +26,12 @@ const Categories = (props) => {
               }}>
                   <img
                     className="d-block w-100"
-                    src="https://i2.wp.com/essblog.wpengine.com/wp-content/uploads/2017/08/selling-furniture-online.jpg?resize=1000%2C400&ssl=1"
+                    src={category.images||"https://i2.wp.com/essblog.wpengine.com/wp-content/uploads/2017/08/selling-furniture-online.jpg?resize=1000%2C400&ssl=1"}
                     alt="First slide"
+                    style={{
+                      // height:'352px',
+                      // width:'880px',
+                    }}
                   />
                  
                   <Carousel.Caption>
@@ -42,7 +46,7 @@ const Categories = (props) => {
                           </div>
                         </Link>
                      </h3><br/>
-                     <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                     {/* <p className="para">Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                      </div>
                   </Carousel.Caption>
                </Carousel.Item>
