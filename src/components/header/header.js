@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Form,FormControl,Button,Nav,DropdownButton, Dropdown} from 'react-bootstrap';
 import './header.scss'
+import Auth from '../auth';
+
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
 
@@ -25,7 +27,9 @@ function Header(props) {
             }} >Profile</NavLink>
             <NavLink className="a-tag" to="/log">Log In</NavLink>
             <NavLink className="a-tag" to="/post">Add Post</NavLink>
+            {/* <Auth capability='admin'> */}
             <NavLink className="a-tag" to="/admin">Admin</NavLink>
+            {/* <Auth /> */}
           </Nav>
           <div class="search-bar  p-3 p-lg-1 pl-lg-4">
               

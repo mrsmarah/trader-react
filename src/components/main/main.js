@@ -7,6 +7,9 @@ import OneCategory from '../oneCategory/oneCategory';
 import Profile from '../profile';
 import Signup from '../signup';
 import Admin from '../adminPage';
+import Chat from '../chats/chats';
+import ChatMessages from '../chats/messages';
+import ClientComponent from '../chat/index';
 import Login from '../login';
 import Providers from '../login/signWith';
 import Auth from '../auth';
@@ -60,7 +63,9 @@ const  Main= (props) => {
       </Route>
 
       <Route exact path="/admin">
-        <Admin />
+        <Auth capability='admin'>
+          <Admin />
+        </Auth>
       </Route>
 
       <Route exact path="/edit/:id">
@@ -73,7 +78,15 @@ const  Main= (props) => {
           <OneProduct show = 'admin'/>
         </Auth>
       </Route>
-  
+
+      <Route exact path="/chat">
+        <Chat/>
+      </Route>
+
+      <Route exact path="/chat/:username">
+        <Chat/>
+        <ClientComponent /> 
+      </Route>
     </>
   );
 };

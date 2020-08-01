@@ -11,8 +11,10 @@ import profile from './reducers/profile';
 import auth from './reducers/auth';
 import upload from './reducers/upload';
 import pagination from './reducers/pagination';
+import rooms from './reducers/chat-Reducer';
 
-const reducers = combineReducers({ categories, products, profile, auth, post ,admin,upload ,pagination });
+
+const reducers = combineReducers({ categories, products, profile, auth, post ,admin,upload ,pagination,rooms });
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));

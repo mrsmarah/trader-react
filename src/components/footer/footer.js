@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <>
-      <ClientComponent secondUser='ahmad' />
+      {/* <ClientComponent secondUser='ahmad' /> */}
 
       <Navbar bg="light" variant="light" className="footer">
         <div className="newsletter">
