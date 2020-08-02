@@ -1,5 +1,6 @@
-import React from 'react';
+import React ,{useState,useEffect } from 'react';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
@@ -15,7 +16,7 @@ const SignUP = (props) => {
     role: '',
   };
 
-
+  const [redirect ,setRedirect] = useState(false);
 
 
   const handleChange = e => {
@@ -26,11 +27,15 @@ const SignUP = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     props.signup(state.username, state.password, state.email, state.role);
+    setRedirect(true);
   };
 
 
   return (
     <>
+      <Show condition={props.loggedIn} >
+        {(redirect === true) ? <Redirect to='/' /> : null }
+      </Show>
       <Show condition={!props.loggedIn}>
         {/* <div className='flexRight'> */}
         <form className='signup' onSubmit={handleSubmit}  >
