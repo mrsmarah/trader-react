@@ -27,11 +27,11 @@ function OneProduct (props){
   return (
     <section>
       <div className="sliderProduct">
-     <Slider/>
-     <div className="details">
-       <div className='heart'>
-      <h2>{props.post.onePost.title}</h2>
-      <MDBIcon
+        <Slider/>
+        <div className="details">
+          <div className='heart'>
+            <h2>{props.post.onePost.title}</h2>
+            <MDBIcon
               icon='heart'
               className='cyan-text'
               size='3x'
@@ -40,27 +40,26 @@ function OneProduct (props){
                 props.addToFav(props.post.onePost._id , props.token );
                 alert('Post added to your favorite list !');
               }}
-      />
-       </div>
-      <hr/>
-      <p>{props.post.onePost.description} </p>
-      <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
-       <hr/>
-       <div className="user-cat">
-      <span> BY: {props.post.onePost.username} 
-        <MDBBtn
-            type="submit"
-            className="fancy-button"
-          >
-  <span class="fancy-button-text">
-  <Link to={`/chat/${props.post.onePost.username}`}>Chat</Link>
-  </span>
-  <span class="fancy-button-background">&nbsp;</span>
-  <MDBIcon icon="paper-plane" />
-</MDBBtn> </span><br/>
-      <span>Category Type: {props.post.onePost.categories} </span>
-       </div>
-     </div>
+            />
+          </div>
+          <hr/>
+          <p>{props.post.onePost.description} </p>
+          <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
+          <hr/>
+          <div className="user-cat">
+            <span> BY: {props.post.onePost.username} 
+              <MDBBtn
+                type="submit"
+                className="fancy-button">
+                <Link to={`/chat/${props.post.onePost.username}`}>
+                  <span class="fancy-button-text">Chat</span>
+                  <span class="fancy-button-background">&nbsp;</span>
+                  <MDBIcon icon="paper-plane" />
+                </Link>
+              </MDBBtn> </span><br/>
+            <span>Category Type: {props.post.onePost.categories} </span>
+          </div>
+        </div>
       </div>
       <Show condition={props.show !== 'admin'}>
         <section className="btnn">
