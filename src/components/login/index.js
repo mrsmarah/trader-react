@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import * as actions from '../../store/reducers/auth';
 import { connect } from 'react-redux';
@@ -44,8 +43,6 @@ const Login = (props) => {
 
             <form className='login' onSubmit={handleSubmit}  >
               <label className='labelForm'>SIGN IN</label>
-
-
               <Form.Control
                 placeholder="User Name"
                 name="username"
@@ -59,7 +56,6 @@ const Login = (props) => {
                 name="password"
                 id='password'
                 className='borderBu'
-
                 type='password'
                 onChange={handleChange}>
               </Form.Control>
