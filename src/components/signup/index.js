@@ -5,9 +5,7 @@ import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
 import './signup.css';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
 const SignUP = (props) => {
   const state = {
     username: '',
@@ -38,36 +36,46 @@ const SignUP = (props) => {
       </Show>
       <Show condition={!props.loggedIn}>
         {/* <div className='flexRight'> */}
-        <form className='signup' onSubmit={handleSubmit}  >
-          <label>Signup</label>
+        <form className='login' onSubmit={handleSubmit}  >
+          <label className='labelForm'>SIGN UP</label>
           <Form.Control
-            placeholder="userName"
+            placeholder="User Name"
             name="username"
+            id='username'
+            className='borderBu'
+
             onChange={handleChange}>
           </Form.Control>
           <Form.Control
-            placeholder="password"
+            placeholder="Password"
             name="password"
+            id='password'
             onChange={handleChange}
+            className='borderBu'
+
           >
           </Form.Control>
           <Form.Control
-            placeholder="email"
+            placeholder="Email"
             name="email"
             onChange={handleChange}
+            className='borderBu'
+
           >
           </Form.Control>
           <Form.Control
-            placeholder="role"
+            placeholder="Role"
             name="role"
             onChange={handleChange}
+            className='borderBu'
+
           >
           </Form.Control>
-          <button>SignUP</button>
+          <button id='signInBt'>SING UP</button>
         </form>
-        {/* </div> */}
 
       </Show>
+
       <div id='fixFoter'></div>
 
     </>

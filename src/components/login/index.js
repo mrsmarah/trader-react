@@ -6,10 +6,9 @@ import { Redirect } from 'react-router-dom';
 import { NavLink, Link } from 'react-router-dom';
 import Show from '../show';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { MDBInput } from 'mdbreact';
+import FontAwesome from 'react-fontawesome';
+import './hover.scss';
 import './login.css';
 import Signup from '../signup';
 const Login = (props) => {
@@ -27,8 +26,6 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log('props.login(state.username, state.password);---->', state.username, state.password);
-    // console.log('login props------>', props);
     props.login(state.username, state.password);
     setRedirect(true);
   };
@@ -39,42 +36,48 @@ const Login = (props) => {
         <Show condition={props.loggedIn} >
           {(redirect === true) ? <Redirect to='/' /> : null}
         </Show>
-        <div className={'sign'}>
+        <div className='sign'>
           <Show condition={props.loggedIn} >
             <button onClick={props.logout}>Logout</button>
           </Show>
-          <Show condition={!props.loggedIn}>
-            {/* <div className='flexLeft'> */}
+          <Show condition={!props.loggedIn && !signup}>
 
             <form className='login' onSubmit={handleSubmit}  >
               <label className='labelForm'>SIGN IN</label>
+
+
               <Form.Control
-                placeholder="userName"
+                placeholder="User Name"
                 name="username"
                 id='username'
+                className='borderBu'
                 type='text'
                 onChange={handleChange}>
               </Form.Control>
               <Form.Control
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 id='password'
+                className='borderBu'
+
                 type='password'
                 onChange={handleChange}>
               </Form.Control>
               <button id='signInBt'>SIGN IN</button>
-              <p className='newUser' >New User ? <Link onClick={() => { setSignup(true); }}  >register </Link></p>
+              <p className='newUser' >New User ? <Link onClick={() => { setSignup(true); }}  >Register </Link></p>
             </form>
-            <Show condition={!props.loggedIn && signup}>
-              <Signup />
-              {/* </div> */}
-
-
-            </Show>
-
-            {/* </div> */}
-
           </Show>
+          <Show condition={!props.loggedIn && signup}>
+            <Signup />
+            <FontAwesome
+              className="fas fa-chevron-circle-left  shrink"
+              id='goBack'
+            >
+              <Link id='goBackBtn ' className="btn pulse backsize" onClick={() => { setSignup(false); }}  > Go Back </Link>
+            </FontAwesome>
+          </Show>
+
+
           <Show condition={props.loggedIn} className='clear'>
             <button onClick={props.logout}>Logout</button>
           </Show>
