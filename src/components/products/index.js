@@ -73,7 +73,7 @@ function Products (props){
           return (
             <>
 
-              <div className="shadow-box-example hoverable">
+              <div className="shadow-box-example hoverable" >
 
 
                 <MDBCol md="4">
@@ -97,8 +97,11 @@ function Products (props){
                                              <img className="userImgInCard"
               src='https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png'
               alt=''
-            />
-                    <MDBBtn
+            /> <span>Yasmin</span>
+                    <MDBCardBody cascade>
+                      <div className="btn-title">
+                      <MDBCardTitle>{product.title}</MDBCardTitle>
+                      <MDBBtn
                       href={`/search/${product._id}`}
                       floating
                       tag='a'
@@ -108,8 +111,9 @@ function Products (props){
 
                       <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
                     </MDBBtn>
-                    <MDBCardBody cascade>
-                      <MDBCardTitle>{product.title}</MDBCardTitle>
+                     
+                      </div>
+                  
                       <hr/>
                       <MDBCardText>
                         <p className="paragraph">

@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Adamina&family=Cousine:ital,wght@1,700&family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Adamina&family=Cormorant:ital,wght@1,500&family=Cousine:ital,wght@1,700&family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
 .sliderProduct {
-    display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 90%;
+  margin: auto;
 }
 .details {
-    margin: 4% 0 0 7%;
+  margin: 4%;
     font-family: 'Cormorant', serif;
     font-size: 25px;
-    width: 40%;
 }
 .details h2{
     text-transform: uppercase;
