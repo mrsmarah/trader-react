@@ -73,6 +73,10 @@ function Header(props) {
                   <NavLink to="/favList">Favorite List
                   </NavLink>
                 </MDBDropdownItem>
+                <MDBDropdownItem > 
+                  <NavLink to="/chat"> My Chats
+                  </NavLink>
+                </MDBDropdownItem>
                 <MDBDropdownItem> 
                   <NavLink to="/post">Add post</NavLink>
                 </MDBDropdownItem>
