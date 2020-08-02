@@ -73,9 +73,9 @@ function Header(props) {
                   <NavLink to="/favList">Favorite List
                   </NavLink>
                 </MDBDropdownItem>
-                {/* <MDBDropdownItem> 
-                <NavLink to="/log">Log In</NavLink>
-              </MDBDropdownItem> */}
+                <MDBDropdownItem> 
+                  <NavLink to="/post">Add post</NavLink>
+                </MDBDropdownItem>
                 <Auth capability="admin">
                   <MDBDropdownItem><NavLink to="/admin">Admin Page</NavLink></MDBDropdownItem>
                 </Auth>

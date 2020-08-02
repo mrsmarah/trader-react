@@ -37,6 +37,7 @@ function OneProduct (props){
 
           <button onClick={ () =>{
             props.addToFav(props.post.onePost._id , props.token );
+            alert('Post added to your favorite list !');
           }} variant="light">Add To Favorite</button> 
         
           <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button>
