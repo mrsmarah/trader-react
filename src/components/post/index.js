@@ -35,9 +35,7 @@ const Post = (props) => {
       <MDBCardTitle>{props.data.title}</MDBCardTitle>
       <hr/>
       <MDBCardText>
-              <h5>
-                 DESCRIPTION: <br/>
-              </h5>
+
               <p className="paragraph">
                   {props.data.description}
                   </p>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { NavLink ,Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Nav, NavItem ,NavDropdown } from 'react-bootstrap';
@@ -14,8 +13,7 @@ function Header(props) {
 
   return (
     <>
-
-      <Navbar bg="light" expand="lg" className="header">
+      <Navbar  expand="lg" className="header">
         <Navbar.Brand>
           <p className="neon">
             <Link to="/" className="aNeon">
