@@ -11,7 +11,7 @@ const Footer = () => {
     <>
       {/* <ClientComponent secondUser='ahmad' /> */}
 
-      <Navbar bg="light" variant="light" className="footer">
+      <Navbar  variant="light" className="footer">
         {/* <div className="newsletter"> */}
           <h6 className="newsletterh6">SUBSCRIBE TO OUR NEWSLETTER</h6>
           {/* <Form className="footerForm"> */}

@@ -99,9 +99,6 @@ function Products (props){
                       <MDBCardTitle>{product.title}</MDBCardTitle>
                       <hr/>
                       <MDBCardText>
-                        <h5>
-                       DESCRIPTION: <br/>
-                        </h5>
                         <p className="paragraph">
                           {product.description}
                         </p>
