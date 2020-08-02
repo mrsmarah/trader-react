@@ -52,14 +52,14 @@ export const getProduct = (payload) => {
 
 export const addToFav = (id , token ) => dispatch => {
 
-  // console.log('FAV PARAMETERS',id,token);
+  console.log('FAV PARAMETERS',id,token);
   let api = `https://trader401.herokuapp.com/addfav/${id}`;
   
   superagent.get(api)
     .set('Content-Type', 'application/json' )
     .set('Authorization',`Bearer ${token}`)
     .then(res => {
-      // console.log(res.text , 'DATA BODY');
+      console.log(res.text , 'DATA BODY');
       // dispatch(addFav( res.data ));
     });
 };

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+
+import React ,{useState,useEffect } from 'react';
 import * as actions from '../../store/reducers/auth';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import { NavLink ,Link} from 'react-router-dom';
 import Show from '../show';
 import Form from 'react-bootstrap/Form';
@@ -15,8 +17,9 @@ const Login = (props) => {
     username: '',
     password: '',
   };
-  
-  const [signup ,setSignup] = useState(false);
+
+ const [signup ,setSignup] = useState(false);
+  const [redirect ,setRedirect] = useState(false);
 
   const handleChange = e => {
     state[e.target.name] = e.target.value;
@@ -24,6 +27,7 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setRedirect(true) ;
     console.log('props.login(state.username, state.password);---->', state.username, state.password);
     console.log('login props------>', props);
     props.login(state.username, state.password);
@@ -31,12 +35,15 @@ const Login = (props) => {
 
   return (
     <>
+
+    {(redirect === true) ? <Redirect to='/' /> : null }
       <div className={'sign'}>
         <Show condition={props.loggedIn} >
           <button onClick={props.logout}>Logout</button>
         </Show>
         <Show condition={!props.loggedIn}>
           {/* <div className='flexLeft'> */}
+
           <form className='login' onSubmit={handleSubmit}  >
             <label>Sign in</label>
             <Form.Control

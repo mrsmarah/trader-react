@@ -1,18 +1,20 @@
 import React from 'react';
+
 import { NavLink ,Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar,Nav, NavItem ,NavDropdown} from 'react-bootstrap';
+import {Navbar,Nav, NavItem ,NavDropdown } from 'react-bootstrap';
 import './header.scss'
 import * as actions from '../../store/reducers/auth';
 import Auth from '../auth';
 import Show from '../show';
 import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
-import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol} from 'mdbreact';
+import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol , MDBFormInline} from "mdbreact";
 function Header(props) {
 
   return (
     <>
+
       <Navbar bg="light" expand="lg" className="header">
         <Navbar.Brand>
           <p className="neon">
@@ -67,13 +69,17 @@ function Header(props) {
                   <NavLink to={`/user/${props.username}`} onClick={() => {
                     props.getUser(props.username);
                     props.getPosts(props.username);
-                  }} >Profile
+                  }} >Profile Page
                   </NavLink></MDBDropdownItem>
-                {/* <MDBDropdownItem> 
-                <NavLink to="/log">Log In</NavLink>
-              </MDBDropdownItem> */}
+                <MDBDropdownItem > 
+                  <NavLink to="/favList">Favorite List
+                  </NavLink>
+                </MDBDropdownItem>
+                <MDBDropdownItem> 
+                  <NavLink to="/post">Add post</NavLink>
+                </MDBDropdownItem>
                 <Auth capability="admin">
-                  <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem>
+                  <MDBDropdownItem><NavLink to="/admin">Admin Page</NavLink></MDBDropdownItem>
                 </Auth>
                 {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
                 <MDBDropdownItem divider />

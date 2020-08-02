@@ -12,6 +12,7 @@ import './product.scss';
 import ParallaxHeader from './parallaxHeader.js';
 import ParallaxFooter from './parallaxFooter.js';
 import Pagination from '../pagination/pagination';
+import Alert from 'react-bootstrap/Alert';
 
 function Products (props){
   console.log('products props ------>',props);
@@ -48,7 +49,7 @@ function Products (props){
 
     case 'fav':
       console.log('favlist------>',props.user);
-      props.getFav( props.user.username, props.token );
+      props.getFav( props.token );
       break;
 
     case 'FILTER':
@@ -108,9 +109,6 @@ function Products (props){
                       </MDBCardText>
 
                       <MDBCardText>
-                        <h5>
-                      RATE: <br/>
-                        </h5>
                         <button onClick={() =>{
                           props.ratePost(product._id, props.token , {'theRate':'+'} );
                         }}>+</button>
@@ -128,6 +126,7 @@ function Products (props){
                         style={{ cursor: 'pointer' }}
                         onClick={() =>{
                           props.addToFav(product._id, props.token );
+                          alert('Post added to your favorite list !');
                         }}
                       />
                       <hr/>
@@ -250,7 +249,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getRemoteData() ),
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
-  getFav:(username,token) => dispatch(getFav(username,token)),
+  getFav:(token) => dispatch(getFav(token)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
   ratePost: ( id , token , rate ) => dispatch(ratePost(id , token , rate)),
