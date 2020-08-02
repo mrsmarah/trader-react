@@ -1,7 +1,9 @@
+
 import React ,{useState,useEffect } from 'react';
 import * as actions from '../../store/reducers/auth';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import { NavLink ,Link} from 'react-router-dom';
 import Show from '../show';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,12 +11,14 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './login.css';
+import Signup from '../signup';
 const Login = (props) => {
   const state = {
     username: '',
     password: '',
   };
 
+  const [signup ,setSignup] = useState(false);
   const [redirect ,setRedirect] = useState(false);
 
   const handleChange = e => {
@@ -31,15 +35,17 @@ const Login = (props) => {
 
   return (
     <>
+
       <Show condition={props.loggedIn} >
         {(redirect === true) ? <Redirect to='/' /> : null }
       </Show>
-    
-      <Show condition={props.loggedIn} >
-        <button onClick={props.logout}>Logout</button>
-      </Show>
-      <Show condition={!props.loggedIn}>
-        <div className='flexLeft'>
+      <div className={'sign'}>
+        <Show condition={props.loggedIn} >
+          <button onClick={props.logout}>Logout</button>
+        </Show>
+        <Show condition={!props.loggedIn}>
+          {/* <div className='flexLeft'> */}
+
           <form className='login' onSubmit={handleSubmit}  >
             <label>Sign in</label>
             <Form.Control
@@ -57,13 +63,22 @@ const Login = (props) => {
               onChange={handleChange}>
             </Form.Control>
             <button>Sign in</button>
+            <p>new user ? <Link onClick={()=>{setSignup(true);}}  >register </Link></p>
           </form>
-        </div>
+          <Show condition={!props.loggedIn && signup}>
+            <Signup />
+            {/* </div> */}
 
-      </Show>
-      <Show condition={props.loggedIn} className='clear'>
-        <button onClick={props.logout}>Logout</button>
-      </Show>
+
+          </Show>
+
+          {/* </div> */}
+
+        </Show>
+        <Show condition={props.loggedIn} className='clear'>
+          <button onClick={props.logout}>Logout</button>
+        </Show>
+      </div>
     </>
   );
 
