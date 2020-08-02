@@ -9,11 +9,11 @@ import Parallax from './parallax.js';
 const OneCategory = (props) => {
 
   let{category} = useParams();
-  
+  console.log('props.categories',props.categories);
   
   useEffect(() => {
     console.log('CATEGORY',category);
-    props.getCategory(category);
+    props.getCategory(category, props.categories.activeCategoryImg);
     
   },[]);
 
@@ -22,10 +22,9 @@ const OneCategory = (props) => {
       <div>
         <Parallax/>
         <span>
-        <h4>{ props.categories.activeCategory}</h4>
-
+          <h4>{ props.categories.activeCategory}</h4>
         </span>
-        
+        <img src={ props.categories.activeCategoryImg} alt='active Category Img'/>
       </div>
 
     </>
@@ -39,7 +38,7 @@ const mapStateToProps = (state) => {
 };
   
 const mapDispatchToProps = (dispatch) => ({
-  getCategory: (category) => dispatch(handelCategory(category)),
+  getCategory: (category, img) => dispatch(handelCategory(category , img)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneCategory);
