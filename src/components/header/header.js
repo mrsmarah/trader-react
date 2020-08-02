@@ -14,7 +14,7 @@ function Header(props) {
   return (
 
     <>
-      <Navbar bg="light" expand="lg" className="header">
+      <Navbar  expand="lg" className="header">
         <Navbar.Brand  >
           <p className="neon">
             <Link to="/" className="aNeon">
