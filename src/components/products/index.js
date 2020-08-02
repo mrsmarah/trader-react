@@ -85,6 +85,7 @@ function Products (props){
               style={{ cursor: 'pointer' }}
               onClick={() =>{
                 props.addToFav(product._id, props.token );
+                alert('Post added to your favorite list !');
               }}
       />
                     <MDBCardImage
