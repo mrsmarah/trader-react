@@ -17,8 +17,9 @@ export default (state = initialState, action) => {
   // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUserIn':
-    return {...state, user:payload.user , loggedIn : true, token: payload.token ,client:io.connect('https://trader401.herokuapp.com/')};
-  
+    return {...state, user:payload.user , loggedIn : true, token: payload.token ,client:io.connect('https://trader401.herokuapp.com/',{query : payload.user})};
+    // http://localhost:3003/
+    // https://trader401.herokuapp.com/
   case 'logout':
     cookie.save('auth', 'token',{ path: '/' });
     return initialState;
