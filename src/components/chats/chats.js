@@ -35,7 +35,7 @@ return (
       <Link to={`/chat/${props.username === room.firstUser ? room.secondUser : room.firstUser}`}>
         {props.username === room.firstUser ? room.secondUser : room.firstUser}
       </Link></span>
-      <span class="time">12/02/2019</span>
+      {/* <span class="time">12/02/2019</span> */}
                     </p>
                 </li>
 

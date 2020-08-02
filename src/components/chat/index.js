@@ -4,6 +4,8 @@ import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import './chattest.scss'
 import Chats from '../chats/chats.js'
+import { MDBIcon,MDBBtn } from 'mdbreact';
+
 var cnt = 0;
 function ClientComponent(props) {
   // const client = io.connect('https://trader401.herokuapp.com/');
@@ -95,12 +97,11 @@ function ClientComponent(props) {
       if(msg.username === props.username || msg.sender === props.username){
         return (
 <li className="chat-right">
-    <div className="chat-hour">08:56 <span className="fa fa-check-circle"></span></div>
-    <div className="chat-text">Hi, Russell
-        <br/> I need more information about Developer Plan.</div>
+    <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
+    <div className="chat-text">{msg.text||msg.payload }</div>
     <div className="chat-avatar">
         <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"/>
-        <div className="chat-name">Sam</div>
+        <div className="chat-name">{msg.username||msg.sender}</div>
     </div>
 </li>
         )
@@ -109,11 +110,10 @@ function ClientComponent(props) {
 <li className="chat-left">
     <div className="chat-avatar">
         <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"/>
-        <div className="chat-name">Russell</div>
+        <div className="chat-name">{msg.username||msg.sender}</div>
     </div>
-    <div className="chat-text">Hello, I'm Russell.
-        <br/>How can I help you today?</div>
-    <div className="chat-hour">08:55 <span className="fa fa-check-circle"></span></div>
+    <div className="chat-text">{msg.text||msg.payload }</div>
+    <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
 </li>
         )
       }
@@ -125,12 +125,12 @@ function ClientComponent(props) {
   return (
     <>
   
-        <div className="content-wrapper">
-        <div className="row gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        {/* <div className="content-wrapper"> */}
+        {/* <div className="row gutters"> */}
+        {/* <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> */}
         <div className="card m-0">
         <div className="row no-gutters">
-<Chats className="here"/>
+        <Chats className="here"/>
         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
         <div className="selected-user">
                             <span>To: <span className="name">{username}</span></span>
@@ -149,7 +149,16 @@ function ClientComponent(props) {
         value={state.message}
         >
         </textarea>
-        <button onClick={onMessageSubmit}>Send Message</button>
+        {/* <button onClick={onMessageSubmit}>Send Message</button> */}
+            <MDBBtn
+                onClick={onMessageSubmit}
+                type="submit"
+                className="fancy-button">
+                  <span class="fancy-button-text">Send</span>
+                  <span class="fancy-button-background">&nbsp;</span>
+                  <MDBIcon icon="paper-plane" />
+              
+              </MDBBtn>
     </div>
       {/* </div> */}
       </div>
@@ -157,9 +166,9 @@ function ClientComponent(props) {
     </div>
     </div>
     </div>
-    </div>
-    </div>
-    </div>
+    {/* </div> */}
+    {/* </div> */}
+    {/* </div> */}
 
 
 
