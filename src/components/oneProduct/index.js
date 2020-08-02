@@ -7,10 +7,10 @@ import {addToFav } from '../../store/reducers/post';
 import Comment from './comment.js';
 import { Link } from 'react-router-dom';
 import {getRooms} from '../../store/reducers/chat-Reducer';
-
-
+import Slider from './slider/slider.js'
+import './oneProduct.scss'
+import { MDBIcon,MDBBtn } from 'mdbreact';
 function OneProduct (props){
-  
   
   let{id} = useParams();
   console.log('ONEEEE---------------->', props.post,id);
@@ -26,20 +26,49 @@ function OneProduct (props){
 
   return (
     <section>
-     
-      <span>{props.post.onePost.title}</span>
-      <p>POSTED BY :{props.post.onePost.username} </p>
-      <p>PRICE : {props.post.onePost.price} </p>
-      <p>DESCRIPTION :{props.post.onePost.description} </p>
-      <p>CATEGORY :{props.post.onePost.categories} </p>
+      <div className="sliderProduct">
+     <Slider/>
+     <div className="details">
+       <div className='heart'>
+      <h2>{props.post.onePost.title}</h2>
+      <MDBIcon
+              icon='heart'
+              className='cyan-text'
+              size='3x'
+              style={{ cursor: 'pointer' }}
+              onClick={ () =>{
+                props.addToFav(props.post.onePost._id , props.token );
+              }}
+      />
+       </div>
+      <hr/>
+      <p>{props.post.onePost.description} </p>
+      <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
+       <hr/>
+       <div className="user-cat">
+      <span> BY: {props.post.onePost.username} 
+        <MDBBtn
+            type="submit"
+            className="fancy-button"
+          >
+  <span class="fancy-button-text">
+  <Link to={`/chat/${props.post.onePost.username}`}>Chat</Link>
+  </span>
+  <span class="fancy-button-background">&nbsp;</span>
+  <MDBIcon icon="paper-plane" />
+</MDBBtn> </span><br/>
+      <span>Category Type: {props.post.onePost.categories} </span>
+       </div>
+     </div>
+      </div>
       <Show condition={props.show !== 'admin'}>
         <section className="btnn">
 
-          <button onClick={ () =>{
+          {/* <button onClick={ () =>{
             props.addToFav(props.post.onePost._id , props.token );
-          }} variant="light">Add To Favorite</button> 
-        
-          <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button>
+          }} variant="light">Add To Favorite</button>  */}
+
+          {/* <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button> */}
 
 
           <Comment />
