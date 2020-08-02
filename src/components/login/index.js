@@ -23,15 +23,18 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setRedirect(true) ;
-    console.log('props.login(state.username, state.password);---->', state.username, state.password);
-    console.log('login props------>', props);
+    // console.log('props.login(state.username, state.password);---->', state.username, state.password);
+    // console.log('login props------>', props);
     props.login(state.username, state.password);
+    setRedirect(true);
   };
 
   return (
     <>
-      {(redirect === true) ? <Redirect to='/' /> : null }
+      <Show condition={props.loggedIn} >
+        {(redirect === true) ? <Redirect to='/' /> : null }
+      </Show>
+    
       <Show condition={props.loggedIn} >
         <button onClick={props.logout}>Logout</button>
       </Show>
