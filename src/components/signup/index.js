@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
 import './signup.css';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
 const SignUP = (props) => {
   const state = {
     username: '',
@@ -15,54 +14,69 @@ const SignUP = (props) => {
     role: '',
   };
 
-
+  const [redirect, setRedirect] = useState(false);
 
 
   const handleChange = e => {
+    console.log('signuo---->', state);
     state[e.target.name] = e.target.value;
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     props.signup(state.username, state.password, state.email, state.role);
+    setRedirect(true);
   };
 
 
   return (
     <>
+      <Show condition={props.loggedIn} >
+        {(redirect === true) ? <Redirect to='/' /> : null}
+      </Show>
       <Show condition={!props.loggedIn}>
-        <div className='flexRight'>
-          <form className='signup' onSubmit={handleSubmit}  >
-            <label>Signup</label>
-            <Form.Control
-              placeholder="userName"
-              name="username"
-              onChange={handleChange}>
-            </Form.Control>
-            <Form.Control
-              placeholder="password"
-              name="password"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <Form.Control
-              placeholder="email"
-              name="email"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <Form.Control
-              placeholder="role"
-              name="role"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <button>SignUP</button>
-          </form>
-        </div>
+        {/* <div className='flexRight'> */}
+        <form className='login' onSubmit={handleSubmit}  >
+          <label className='labelForm'>SIGN UP</label>
+          <Form.Control
+            placeholder="User Name"
+            name="username"
+            id='username'
+            className='borderBu'
 
+            onChange={handleChange}>
+          </Form.Control>
+          <Form.Control
+            placeholder="Password"
+            name="password"
+            id='password'
+            onChange={handleChange}
+            className='borderBu'
+
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="Email"
+            name="email"
+            onChange={handleChange}
+            className='borderBu'
+
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="Role"
+            name="role"
+            onChange={handleChange}
+            className='borderBu'
+
+          >
+          </Form.Control>
+          <button id='signInBt'>SING UP</button>
+        </form>
 
       </Show>
+
+      <div id='fixFoter'></div>
 
     </>
   );

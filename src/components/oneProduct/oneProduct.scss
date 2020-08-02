@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Adamina&family=Cousine:ital,wght@1,700&family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Adamina&family=Cormorant:ital,wght@1,500&family=Cousine:ital,wght@1,700&family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
+.sliderProduct {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 90%;
+  margin: auto;
+}
+.details {
+  margin: 4%;
+    font-family: 'Cormorant', serif;
+    font-size: 25px;
+}
+.details h2{
+    text-transform: uppercase;
+    font-family: 'Adamina', serif;
+
+}
+
+.dolar{
+    display: flex;
+    justify-content: flex-end;
+    font-family: 'Adamina', serif;
+}
+.user-cat{
+    margin: 4% 0 4% 3%;
+    display: grid;
+}
+.heart{
+    display: flex;
+    justify-content: space-between;
+}
+.heart i.fa.fa-heart.fa-3x.cyan-text {
+    margin-top: 2%;
+}
+
+/**
+ * Created by Dan Spratling (@dan_spratling)
+ * All :focus have been omitted for brevity. Please use focus states in real scenarios
+ */
+
+ .fancy-button {
+    position: relative;
+    // padding-left: 3rem;
+    // padding-right: 3rem;
+    background: #4a5568;
+    overflow: hidden;
+    transition: all 200ms ease;
+  }
+  
+  .fancy-button:hover {
+    background: #f7fafc;
+    padding-left: 1rem;
+    padding-right: 5rem;
+  }
+  
+  .fancy-button-text {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    // padding: 0 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    color: #fff;
+    transition: 200ms ease;
+  }
+  .fancy-button-text a{
+    text-decoration: none;
+    color: #0c0b0b;
+  }
+  .fancy-button:hover .fancy-button-text {
+    color: #4a5568;
+  }
+  
+  .fancy-button-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    background: #48bb78;
+    opacity: 0;
+    transition: all 300ms ease;
+    transform-origin: right;
+    height: 200%;
+    transform: rotate(20deg);
+  }
+  
+  .fancy-button:hover .fancy-button-background {
+    width: 5rem;
+    opacity: 1;
+  }
+  
+  .fancy-button .fa-paper-plane {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 1.25rem;
+    color: #fff;
+    opacity: 0;
+    z-index: 10;
+    margin-right: 2.5rem;
+    transition: 300ms ease;
+    transform: translate(50%, -50%);
+  }
+  
+  .fancy-button:hover .fa-paper-plane {
+    opacity: 1;
+  }
+  
+  /* setup stuff */
+
+  button {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .btn-default .btn .Ripple-parent .fancy-button{
+    background-color: #080808cf
+  }
+.user-cat span{
+    display: flex;
+    justify-content: space-between;
+}

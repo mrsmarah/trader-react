@@ -8,9 +8,9 @@ import * as actions from './store/reducers/auth';
 import * as actions2 from './store/reducers/profile';
 import { getCategories } from './store/reducers/categories';
 import * as actions3 from './store/reducers/profile';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 const App = (props) => {
- 
+
   // componentWillMount(){
   //   first();
   // }

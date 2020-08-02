@@ -6,13 +6,13 @@ import {connect} from 'react-redux';
 import {getRemoteData,getFav} from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
 import {getFilteredProducts} from '../../store/reducers/products';
-import {addToFav ,ratePost} from '../../store/reducers/post';
+import {addToFav,ratePost } from '../../store/reducers/post';
 import { MDBIcon,MDBCol,MDBCardTitle, MDBBtn,MDBCard,MDBCardBody,MDBCardImage,MDBCardText } from 'mdbreact';
 import './product.scss';
 import ParallaxHeader from './parallaxHeader.js';
 import ParallaxFooter from './parallaxFooter.js';
 import Pagination from '../pagination/pagination';
-
+import {Redirect} from 'react-router-dom';
 function Products (props){
   console.log('products props ------>',props);
   let{category} = useParams();
@@ -48,7 +48,7 @@ function Products (props){
 
     case 'fav':
       console.log('favlist------>',props.user);
-      props.getFav( props.user.username, props.token );
+      props.getFav( props.token );
       break;
 
     case 'FILTER':
@@ -72,67 +72,87 @@ function Products (props){
         {currentItems.map((product , i) =>{
           return (
             <>
+              {/* <Show condition={props.loggedIn} >
+                {(redirect === true) ? <Redirect to='/' /> : null }
+              </Show> */}
+              <div className="shadow-box-example hoverable" >
 
-              <div className="shadow-box-example hoverable">
-
-
+                
                 <MDBCol md="4">
                   <MDBCard cascade>
+                    <MDBIcon
+                      icon='heart'
+                      className='cyan-text'
+                      size='3x'
+                      style={{ cursor: 'pointer' }}
+                      onClick={() =>{
+                        props.addToFav(product._id, props.token );
+                      }}
+                    />
                     <MDBCardImage
                       cascade
                       className='img-fluid'
                       overlay="white-light"
                       hover
                       src= {'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'}
+                      
                     />
-                    <MDBBtn
-                      floating
-                      tag='a'
-                      className='ml-auto mr-4 lighten-3 mdb-coalor'
-                      action onClick={()=> props.getRemoteProduct(product._id)}
-                    ><Link to={`/search/${product._id}`}>
-                        <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/></Link>
-                     
-                    </MDBBtn>
+                    <img className="userImgInCard"
+                      src={!product.userImage?'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png':product.username}
+                      alt=''
+                    /> <span><Link to={`/user/${product.username}`}
+                    >{product.username}
+                    </Link></span>
+                      
                     <MDBCardBody cascade>
-                      <MDBCardTitle>{product.title}</MDBCardTitle>
-                      <hr/>
+                      <Link to={`/search/${product._id}`}>   
+                        <div className="btn-title">
+                        
+                          <MDBCardTitle>{product.title}</MDBCardTitle>
+                        
+                          {/* <MDBBtn
+                            href={`/search/${product._id}`}
+                            floating
+                            tag='a'
+                            className='ml-auto mr-4 lighten-3 mdb-coalor'
+                            action onClick={()=>{}} 
+                          >
+
+                            <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
+                          </MDBBtn> */}
+                        
+                        </div>
+                  
+                        <hr/>
+                        <MDBCardText>
+                          <p className="paragraph">
+                            {product.description}
+                          </p>
+
+                        </MDBCardText>
+                      </Link>
                       <MDBCardText>
-                        <h5>
-                       DESCRIPTION: <br/>
-                        </h5>
-                        <p className="paragraph">
-                          {product.description}
-                        </p>
+                        <div className="likeDislike">
+                          <MDBIcon 
+                            icon="thumbs-up"
+                            onClick={() =>{
+                              props.ratePost(product._id, props.token , {'theRate':'+'} );
+                            }} />
+                          <p>{product.positiveRateUser.length}</p>
 
+                          <MDBIcon 
+                            icon="thumbs-down"
+                            onClick={() =>{
+                              props.ratePost(product._id, props.token , {'theRate':'-'});
+                            }} />
+                          <p>{product.negativeRateUser.length}</p>
+                        </div>
                       </MDBCardText>
-
-                      <MDBCardText>
-                        <h5>
-                      RATE: <br/>
-                        </h5>
-                        <button onClick={() =>{
-                          props.ratePost(product._id, props.token , {'theRate':'+'} );
-                        }}>+</button>
-                        <button onClick={() =>{
-                          props.ratePost(product._id, props.token , {'theRate':'-'});
-                        }}>-</button>
-                      </MDBCardText>
-
-                      <MDBIcon
-                        icon='heart'
-                        className='cyan-text'
-                        size='3x'
-                        style={{ cursor: 'pointer' }}
-                        onClick={() =>{
-                          props.addToFav(product._id, props.token );
-                        }}
-                      />
-                      <hr/>
 
                     </MDBCardBody>
                   </MDBCard>
                 </MDBCol>
+                
               </div>
 
             </>
@@ -148,7 +168,7 @@ function Products (props){
 
         <MDBCard className="card-image" style={{
           backgroundImage:
-          'url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)',
+          "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
         }}>
           <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
             <div className="black">
@@ -168,7 +188,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg\')',
+        "url('https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg')"
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -189,7 +209,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg\')',
+        "url('https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg')"
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -210,7 +230,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg\')',
+        "url('https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg')"
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -248,10 +268,9 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getRemoteData() ),
   getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
-  getFav:(username,token) => dispatch(getFav(username,token)),
+  getFav:(token) => dispatch(getFav(token)),
   getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
   ratePost: ( id , token , rate ) => dispatch(ratePost(id , token , rate)),
-
 });
 export default connect(mapStateToProps  , mapDispatchToProps)(Products);

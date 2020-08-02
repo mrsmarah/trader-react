@@ -3,6 +3,8 @@
   padding: 3vw;
   height: 30vw;
   margin-top: 9vw;
-  margin-left: -61%;
-  box-shadow: 0vw 1vw 3vw grey;
+  /* margin-left: -61%; */
+  margin: auto;
+  bottom: -20px;
+  /* box-shadow: 0vw 1vw 3vw grey; */
 }

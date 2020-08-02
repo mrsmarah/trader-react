@@ -3,6 +3,8 @@ import superagent from 'superagent';
 let initialState = {
   categories: [],
   activeCategory: '',
+  activeCategoryImg: '',
+  
 };
 
 export default (state = initialState, action) => {
@@ -11,8 +13,8 @@ export default (state = initialState, action) => {
   switch (type) {
     
   case 'UPDATE ACTIVE CATEGORY':
-    console.log('PAYLOAD ACTIVE', payload);
-    return { ...state, activeCategory: payload };
+    console.log('PAYLOAD ACTIVE', payload.name , payload.img);
+    return { ...state, activeCategory: payload.name , activeCategoryImg : payload.img };
     
   case 'GET CATEGIRIES':
     // console.log('PAYLOAD get cat',payload.results);
@@ -36,9 +38,9 @@ export const getCategories = function () {
   };
 };
 
-export const handelCategory = (name) => ({
+export const handelCategory = (name , img ) => ({
   type: 'UPDATE ACTIVE CATEGORY',
-  payload: name,
+  payload: {name : name, img : img},
 });
     
 

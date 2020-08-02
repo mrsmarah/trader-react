@@ -99,7 +99,7 @@ const Profile = (props) => {
 
       </div>
       <div>
-
+        {/* <NavLink to="/favList">Fav List</NavLink> */}
         <div className="App">
           <Carousel breakPoints={breakPoints}>
             {props.posts.map(post=>{

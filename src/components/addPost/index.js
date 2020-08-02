@@ -1,6 +1,6 @@
 import React,{useState,useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams,Link,Redirect} from 'react-router-dom';
 import Show from '../show';
 import * as actions from '../../store/reducers/products';
 import {getRemoteProduct } from '../../store/reducers/post';
@@ -9,7 +9,8 @@ import Upload from '../upload';
 
 const AddPost = (props) =>{
   let{id} = useParams();
- 
+  // let redirectToReferrer = false ;
+  const [redirect ,setRedirect] = useState(false);
   const[post, setPost]=useState({});
 
   //   const allInputs = {imgUrl: ''};
@@ -68,6 +69,7 @@ const AddPost = (props) =>{
 
 
   useEffect(() => {
+   
     if(props.mode==='edit'){
       let currentPost = props.posts.filter(post=>post._id === id) ;
       setPost(currentPost[0]||{});
@@ -85,6 +87,8 @@ const AddPost = (props) =>{
   
   const handleSubmit = async e => {
     e.preventDefault();
+    setRedirect(true) ;
+    alert('New Post added !');
     console.log('submit post ', props.user.username,props.token,post);
     // const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
     if(props.mode!=='edit'){
@@ -112,6 +116,8 @@ const AddPost = (props) =>{
   //   "__v": 0
   return (
     <>
+      {(redirect === true) ? <Redirect to={`/user/${props.username}`}/> : null }
+      {console.log(' props.username',props.username)}
       {console.log('add post before render -----> ',post)}
       <Show condition={props.loggedIn}>
         <form onSubmit={handleSubmit} >
@@ -149,7 +155,8 @@ const AddPost = (props) =>{
           </select>
       
           <Show condition={props.mode!=='edit'}>
-            <button>ADD</button>
+            <button >ADD</button>
+            {/* <Link to={`/user/${post._id}`}>ADD</Link> */}
           </Show>
           <Show condition={props.mode==='edit'}>
             <button >update</button>
@@ -174,6 +181,7 @@ const mapStateToProps = (state) => {
     token: state.auth.token,
     posts:  state.profile.posts ,
     images: state.upload.images,
+    username: state.auth.user.username,
   };
 };
     

@@ -18,13 +18,13 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/reducers/auth';
 import * as actions2 from '../../store/reducers/profile';
 import AdminState from '../oneProduct/stateHeader';
-import {  getCategories } from '../../store/reducers/categories';
+import { getCategories } from '../../store/reducers/categories';
 import PaginationComponent from '../pagination/pagination';
 
-const  Main= (props) => {
+const Main = (props) => {
   props.load();
   useEffect(() => {
-    
+
     props.getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -35,9 +35,9 @@ const  Main= (props) => {
         <Products />
       </Route>
 
-      <Route exact path ="/searchBy/:category" >
-        <OneCategory/>
-        <Products productsKey = 'FILTER' />
+      <Route exact path="/searchBy/:category" >
+        <OneCategory />
+        <Products productsKey='FILTER' />
       </Route>
 
       <Route exact path="/search/:id">
@@ -49,9 +49,9 @@ const  Main= (props) => {
       </Route>
 
       <Route exact path="/log">
-        <Signup />
+        {/* <Signup /> */}
         <Login />
-        <Providers />
+        {/* <Providers /> */}
       </Route>
 
       <Route exact path="/post">
@@ -59,7 +59,7 @@ const  Main= (props) => {
       </Route>
 
       <Route exact path="/favList">
-        <Products  productsKey = 'fav'/>
+        <Products productsKey='fav' />
       </Route>
 
       <Route exact path="/admin">
@@ -69,23 +69,25 @@ const  Main= (props) => {
       </Route>
 
       <Route exact path="/edit/:id">
-        <AddPost mode = 'edit'/>
+        <AddPost mode='edit' />
       </Route>
-  
+
       <Route exact path="/status/:id">
         <Auth capability='admin'>
-          <AdminState/>
-          <OneProduct show = 'admin'/>
+          <AdminState />
+          <OneProduct show='admin' />
         </Auth>
       </Route>
 
       <Route exact path="/chat">
-        <Chat/>
+        <Chat />
       </Route>
 
       <Route exact path="/chat/:username">
-        <Chat/>
+
+        {/* <Chat/> */}
         <ClientComponent /> 
+
       </Route>
     </>
   );
@@ -93,7 +95,7 @@ const  Main= (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    products : state.products.products,
+    products: state.products.products,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
