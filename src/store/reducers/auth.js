@@ -2,12 +2,14 @@ import superagent from 'superagent';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import io from 'socket.io-client';
 const API = process.env.API_URL || 'https://trader401.herokuapp.com';
 
 const initialState = {
   loggedIn: false,
   user: {},
   token: '',
+  client:{} ,
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +17,7 @@ export default (state = initialState, action) => {
   // console.log('action ---->',payload,type);
   switch (type) {
   case 'setUserIn':
-    return {...state, user:payload.user , loggedIn : true, token: payload.token};
+    return {...state, user:payload.user , loggedIn : true, token: payload.token ,client:io.connect('https://trader401.herokuapp.com/')};
   
   case 'logout':
     cookie.save('auth', 'token',{ path: '/' });

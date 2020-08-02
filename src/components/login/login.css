@@ -2,9 +2,10 @@
   width: 29vw;
   padding: 3vw;
   height: 30vw;
-  margin-left: 16vw;
+  /* margin-left: 16vw; */
   margin-top: 9vw;
-  box-shadow: 0vw 1vw 3vw grey;
+  margin: auto;
+  /* box-shadow: 0vw 1vw 3vw grey; */
 }
 aside.form-elegant {
   /* background-color: brown; */
@@ -18,4 +19,11 @@ aside.form-elegant {
 }
 footer {
   clear: both;
+}
+.sign{
+  box-shadow:0vw 1vw 3vw grey;
+  width: 29vw;
+  margin: auto;
+  position: relative;
+  top: 20px;
 }
