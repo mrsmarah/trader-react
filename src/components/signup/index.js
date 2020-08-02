@@ -19,6 +19,7 @@ const SignUP = (props) => {
 
 
   const handleChange = e => {
+    console.log('signuo---->',state);
     state[e.target.name] = e.target.value;
   };
 
@@ -31,35 +32,35 @@ const SignUP = (props) => {
   return (
     <>
       <Show condition={!props.loggedIn}>
-        <div className='flexRight'>
-          <form className='signup' onSubmit={handleSubmit}  >
-            <label>Signup</label>
-            <Form.Control
-              placeholder="userName"
-              name="username"
-              onChange={handleChange}>
-            </Form.Control>
-            <Form.Control
-              placeholder="password"
-              name="password"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <Form.Control
-              placeholder="email"
-              name="email"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <Form.Control
-              placeholder="role"
-              name="role"
-              onChange={handleChange}
-            >
-            </Form.Control>
-            <button>SignUP</button>
-          </form>
-        </div>
+        {/* <div className='flexRight'> */}
+        <form className='signup' onSubmit={handleSubmit}  >
+          <label>Signup</label>
+          <Form.Control
+            placeholder="userName"
+            name="username"
+            onChange={handleChange}>
+          </Form.Control>
+          <Form.Control
+            placeholder="password"
+            name="password"
+            onChange={handleChange}
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="email"
+            name="email"
+            onChange={handleChange}
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="role"
+            name="role"
+            onChange={handleChange}
+          >
+          </Form.Control>
+          <button>SignUP</button>
+        </form>
+        {/* </div> */}
 
 
       </Show>
