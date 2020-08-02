@@ -6,7 +6,7 @@ import * as actions from '../../store/reducers/products';
 import { getRemoteProduct } from '../../store/reducers/post';
 // import {storage} from '../firebase/firebase';
 import Form from 'react-bootstrap/Form';
-
+import './addPost.css';
 import Upload from '../upload';
 const AddPost = (props) => {
   let { id } = useParams();

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addComment } from '../../store/reducers/post';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './comment.css';
 
@@ -21,29 +20,11 @@ function Comment(props) {
     await props.addComment(props.post.onePost._id, props.token, comment);
   };
   let commentArray = props.post.onePost.comment.length;
-  console.log('props.post.onePost.comment', props.post.onePost.comment)
+  console.log('props.post.onePost.comment', props.post.onePost.comment);
   return (
     <>
       <section className='commentSection'>
-        <form className='form-block' onSubmit={handleSubmit} >
-          <div id='commentText' className='col-xs-12'>
-            <div >
-              <TextField
-                label="comment"
-                name="theComment"
-                onChange={handleChange}
-                id='comment'
-                className='borderBu'
-
-              >
-              </TextField>
-            </div>
-          </div>
-          <button id='addComment' className="hoverBtn" >Add Comment</button>
-
-        </form>
-
-        <h2 className='comments-title'>Comments ({commentArray})</h2>
+        <h2 className='comments-title'>All Comments :  ({commentArray})</h2>
         {props.post.onePost.comment.map((comment, i) => {
           return (
             <div className='container'>
@@ -67,7 +48,22 @@ function Comment(props) {
             </div>
           );
         })}
+        <form className='form-block' onSubmit={handleSubmit} >
+          <div id='commentText' className='col-xs-12'>
+            <div >
+              <TextField
+                label="comment"
+                name="theComment"
+                onChange={handleChange}
+                id='comment'
+                className='borderBu'
+              >
+              </TextField>
+            </div>
+          </div>
+          <button id='addComment' className="hoverBtn" >Add Comment</button>
 
+        </form>
       </section>
     </>
   );

@@ -7,7 +7,7 @@
 .comments-title {
   font-size: 16px;
   color: #262626;
-  margin-left: 7%;
+  margin-left: 6%;
   margin-top: 1%;
   margin-bottom: 1%;
   font-family: "Conv_helveticaneuecyr-bold";
@@ -40,7 +40,12 @@ form.form-block {
 #addComment {
   border: 0;
   margin-top: 2%;
+  margin-bottom: 3%;
   width: 13%;
+  height: 2.5vw;
+  border-radius: 15px;
+  background-color: #00000087;
+  color: #d9d9d9;
 }
 .be-comment-content span {
   display: inline-block;
@@ -49,7 +54,7 @@ form.form-block {
 }
 
 .be-comment-name {
-  font-size: 13px;
+  font-size: 20px;
   font-family: "Conv_helveticaneuecyr-bold";
 }
 
@@ -74,10 +79,12 @@ form.form-block {
 
 .be-comment-text {
   font-size: 13px;
+  width: 47%;
   line-height: 18px;
-  color: #7a8192;
   display: block;
-  background: #f6f6f7;
+  color: #000000;
+  display: block;
+  background: #ddddf1;
   border: 1px solid #edeff2;
   padding: 15px 20px 20px 20px;
 }
@@ -126,7 +133,7 @@ form.form-block {
 }
 
 .container {
-  margin-left: 1%;
+  margin-left: 0%;
 }
 .MuiFormControl-root.MuiTextField-root.borderBu {
   width: 43%;
