@@ -42,7 +42,7 @@
     grid-row-end: 2 ;
     text-align: center;
 }
-.social-iconsh6{
+.navFooterTrader{
     grid-column-start:4 ;
     grid-column-end: 5 ;
     grid-row-start: 1 ;
@@ -50,7 +50,13 @@
     text-align: center;
 }
 
-
+.social-iconsh6{
+    grid-column-start:4 ;
+    grid-column-end: 5;
+    grid-row-start: 2 ;
+    grid-row-end: 3 ;  
+    text-align: center;
+}
 .form-group:first-child{
     grid-column-start:1 ;
     grid-column-end: 2;
@@ -133,8 +139,8 @@ h6.linksh6 {
 .social-list{
     grid-column-start:4 ;
     grid-column-end: 5;
-    grid-row-start: 2 ;
-    grid-row-end: 3 ;  
+    grid-row-start: 3 ;
+    grid-row-end: 4 ;  
     text-align: center;
 }
 
@@ -163,7 +169,7 @@ h6.linksh6 {
   display: block;
 }
 
-button.buttonnn.btn.btn-light {
+.footer button.buttonnn.btn.btn-light {
     width: 20%;
     margin: auto;
     height: 35%;
@@ -316,3 +322,67 @@ nav.footer.navbar.navbar-expand.navbar-light.bg-light {
 nav.footer.navbar.navbar-expand.navbar-light.bg-light {
     background-color: #080808cf;
 }
+
+.neon {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  p.neon {
+    line-height: 1vh;
+}
+  .aNeon {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  
+
+  .neon:nth-child(1) .aNeon {
+    font-size: .5em;
+    color: #fbfbfb;
+    font-family: Iceland;
+  }
+  
+  .neon:nth-child(1) .aNeon:hover {
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+    text-decoration: none;
+
+  }
+  
+  
+  .neon .aNeon:hover {
+    color: #ffffff;
+  }
+
+  @-webkit-keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+  }
+
+  @-moz-keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+  }
+
+  @keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+  }
+  
+ 

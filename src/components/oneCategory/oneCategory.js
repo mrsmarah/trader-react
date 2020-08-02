@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { handelCategory } from '../../store/reducers/categories';
 import { useEffect } from 'react';
+import Parallax from './parallax.js';
 
 
 const OneCategory = (props) => {
@@ -19,7 +20,11 @@ const OneCategory = (props) => {
   return (
     <>
       <div>
-        <h4>Active category : { props.categories.activeCategory}</h4>
+        <Parallax/>
+        <span>
+        <h4>{ props.categories.activeCategory}</h4>
+
+        </span>
         
       </div>
 

@@ -3,7 +3,7 @@ import './footer.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Form,FormControl,Button,Nav} from 'react-bootstrap';
 import ClientComponent from '../chat/index';
-
+import { Link} from 'react-router-dom';
 const Footer = () => {
 
 
@@ -45,6 +45,10 @@ const Footer = () => {
           <span className="foteerCon3">T R A D E R &copy; </span>
 
         {/* <div class="footer-social-icons"> */}
+        <Navbar.Brand className="navFooterTrader">
+          <p className="neon">
+            <Link to="/" className="aNeon">
+                  T R A D E R </Link></p></Navbar.Brand>
           <h6 className="social-iconsh6">FOLLOW US ON</h6>
           {/* <h4 class="_14">Follow us on</h4> */}
           <div className="social-list">

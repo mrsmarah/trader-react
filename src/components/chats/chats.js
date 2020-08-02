@@ -14,29 +14,43 @@ function Chats (props){
   },[]);
 
   return (
-    <section>
-      <ul>
-        {
-          props.rooms.map((room , i) =>{
-       
-            return (
-              <>
-                <li key={i}>
-
-                  <Link to={`/chat/${props.username === room.firstUser ? room.secondUser : room.firstUser}`}>
-                    {props.username === room.firstUser ? room.secondUser : room.firstUser}
-                  </Link>
-                  {/* <p>{room.messages[0] ? room.messages[0].payload:''}</p> */}
-                </li>
+    // <section>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+       <div class="users-container">
+            <ul class="users">
                
-              </>
-            );
-          })
-        }
-      </ul>
+            {/* </ul> */}
+{/* <ul> */}
+{
+props.rooms.map((room , i) =>{
+
+return (
+  <>
+ <li class="person" data-chat="person1"  key={i}>
+                    <div class="user">
+                        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"/>
+                    </div>
+                    <p class="name-time">
+                        <span class="name">
+      <Link to={`/chat/${props.username === room.firstUser ? room.secondUser : room.firstUser}`}>
+        {props.username === room.firstUser ? room.secondUser : room.firstUser}
+      </Link></span>
+      <span class="time">12/02/2019</span>
+                    </p>
+                </li>
+
+  </>
+);
+})
+}
+</ul>
+</div>
+</div>
+
+
      
-      {/* <ChatMessages /> */}
-    </section>
+      // {/* <ChatMessages /> */}
+    // {/* </section> */}
   );
 }
 
