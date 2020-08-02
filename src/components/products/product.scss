@@ -387,6 +387,9 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
   font-weight: bold;
 }
 
-.btn-title .mr-4, .btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
-   margin-right: 0; 
+.mr-4, .mx-4 {
+  margin-right: 0rem!important;
+}
+.card-body{
+  background-color: white;
 }

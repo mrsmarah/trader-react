@@ -84,8 +84,10 @@ const Main = (props) => {
       </Route>
 
       <Route exact path="/chat/:username">
-        <Chat />
-        <ClientComponent />
+
+        {/* <Chat/> */}
+        <ClientComponent /> 
+
       </Route>
     </>
   );
