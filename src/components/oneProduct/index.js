@@ -18,7 +18,7 @@ function OneProduct (props){
     if(props.show === 'admin'){
       props.getPost(id,props.token);
     }else{
-      props.getRemoteProduct(id);
+      props.getRemoteProduct(id,props.token);
     }
     
   }, []);
@@ -92,7 +92,7 @@ const mapStateToProps = (state) =>{
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
-  getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+  getRemoteProduct: (id,token) => dispatch(getRemoteProduct(id,token) ),
   getRooms:(token) => dispatch(getRooms(token)),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
   getPost:(id ,token ) => dispatch(getPost(id ,token)),
