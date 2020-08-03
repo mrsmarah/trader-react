@@ -43,7 +43,7 @@ function OneProduct (props){
             />
           </div>
           <hr/>
-          <p>{props.post.onePost.description} </p>
+          <p className="oneProductPara">{props.post.onePost.description} </p>
           <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
           <hr/>
           <div className="user-cat">

@@ -38,11 +38,11 @@ const Categories = (props) => {
                   <div className="h-three-para">
                     <h3 className="h-three">
                       <Link to={`/searchBy/${category.categories}`} >
-                        <div class="svg-wrapper">
+                        <div className="svg-wrapper">
                           <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                            <rect class="shape" height="60" width="320" />
+                            <rect className="shape" height="60" width="320" />
                           </svg>
-                          <div class="text"> {category.categories}</div>
+                          <div className="text"> {category.categories}</div>
                         </div>
                       </Link>
                     </h3><br/>
