@@ -59,6 +59,9 @@ function OneProduct (props){
               </MDBBtn> </span><br/>
             <span>Category Type: {props.post.onePost.categories} </span>
           </div>
+          <div className="box">
+	<a className="hoverBtn" href="#popup1">See Comments</a>
+</div>
         </div>
       </div>
       <Show condition={props.show !== 'admin'}>

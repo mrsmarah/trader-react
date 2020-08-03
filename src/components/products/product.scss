@@ -370,8 +370,11 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
 }
 
 .likeDislike{
-  display: flex;
-  justify-content: center;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 25% 25%;
+  position: absolute;
+  bottom: 3px;
 }
 .likeDislike .fa.fa-thumbs-up ,.likeDislike .fa.fa-thumbs-down {
   margin: 0 2%;
@@ -403,3 +406,50 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
 .mr-4, .mx-4 {
   margin-right: 0rem!important;
 }
+.col-md-4 a {
+  color: black;
+}
+.col-md-4 a:hover  {
+  font-size: 20px;
+  text-decoration: wavy;
+  color: rgb(117, 117, 167);
+}
+  .col-md-4 h4:hover{
+    text-decoration: wavy;
+    color: rgb(117, 117, 167);
+  }
+
+.card span a{
+  color: white;
+}
+.card span a:hover{
+  color: white;
+  text-decoration: wavy;
+}
+.likeDislike div{
+  display: flex;
+  padding: 2%;
+}
+.pagination{
+  justify-content: center;
+  
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  
+}
+a.page-link:active {
+  background-color: #688a9e;
+  color: white;
+}
+// .pagination a:active {
+//   background-color: #688a9e;
+//   color: white;
+// }
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
