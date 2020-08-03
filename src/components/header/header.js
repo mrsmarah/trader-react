@@ -41,7 +41,7 @@ function Header(props) {
 
           <MDBDropdown >
             <MDBDropdownToggle caret color="primary" className="a-tag" >
-              <span> <img src={props.image || 'https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png'} alt="img" style={{
+              <span> <img src={props.user.userImage || 'https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png'} alt="img" style={{
                 height:'35px',
                 borderRadius:'50%'
               }}/></span>
@@ -105,6 +105,7 @@ const mapStateToProps = (state) => {
   return {
     username: state.auth.user.username,
     loggedIn: state.auth.loggedIn,
+    user: state.profile.user,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
