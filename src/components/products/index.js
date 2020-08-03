@@ -20,7 +20,7 @@ function Products (props){
   ////////////////////////////////// PAGINATION
   let currentItems = [];
   let pageNumbers = [];
-  let itemPerPage= 9;
+  let itemPerPage= 12;
 
   if (props.currentPage) {
     let idxOfLastItem = props.currentPage * itemPerPage;
@@ -94,11 +94,11 @@ function Products (props){
                       className='img-fluid'
                       overlay="white-light"
                       hover
-                      src= {'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'}
-                      
+                      src= {product.images[0] ||'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png'}
                     />
+
                     <img className="userImgInCard"
-                      src={!product.userImage?'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png':product.username}
+                      src={!product.userImage?'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png':product.userImage}
                       alt=''
                     /> <span><Link to={`/user/${product.username}`}
                     >{product.username}
