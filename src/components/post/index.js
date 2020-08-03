@@ -22,6 +22,8 @@ const Post = (props) => {
       hover
       src= "https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg"
     />
+    <MDBCardBody cascade>
+    <MDBCardText className="buttonInText">
     <MDBBtn
       href={`/search/${props.data._id}`}
       floating
@@ -31,7 +33,7 @@ const Post = (props) => {
     >
       <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
     </MDBBtn>
-    <MDBCardBody cascade>
+    </MDBCardText>
       <MDBCardTitle>{props.data.title}</MDBCardTitle>
       <hr/>
       <MDBCardText>

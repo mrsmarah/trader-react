@@ -85,10 +85,14 @@ i.fa.fa-trash.fa-3x.cyan-text{
   i.fa.fa-trash.fa-3x.cyan-text:hover{
       color: #080707;
   }
-  .btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor.next.mr-4{
-      margin-right: 3%;
-  }
+ 
 
  .mx-4 {
     margin-right: 0;
+}
+.buttonInText{
+    display: flex;
+}
+.buttonInText  .btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor.next.mr-4{
+    margin-right: 3%;
 }
