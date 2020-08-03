@@ -27,17 +27,25 @@ const ReactFirebaseFileUpload = (props) => {
 
   return (
     <div>
+      <div className='gridClass'>
+        <div className='gridImages'>
+          {
+            props.images.map((imageMap, i) => {
+              //   console.log('uploaded file--->',props.images);
+              return (
+                <div className='imges'>
+                  <img key={imageMap} src={`${imageMap}`} alt={`uploaded image ${i}`} width="100" height="100" />
 
-      {
-        props.images.map((imageMap, i) => {
-          //   console.log('uploaded file--->',props.images);
-          return (
-            // eslint-disable-next-line jsx-a11y/img-redundant-alt
-            <img key={imageMap} src={`${imageMap}`} alt={`uploaded image ${i}`} width="300" height="300" />
+                </div>
 
-          );
-        })
-      }
+              );
+            })
+          }
+        </div>
+
+      </div>
+
+
       <progress value={progress} max="100" />
 
       <div class="fileUpload">

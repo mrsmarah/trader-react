@@ -64,8 +64,8 @@ function Products (props){
   },[]);
 
   return (
-
-    <section className="allProduct">
+<>
+    {/* // <section className="allProduct"> */}
       {/* <ParallaxHeader/> */}
       <section className="productContainer">
         {/* {props.data.map((product , i) =>{ */}
@@ -133,19 +133,22 @@ function Products (props){
                       </Link>
                       <MDBCardText>
                         <div className="likeDislike">
+                          <div>
                           <MDBIcon 
                             icon="thumbs-up"
                             onClick={() =>{
                               props.ratePost(product._id, props.token , {'theRate':'+'} );
                             }} />
                           <p>{product.positiveRateUser.length}</p>
-
+                          </div>
+                          <div>
                           <MDBIcon 
                             icon="thumbs-down"
                             onClick={() =>{
                               props.ratePost(product._id, props.token , {'theRate':'-'});
                             }} />
                           <p>{product.negativeRateUser.length}</p>
+                          </div>
                         </div>
                       </MDBCardText>
 
@@ -159,29 +162,29 @@ function Products (props){
           );
         })
         }
+      {/* </section> */}
       </section>
-
       <Pagination pageNumbers={pageNumbers}/>
 
-      <MDBCol md="12" className="mb-4">
+      {/* <MDBCol md="12" className="mb-4"> */}
 
-
-        <MDBCard className="card-image" style={{
-          backgroundImage:
-          "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
-        }}>
-          <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
-            <div className="black">
-              <h3 className="py-3 font-weight-bold">
-                <strong> What's Special</strong>
-              </h3>
-              <h6 className="purple-text">
-                <strong> For today?</strong>
-              </h6>
-            </div>
-          </div>
-        </MDBCard>
-      </MDBCol>
+{/* <MDBCard className="card-image" style={{
+        backgroundImage:
+          "url(https://cdn11.bigcommerce.com/s-fcn1lgnyqp/stencil/535737d0-2953-0136-9c41-525400dfdca6/e/636f37e0-f70b-0135-4977-525400970412/img/heading-brush.png) "
+      }}> */}
+  {/* <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
+    <div className="black">
+      <h3 className="py-3 font-weight-bold">
+        <strong> What's Special</strong>
+      </h3>
+      <h6 className="purple-text">
+        <strong> For today?</strong>
+      </h6>
+    </div>
+  </div> */}
+{/* </MDBCard> */}
+{/* </MDBCol> */}
+{/* <section className="footerPic"> */}
       <section className="threeCard">
         <MDBCol>
           <MDBCard
@@ -248,9 +251,10 @@ function Products (props){
 
       </section>
 
+   
       <ParallaxFooter/>
-    </section>
-
+     {/* </section> */}
+</>
   );
 }
 

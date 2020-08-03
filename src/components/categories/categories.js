@@ -57,10 +57,10 @@ const Categories = (props) => {
 
       <MDBCol md="12" className="mb-4">
 
-        <MDBCard className="card-image" style={{
-          backgroundImage:
-                  "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
-        }}>
+        {/* <MDBCard className="card-image" style={{
+                backgroundImage:
+                  "url(https://cdn11.bigcommerce.com/s-fcn1lgnyqp/stencil/535737d0-2953-0136-9c41-525400dfdca6/e/636f37e0-f70b-0135-4977-525400970412/img/heading-brush.png) "
+              }}> */}
           <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
             <div className="black">
               <h3 className="py-3 font-weight-bold">
@@ -71,7 +71,7 @@ const Categories = (props) => {
               </h6>
             </div>
           </div>
-        </MDBCard>
+        {/* </MDBCard> */}
       </MDBCol>
 
     </>
