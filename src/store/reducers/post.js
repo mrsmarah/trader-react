@@ -42,7 +42,6 @@ export const getRemoteProduct = (id,token='0')  => dispatch => {
       });}
   else{return superagent.get(api)
     .set('Content-Type', 'application/json' )
-    .set('Authorization',`Bearer ${token}`)
     .then(data => {
       (console.log('getRemoteProduct DATA -------->',data ));
       dispatch( getProduct(data.body));
