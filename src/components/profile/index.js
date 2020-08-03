@@ -60,7 +60,7 @@ const Profile = (props) => {
  
       <Parallax/>
       <div className="avatar">
-        <img src="https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png" alt="img" className="imgAvatar"/>
+        <img src={props.user.userImage || 'https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png'} alt="img" className="imgAvatar"/>
         <h3>
           {props.user.fullName||props.user.username}
         </h3>
