@@ -77,8 +77,22 @@ i.fa.fa-trash.fa-3x.cyan-text{
       justify-content: flex-end;
       font-size: xx-large;
       color: #dbe1e4;
+      position: absolute;
+    bottom: 3%;
+    left: 81%;
   }
   
   i.fa.fa-trash.fa-3x.cyan-text:hover{
       color: #080707;
   }
+ 
+
+ .mx-4 {
+    margin-right: 0;
+}
+.buttonInText{
+    display: flex;
+}
+.buttonInText  .btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor.next.mr-4{
+    margin-right: 3%;
+}

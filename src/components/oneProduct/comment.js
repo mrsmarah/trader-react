@@ -23,6 +23,10 @@ function Comment(props) {
   console.log('props.post.onePost.comment', props.post.onePost.comment);
   return (
     <>
+    <div id="popup1" className="overlay">
+	<div className="popup">
+  <a className="close" href="#">&times;</a>
+  <div className="content">
       <section className='commentSection'>
         <h2 className='comments-title'>All Comments :  ({commentArray})</h2>
         {props.post.onePost.comment.map((comment, i) => {
@@ -65,6 +69,11 @@ function Comment(props) {
 
         </form>
       </section>
+      </div>
+      </div>
+      </div>
+
+
     </>
   );
 }

@@ -435,3 +435,24 @@ height: auto;
 .col-xl-8.col-lg-8.col-md-8.col-sm-9.col-9{
     max-width: initial;
 }
+  /* Designing for scroll-bar */ 
+  ::-webkit-scrollbar { 
+    width: 6px; 
+} 
+
+/* Track */ 
+::-webkit-scrollbar-track { 
+    background: gainsboro; 
+    border-radius: 5px; 
+} 
+
+/* Handle */ 
+::-webkit-scrollbar-thumb { 
+    background: black; 
+    border-radius: 5px; 
+} 
+
+/* Handle on hover */ 
+::-webkit-scrollbar-thumb:hover { 
+    background: #555; 
+} 
