@@ -26,7 +26,7 @@ const Post = (props) => {
       href={`/search/${props.data._id}`}
       floating
       tag='a'
-      className='ml-auto mr-4 lighten-3 mdb-coalor'
+      className='ml-auto mr-4 lighten-3 mdb-coalor next'
       action onClick={()=> props.getRemoteProduct(props.data._id)}
     >
       <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
