@@ -52,7 +52,7 @@ function Header(props) {
               </Show>
               <Show condition={!props.loggedIn}>
                 <span >
-                  <NavLink to="/log">Log In</NavLink>
+                  <NavLink to="/log" >Log In</NavLink>
                 </span>
               </Show>
               <Show condition={props.loggedIn}>
