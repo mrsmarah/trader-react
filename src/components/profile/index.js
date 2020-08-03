@@ -98,7 +98,7 @@ const Profile = (props) => {
         </div>
 
       </div>
-      <div>
+      <div className="marginMin">
         {/* <NavLink to="/favList">Fav List</NavLink> */}
         <div className="App">
           <Carousel breakPoints={breakPoints}>

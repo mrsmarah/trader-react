@@ -47,6 +47,8 @@ a.btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
 }
 .card{
   border-radius: 1.25rem;
+  background-color: #fff;
+
 }
 .card-body {
   flex: 1 1 auto;
@@ -102,17 +104,24 @@ a.btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
 }
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
-section.allProduct{
-  display: grid;
+// section.allProduct{
+//   display: grid;
 
+// }
+.card.card-image.imageCard{
+  border-radius: 1rem;
 }
-
 .card.cards.card-image.imageCard {
   background-color: none;
+  border-radius: 1rem;
 }
 
 .text-white.text-center.d-flex.align-items-center.rgba-black-strong.py-5.px-4.divImg.imageCard{
   background-color: #10101000;
+  border-radius: 1rem;
+}
+.text-white.text-center.d-flex.align-items-center.rgba-black-strong.py-5.px-4.divImg{
+  border-radius: 1rem;
 }
 
 i.fa.fa-gratipay.fa-3x.cyan-text {
@@ -149,7 +158,11 @@ section.productContainer {
 
 }
 section.threeCard{
-  margin: 0 6% 4%
+  margin: 0 ;
+  width: 100%;
+  grid-template-columns: 33% 33% 34%;
+  display: grid;
+  padding: 3%;
 }
 
 .firstSection , .secSection ,.thirdSection {
@@ -358,7 +371,7 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
 
 .likeDislike{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .likeDislike .fa.fa-thumbs-up ,.likeDislike .fa.fa-thumbs-down {
   margin: 0 2%;
@@ -389,7 +402,4 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
 
 .mr-4, .mx-4 {
   margin-right: 0rem!important;
-}
-.card-body{
-  background-color: white;
 }
