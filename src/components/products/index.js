@@ -94,11 +94,11 @@ function Products (props){
                       className='img-fluid'
                       overlay="white-light"
                       hover
-                      src= {product.images[0] ||'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png'}
+                      src= {product.images[0] ? product.images[0] :'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'}
+                      
                     />
-
                     <img className="userImgInCard"
-                      src={!product.userImage?'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png':product.userImage}
+                      src={!product.userImage?'https://images.vexels.com/media/users/3/136558/isolated/lists/43cc80b4c098e43a988c535eaba42c53-person-user-icon.png':product.username}
                       alt=''
                     /> <span><Link to={`/user/${product.username}`}
                     >{product.username}
