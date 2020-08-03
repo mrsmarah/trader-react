@@ -419,10 +419,10 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
     color: rgb(117, 117, 167);
   }
 
-.card span a{
+.card > span > a{
   color: white;
 }
-.card span a:hover{
+.card > span > a:hover{
   color: white;
   text-decoration: wavy;
 }
