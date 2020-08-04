@@ -50,7 +50,7 @@ const ReactFirebaseFileUpload = (props) => {
         </div>
       </div> */}
       {/* <img className='backImg' src='https://image.freepik.com/free-photo/living-room-with-armchairs-shelfs-room-wall-blue_41470-216.jpg' ></img> */}
-      <Table className='mt-4 '>
+      <Table className='mt-4 tavleImag'>
         <tr className='grid-container'>
           {props.images.map((imageMap, i) => {
             return (

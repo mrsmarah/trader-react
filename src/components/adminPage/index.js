@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { statusPost, changeStatus } from '../../store/reducers/adminPageReducer.js';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
+import './admin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 const Admin = (props) => {
@@ -13,7 +14,7 @@ const Admin = (props) => {
     <>
 
       <h1>Admin Page</h1>
-      <Table>
+      <Table className='adminTable'>
         <thead>
           <tr>
             <th>User Name</th>
@@ -41,9 +42,9 @@ const Admin = (props) => {
                     <option value="rejected">reject</option>
                   </select>
                 </th>
-                <th>{post.description}</th>
+                <th className='charNum'>{post.description}</th>
                 <th><Link to={`/status/${post._id}`}>View Details</Link></th>
-               
+
               </tr>
             </tbody>
 

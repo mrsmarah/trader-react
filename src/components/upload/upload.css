@@ -55,7 +55,7 @@ input[type="file"] {
   background-color: #353535e0;
   margin-top: 2em;
   margin-bottom: 5em;
-  margin-right: 11em;
+  margin-right: 9em;
 }
 .grid-container {
   display: grid;
@@ -75,7 +75,7 @@ table.mt-4.table {
   height: 30em;
   /* border: 1px black solid; */
 }
-.table {
+.tavleImag {
   width: 48em;
 }
 #textUp {
