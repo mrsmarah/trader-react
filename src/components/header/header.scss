@@ -281,3 +281,25 @@ color: white;
 .dropdown.show .show.basic.dropdown-menu  .dropdown-item a:hover{
   color: #2e5a5ccf ;
 }
+
+.headerNavs{
+  display: inline-block;
+    list-style: none;
+    text-decoration: none;
+    padding: 5px 15px;
+    position: sticky;
+    font-family: 'Open Sans Condensed', sans-serif;
+font-weight: lighter;
+letter-spacing: 2px;
+font-size: 18px;
+text-shadow: black;
+text-decoration: none;
+    color:rgb(248, 246, 242) ;
+    font-size: 18px;
+}
+
+// .headerNavs :hover{
+//   background-color: rgba(175, 101, 76, 0.541);
+//     transition: 0.5s;
+//     border-radius: 10px;
+// }
