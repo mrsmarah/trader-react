@@ -4,7 +4,7 @@ import * as actions from '../../store/reducers/profile';
 import Post from '../post'; 
 import {useParams,NavLink } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import './profile.scss'
+import './profile.scss';
 import Parallax from './parallaxAvatar.js';
 import Carousel from 'react-elastic-carousel';
 
@@ -22,6 +22,10 @@ const Profile = (props) => {
   console.log('username profile',username);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     console.log('username profile2',username);
     props.getUser(username ,props.token );
     props.getPosts(username , props.token);
@@ -31,7 +35,7 @@ const Profile = (props) => {
     //   console.log('unmounting...');
     //   props.clear();  
     // };
-  }, [username]);
+  }, [props, username]);
   
   return (
     <>

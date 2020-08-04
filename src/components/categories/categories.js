@@ -11,6 +11,7 @@ const Categories = (props) => {
 
   useEffect(() => {
     props.getCategories();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

@@ -16,7 +16,10 @@ const AddPost = (props) => {
   const [post, setPost] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  useEffect(() => {
     if (props.mode === 'edit') {
       let currentPost = props.posts.filter(post => post._id === id);
       setPost(currentPost[0] || {});

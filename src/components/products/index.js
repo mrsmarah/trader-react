@@ -38,7 +38,7 @@ function Products (props){
   ///////////////////////////////////////
 
   useEffect(() => {
-    
+    window.scrollTo(0, 0);
     console.log('PRODUCTS KEY ------>',props.productsKey);
    
     setTimeout(function(){while(props.user === {}){}
