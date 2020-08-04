@@ -4,6 +4,7 @@
   z-index: 9999;
   background-color: #080808cf ;
   top: 0;
+  min-height: 65.750px;
 }
 .bg-light {
   background-color: #080808cf ;
@@ -45,6 +46,11 @@
 .a-tag{
     text-decoration: none;
     
+}
+.dropdown .btn-primary.btn.Ripple-parent.dropdown-toggle.a-tag span a:hover{
+  text-decoration: none;
+  
+  
 }
 .a-tag {
     margin: 10px;

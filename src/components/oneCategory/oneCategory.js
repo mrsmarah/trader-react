@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { Parallax } from 'react-parallax';
 import './oneCategory.scss'
 const OneCategory = (props) => {
-
+  
   let{category} = useParams();
   console.log('props.categories',props.categories);
   
@@ -16,9 +16,21 @@ const OneCategory = (props) => {
     props.getCategory(category, props.categories.activeCategoryImg);
     
   },[]);
-
   return (
     <>
+
+<section id="hero1" className="hero" 
+style={{
+  height:"400px",
+  backgroundImage:`url(${ props.categories.activeCategoryImg})`
+}}>
+  <div className="inner">
+    <div className="copy">
+    <h1 className="headerh1">{ props.categories.activeCategory}</h1>
+    
+    </div>
+  </div>
+</section>
       {/* <div> */}
       {/* <Parallax bgImage={ props.categories.activeCategoryImg} 
       strength={600}
@@ -39,11 +51,11 @@ const OneCategory = (props) => {
         }}/>
       </div> */}
 
-<div className="center" style={{
+{/* <div classNameName="center" style={{
   // backgroundImage: "url({ props.categories.activeCategoryImg})"
-}}>
-  <h1 className="center__text glitch is-glitching" data-text="Hover me!">{ props.categories.activeCategory}</h1>
-</div>
+}}> */}
+  {/* <h1 classNameName="center__text glitch is-glitching" data-text="Hover me!">{ props.categories.activeCategory}</h1>
+</div> */}
     </>
   );
 };
