@@ -56,7 +56,7 @@ function Comment(props) {
           <div id='commentText' className='col-xs-12'>
             <div >
               <TextField
-                label="comment"
+                label="type your comment here ..."
                 name="theComment"
                 onChange={handleChange}
                 id='comment'
@@ -65,7 +65,7 @@ function Comment(props) {
               </TextField>
             </div>
           </div>
-          <button id='addComment' className="hoverBtn" >Add Comment</button>
+          <button id='addComment' className="hoverBtn" >Add</button>
 
         </form>
       </section>

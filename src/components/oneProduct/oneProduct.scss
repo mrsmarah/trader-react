@@ -69,6 +69,9 @@
     text-decoration: none;
     color: #0c0b0b;
   }
+  .fancy-button-text:hover{
+color: #fff;
+  }
   .fancy-button:hover .fancy-button-text {
     color: #4a5568;
   }
@@ -134,6 +137,7 @@
 // }
 .box{
   box-shadow: none;
+  margin: 4% 0 4% 3%;
 }
 // .buttonn {
 //   font-size: 1em;
@@ -151,6 +155,21 @@
 .box .btn{
   color: black;
   
+}
+.box button a.hoverBtn {
+  color: #808080cf;
+}
+.box button{
+
+  background-color: #d2ccc3;
+  border-radius: 1rem;
+}
+.box button:hover{
+  background-color: #48bb78;
+}
+.box button a.hoverBtn:hover{
+  color: #fff;
+  text-decoration: none;
 }
 .oneProductPara{
   overflow: scroll;
@@ -184,6 +203,7 @@
   position: relative;
   transition: all 5s ease-in-out;
   height: 70%;
+  z-index: 9999;
 }
 
 .popup h2 {
@@ -207,6 +227,9 @@
 .popup .content {
   max-height: 100%;
   overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: rotate(180deg);
 }
 
 @media screen and (max-width: 700px){
