@@ -13,14 +13,14 @@ import { MDBIcon,MDBBtn } from 'mdbreact';
 function OneProduct (props){
   
   let{id} = useParams();
-  console.log('ONEEEE---------------->', props.post,id);
+  console.log('ONEEEE---------------->', props.post.onePost.images );
   useEffect(() => {
     if(props.show === 'admin'){
       props.getPost(id,props.token);
     }else{
       props.getRemoteProduct(id,props.token);
     }
-    
+    // console.log('ONEEEE---------------->', props.post.onePost.images[0] );
   }, []);
   
 
@@ -69,7 +69,6 @@ function OneProduct (props){
 
           {/* <button onClick={ () =>{
             props.addToFav(props.post.onePost._id , props.token );
-
           }} variant="light">Add To Favorite</button>  */}
 
           {/* <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button> */}

@@ -98,12 +98,12 @@ function Products (props){
                 </div>
                 <div className ="card__img"
                   style={{
-                    backgroundImage:  product.images[0]  || 'url(https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)',
+                    backgroundImage: `url(${product.images[0]})`,
                   }}
                 ></div>
                 <Link to={`/search/${product._id}`} className="card_link">
                   <div className="card__img--hover"style={{
-                    backgroundImage:  product.images[0]  || 'url(https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)',
+                    backgroundImage:  `url(${product.images[0]})`,
                   }}></div>
                 </Link>
                 <div className ="card__info">
