@@ -103,7 +103,7 @@ function ClientComponent(props) {
       let user = (username === roomDetails.firstUser ? roomDetails.firstImage : roomDetails.secondImage)||{};
       if(username==='trader'){
         console.log('inside if chat--->',username==='trader',username);
-        user={userImage:'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png'};
+        user={userImage:'https://www.freelogodesign.org/file/app/client/thumb/7b61e8d4-1679-4999-9034-beabc98e968c_200x200.png?1596553567282'};
       }
       // user.userImage = username === 'trader'?'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png':user.userImage;
       console.log('user from chat ---->',user,username);
