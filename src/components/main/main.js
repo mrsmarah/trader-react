@@ -23,8 +23,10 @@ import PaginationComponent from '../pagination/pagination';
 
 const Main = (props) => {
   props.load();
-  useEffect(() => {
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
     props.getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

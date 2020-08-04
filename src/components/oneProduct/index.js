@@ -15,6 +15,7 @@ function OneProduct (props){
   let{id} = useParams();
   console.log('ONEEEE---------------->', props.post.onePost.images );
   useEffect(() => {
+    window.scrollTo(0, 0);
     if(props.show === 'admin'){
       props.getPost(id,props.token);
     }else{

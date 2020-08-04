@@ -10,6 +10,10 @@ const Admin = (props) => {
     props.post(props.token);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
 

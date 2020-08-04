@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
+// import ScrollToTop from './components/scroll/scroll.js';
 import Main from './components/main/main.js';
 import { connect } from 'react-redux';
 import * as actions from './store/reducers/auth';
@@ -38,6 +39,7 @@ const App = (props) => {
       <Main />
 
       <Footer />
+     
     </>
   );
 };

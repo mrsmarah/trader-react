@@ -19,6 +19,10 @@ const Login = (props) => {
   const [signup, setSignup] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleChange = e => {
     state[e.target.name] = e.target.value;
   };

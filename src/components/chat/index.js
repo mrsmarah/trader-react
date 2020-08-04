@@ -19,7 +19,10 @@ function ClientComponent(props) {
   console.log('cnt',cnt++,chat,room,roomDetails );
   let arrayTest = [];
 
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   useEffect( () => {
    
