@@ -6,13 +6,15 @@
   color: #fff;
   font-size: 1em;
   font-weight: bold;
-  margin: -0.1em 5.25em auto;
+  /* margin: -0.1em 5.25em auto; */
   overflow: hidden;
-  padding: 0.875em; /*14px/16px*/
+  padding: 0.9em;
   position: relative;
   text-align: center;
-  width: 11vw;
   cursor: pointer;
+  margin-top: 5em;
+  margin-left: 0.95em;
+  width: 9em;
 }
 .fileUpload:hover,
 .fileUpload:active,
@@ -61,19 +63,24 @@ input[type="file"] {
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
+  justify-content: flex-start;
 }
 .grid-item {
   padding: 20px;
   font-size: 30px;
   text-align: center;
 }
+.table td {
+  border: none;
+}
 table.mt-4.table {
   position: absolute;
-  left: 1em;
-  top: 17%;
-  /* border: 1px black solid; */
-  height: 30em;
-  /* border: 1px black solid; */
+  left: 35.5em;
+  top: 21em;
+  height: 16em;
+  width: 32em;
+  background-color: #00000030;
+  border-radius: 8px;
 }
 .tavleImag {
   width: 48em;
@@ -83,15 +90,14 @@ table.mt-4.table {
   margin-left: 10em;
 }
 .zIndex {
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.35),
-      rgba(255, 255, 255, 0.35)
-    ),
-    url(https://image.freepik.com/free-photo/living-room-with-armchairs-shelfs-room-wall-blue_41470-216.jpg);
   height: 32em;
   background-size: cover;
+  margin-top: 2em;
+  margin-bottom: 5em;
+  margin-right: 12.9em;
+  width: 60em;
 }
 select#inputGroupSelect01 {
-  background-color: #6c6c6b;
+  background-color: transparent;
   border-radius: 14px;
 }

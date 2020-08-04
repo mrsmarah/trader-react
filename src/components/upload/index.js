@@ -55,7 +55,7 @@ const ReactFirebaseFileUpload = (props) => {
           {props.images.map((imageMap, i) => {
             return (
               <td className='imges grid-item'>
-                <img key={imageMap} src={`${imageMap}`} alt={`uploaded image ${i}`} width="150" height="150" />
+                <img key={imageMap} src={`${imageMap}`} alt={`uploaded image ${i}`} width="80" height="80" />
               </td>
             );
           })}
