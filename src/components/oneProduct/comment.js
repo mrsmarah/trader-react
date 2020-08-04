@@ -52,28 +52,29 @@ function Comment(props) {
                   </div>
                 );
               })}
-              <form className='form-block' onSubmit={handleSubmit} >
-                <div id='commentText' className='col-xs-12'>
-                  <div >
-                    <TextField
-                      label="comment"
-                      name="theComment"
-                      onChange={handleChange}
-                      id='comment'
-                      className='borderBu'
-                    >
-                    </TextField>
-                  </div>
-                </div>
-                <button id='addComment' className="hoverBtn" >Add Comment</button>
 
-              </form>
-            </section>
-          </div>
-        </div>
-      </div>
+          <form className='form-block' onSubmit={handleSubmit} >
+            <div id='commentText' className='col-xs-12'>
+              <div >
+                <TextField
+                  label="type your comment here ..."
+                  name="theComment"
+                  onChange={handleChange}
+                  id='comment'
+                  className='borderBu'
+                >
+                </TextField>
+              </div>
+            </div>
+            <button id='addComment' className="hoverBtn" >Add</button>
+  
+                </form>
+              </section>
+            </div>
+            </div>
+            </div>
 
-
+       
     </>
   );
 }

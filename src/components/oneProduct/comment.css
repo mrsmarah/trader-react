@@ -79,7 +79,6 @@ form.form-block {
 
 .be-comment-text {
   font-size: 13px;
-  width: 47%;
   line-height: 18px;
   display: block;
   color: #000000;
@@ -130,11 +129,17 @@ form.form-block {
 
 .be-comment-text {
   border-radius: 35px;
+  word-break: break-all;
 }
 
 .container {
   margin-left: 0%;
 }
 .MuiFormControl-root.MuiTextField-root.borderBu {
-  width: 43%;
+  width: 100%;
+}
+
+section.commentSection{
+  overflow: hidden;
+    transform: rotate(180deg);
 }

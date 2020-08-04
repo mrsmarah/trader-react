@@ -1,5 +1,6 @@
 .swiper-container {
     width: 500px;
+    // height: 325px;
   }
   
   .swiper-pagination {
@@ -11,6 +12,8 @@
     padding-inline-start: 0;
     // margin-left: 5%;
     margin-top: 2%;
+    height: auto;
+    
   }
 
   section#main {
@@ -19,8 +22,18 @@
 }
 div#thumbs {
     margin: 0 3%;
-    width: 31.25em;
+    // width: 31.25em;
 }
-section.sliderr {
-display: grid;
+// section.sliderr {
+// display: grid;
+// }
+li.swiper-slide.swiper-slide-active{
+  width: 158.333px;
+}
+.swiper-slide{
+    flex-shrink: unset;
+    
+  }
+  .swiper-container-android .swiper-slide, .swiper-wrapper {
+      transform: translate3d(0px, 0, 0); 
 }
