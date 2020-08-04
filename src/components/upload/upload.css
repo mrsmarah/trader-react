@@ -54,10 +54,14 @@ input[type="file"] {
 }
 
 .formStyle {
-  background-color: #353535e0;
+  background-color: #353535bf;
   margin-top: 2em;
   margin-bottom: 5em;
   margin-right: 9em;
+}
+
+.form-control:focus {
+  color: #fdfdfd;
 }
 .grid-container {
   display: grid;
