@@ -20,7 +20,7 @@ const Post = (props) => {
       className='img-fluid'
       overlay="white-light"
       hover
-      src= {props.data.images[0]||"https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg"}
+      src= "https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg"
     />
     <MDBCardBody cascade>
     <MDBCardText className="buttonInText">
