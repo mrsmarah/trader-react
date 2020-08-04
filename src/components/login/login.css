@@ -120,7 +120,6 @@ span#goBack {
   font-size: 1.5vw;
   margin-top: 4%;
   margin-left: 19vw;
-
   color: #d9d9d9;
 }
 #goBackBtn {
@@ -142,7 +141,6 @@ span#goBack {
 .borderBu {
   background-color: transparent;
   border-color: none;
-  /* border: none; */
   border: none;
   border-bottom: 1px white solid;
 }
@@ -153,4 +151,9 @@ span#goBack {
 }
 .backsize {
   font-size: 20px;
+}
+.formStyle {
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  margin-right: 14vw;
 }

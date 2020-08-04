@@ -68,7 +68,6 @@ const SignUP = (props) => {
             name="role"
             onChange={handleChange}
             className='borderBu'
-
           >
           </Form.Control>
           <button id='signInBt'>SING UP</button>

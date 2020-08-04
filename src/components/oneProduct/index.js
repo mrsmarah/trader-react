@@ -13,14 +13,14 @@ import { MDBIcon,MDBBtn } from 'mdbreact';
 function OneProduct (props){
   
   let{id} = useParams();
-  console.log('ONEEEE---------------->', props.post,id);
+  console.log('ONEEEE---------------->', props.post.onePost.images );
   useEffect(() => {
     if(props.show === 'admin'){
       props.getPost(id,props.token);
     }else{
-      props.getRemoteProduct(id);
+      props.getRemoteProduct(id,props.token);
     }
-    
+    // console.log('ONEEEE---------------->', props.post.onePost.images[0] );
   }, []);
   
 
@@ -43,7 +43,7 @@ function OneProduct (props){
             />
           </div>
           <hr/>
-          <p>{props.post.onePost.description} </p>
+          <p className="oneProductPara">{props.post.onePost.description} </p>
           <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
           <hr/>
           <div className="user-cat">
@@ -59,6 +59,9 @@ function OneProduct (props){
               </MDBBtn> </span><br/>
             <span>Category Type: {props.post.onePost.categories} </span>
           </div>
+          <div className="box">
+	<a className="hoverBtn" href="#popup1">See Comments</a>
+</div>
         </div>
       </div>
       <Show condition={props.show !== 'admin'}>
@@ -66,7 +69,6 @@ function OneProduct (props){
 
           {/* <button onClick={ () =>{
             props.addToFav(props.post.onePost._id , props.token );
-
           }} variant="light">Add To Favorite</button>  */}
 
           {/* <button variant="light"><Link to={`/chat/${props.post.onePost.username}`}>Chat</Link></button> */}
@@ -89,7 +91,7 @@ const mapStateToProps = (state) =>{
 } ;
 
 const mapDispatchToProps = (dispatch) => ({
-  getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
+  getRemoteProduct: (id,token) => dispatch(getRemoteProduct(id,token) ),
   getRooms:(token) => dispatch(getRooms(token)),
   addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
   getPost:(id ,token ) => dispatch(getPost(id ,token)),

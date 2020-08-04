@@ -17,11 +17,12 @@ function Header(props) {
         <Navbar.Brand>
           <p className="neon">
             <Link to="/" className="aNeon">
+              {/* <img src="../../../../assets/logo.png"/> */}
                   T R A D E R </Link></p></Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
 
           <Nav className="mr-auto">
-            <MDBCol md="6">
+            {/* <MDBCol md="6">
               <div className="input-group md-form form-sm form-1 pl-0">
                 <div className="input-group-prepend">
                   <span className="input-group-text purple lighten-3" id="basic-text1">
@@ -30,7 +31,7 @@ function Header(props) {
                 </div>
                 <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" />
               </div>
-            </MDBCol>
+            </MDBCol> */}
           </Nav>
           {/* <NavLink className="a-tag" to={`/user/${props.username}`} onClick={() => {
               props.getUser(props.username);
@@ -40,7 +41,7 @@ function Header(props) {
 
           <MDBDropdown >
             <MDBDropdownToggle caret color="primary" className="a-tag" >
-              <span> <img src={props.image || 'https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png'} alt="img" style={{
+              <span> <img src={props.user.userImage || 'https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png'} alt="img" style={{
                 height:'35px',
                 borderRadius:'50%'
               }}/></span>
@@ -51,7 +52,7 @@ function Header(props) {
               </Show>
               <Show condition={!props.loggedIn}>
                 <span >
-                  <NavLink to="/log">Log In</NavLink>
+                  <NavLink to="/log" >Log In</NavLink>
                 </span>
               </Show>
               <Show condition={props.loggedIn}>
@@ -104,6 +105,7 @@ const mapStateToProps = (state) => {
   return {
     username: state.auth.user.username,
     loggedIn: state.auth.loggedIn,
+    user: state.profile.user,
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
