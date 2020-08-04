@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import { NavLink ,Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Nav, NavItem ,NavDropdown } from 'react-bootstrap';
 import './header.scss'
+import { Redirect } from 'react-router-dom';
+
 import * as actions from '../../store/reducers/auth';
 import Auth from '../auth';
 import Show from '../show';
@@ -10,9 +12,10 @@ import { connect } from 'react-redux';
 import * as actions2 from '../../store/reducers/profile';
 import { MDBIcon , MDBDropdownToggle , MDBDropdownMenu, MDBDropdownItem,MDBDropdown,MDBCol , MDBFormInline} from "mdbreact";
 function Header(props) {
-
+  const [redirect, setRedirect] = useState(false);
   return (
     <>
+      {(redirect === true) ? <Redirect to='/' /> : null}
       <Navbar  expand="lg" className="header">
         <Navbar.Brand>
           <p className="neon">
@@ -89,7 +92,11 @@ function Header(props) {
                 </Auth>
                 {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
                 <MDBDropdownItem divider />
-                <MDBDropdownItem onClick={props.logout}>logout</MDBDropdownItem>
+                <MDBDropdownItem onClick={() =>{
+                  setRedirect(true);
+                  props.logout();
+                  
+                }}>logout</MDBDropdownItem>
               </MDBDropdownMenu>
                  
             </Show>
