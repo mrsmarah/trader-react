@@ -131,15 +131,11 @@ function ClientComponent(props) {
         <div className="card m-0">
         <div className="row no-gutters">
         <Chats className="here"/>
-        {/* <div className="scrolling"> */}
-     <div className="chatGrid">
-     <div className="selected-user">
+        <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+        <div className="selected-user">
                             <span>To: <span className="name">{username}</span></span>
                         </div>
-        <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-        <div className="updown">
         <div className="chat-container">
-
         <ul className="chat-box chatContainerScroll">
         {renderChat()}
         </ul>
@@ -164,15 +160,10 @@ function ClientComponent(props) {
               
               </MDBBtn>
     </div>
-    </div>
-     </div>
-       
       {/* </div> */}
       </div>
 
     </div>
-         
-    {/* </div> */}
     </div>
     </div>
     {/* </div> */}

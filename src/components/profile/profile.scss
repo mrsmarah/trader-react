@@ -20,19 +20,16 @@
     display: grid;
     padding: 20px;
     transform: translate(0%, -50%);
-    width: 60%;
+    width: 70%;
     margin: auto;
-    background-color: #080707bd;
+    background-color: #dbe1e4de;
     border-left: solid 20px transparent; 
     border-right: solid 20px transparent; 
     // border-bottom: solid 20px #fff;
     box-shadow: 0 -18px 9px -1px #6c6c6c8c;
-    border-radius: 1rem;
 }
 
-.marginMin{
-    margin-top: -5%;
-}
+
 
 .imgAvatar{
     // padding: 20px;
@@ -41,18 +38,16 @@
     margin: auto;    
 }
 
-.avatar h3{
+h3{
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.5vw;
     font-weight: 400;
-    color: white;
 }
 
 .headerProfile .posts , .headerProfile .following , .headerProfile .followers{
     text-align: center;
     margin-top: 10%;
-    color: white;
 
 }
 .headerProfile{
@@ -67,7 +62,4 @@
 }
 .react-parallax {
     margin:  0; 
-}
-.sc-AxirZ.kyQlHw.rec.rec-item-wrapper .card{
-    height: 395px;
 }
