@@ -3,8 +3,7 @@
   margin-bottom: 5vw;
   margin-right: 5vw;
 }
-.imges {
-}
+
 .gridClass {
   position: absolute;
   left: 20%;
@@ -21,6 +20,13 @@
 .borderBu {
   background-color: #00000030;
 }
+input[type="text"]::placeholder {
+  color: #d9d9c4 !important;
+}
+textarea::placeholder {
+  color: #d9d9c4 !important;
+}
+
 textarea.form-control {
   /* height: auto; */
   height: 6vw;
@@ -64,4 +70,7 @@ select#inputGroupSelect01 {
 }
 #uploadSpan :hover {
   cursor: pointer;
+}
+::placeholder {
+  color: black;
 }

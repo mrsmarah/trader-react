@@ -60,6 +60,7 @@ const AddPost = (props) => {
           <Form.Control
             placeholder='Title'
             name='title'
+            type='text'
             onChange={handleChange}
             value={post.title || ''}
             className='borderBu'

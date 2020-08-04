@@ -6,7 +6,7 @@
   color: #fff;
   font-size: 1em;
   font-weight: bold;
-  margin: 1.25em 5.25em auto;
+  margin: -0.1em 5.25em auto;
   overflow: hidden;
   padding: 0.875em; /*14px/16px*/
   position: relative;
@@ -89,6 +89,7 @@ table.mt-4.table {
     ),
     url(https://image.freepik.com/free-photo/living-room-with-armchairs-shelfs-room-wall-blue_41470-216.jpg);
   height: 32em;
+  background-size: cover;
 }
 select#inputGroupSelect01 {
   background-color: #6c6c6b;
