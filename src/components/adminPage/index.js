@@ -5,15 +5,25 @@ import Table from 'react-bootstrap/Table';
 import './admin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+
+
+
 const Admin = (props) => {
-  useEffect(() => {
-    props.post(props.token);
-  }, []);
+
+  let adminArray = props.posts.adminPost.sort((a, b) => {
+    if(a.username < b.username) { return -1; }
+    if(a.username > b.username) { return 1; }
+    return 0;
+  });
 
   useEffect(() => {
+    props.post(props.token);
     window.scrollTo(0, 0);
   }, []);
 
+  
+
+  
   return (
     <>
 
@@ -30,7 +40,7 @@ const Admin = (props) => {
           </tr>
         </thead>
 
-        {props.posts.adminPost.map((post) => {
+        {adminArray.map((post) => {
 
           return (
             <tbody key={post._id}>
