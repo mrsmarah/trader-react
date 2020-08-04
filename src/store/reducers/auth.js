@@ -45,7 +45,9 @@ const validateToken = (token,dispatch) => {
       .set('Content-Type', 'application/json' )
       .set('Authorization',`Bearer ${token}`)
       .then(data => {
-        if(data.body === 'token '){
+        console.log('token state',data.body);
+        if(data.body === 'token'){
+          
           dispatch(logout());
         }
       });
