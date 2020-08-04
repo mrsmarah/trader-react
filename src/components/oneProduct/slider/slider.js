@@ -18,7 +18,7 @@ function Slider (props){
     props.post.onePost.images.map((img , j) =>{
       return(
         <>
-          <SwiperSlide   key={j} tag="li">
+          <SwiperSlide   key={j} tag="li"  loop={true}>
             <img
               // key={j}
               src={img}
@@ -40,12 +40,13 @@ function Slider (props){
     props.post.onePost.images.map((img , j) =>{
       return(
         <>
-          <SwiperSlide   key={j} tag="li">
+          <SwiperSlide   key={j} tag="li" loop={true} >
             <img
               // key={j}
               src={img}
               style={{ listStyle: 'none' , height:'100px' ,width:'163px' }}
               alt={`Slide`}
+              
             />
           </SwiperSlide>
         </>
@@ -71,7 +72,7 @@ function Slider (props){
     props.post.onePost.images.map((img , j) =>{
       return(
         <>
-          <SwiperSlide   key={j} tag="li">
+          <SwiperSlide   key={j} tag="li"  loop={true}>
             <img
               // key={j}
               src={img}

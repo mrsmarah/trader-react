@@ -15,7 +15,8 @@ function ClientComponent(props) {
   const [chat, setChat] = useState([]);
   const [msg, setMsg] = useState({});
   const [room ,setRoom] = useState('');
-  console.log('cnt',cnt++,chat,room );
+  const [roomDetails,setRoomDetails] = useState({});
+  console.log('cnt',cnt++,chat,room,roomDetails );
   let arrayTest = [];
 
   
@@ -64,6 +65,11 @@ function ClientComponent(props) {
     setChat([...chat,msg]);
 
   }, [msg]);
+  useEffect(() => {
+    console.log('room detail --->',props.chatRooms.filter((roomFliter)=>room===roomFliter._id),room,props.chatRooms);
+    setRoomDetails((props.chatRooms.filter((roomFliter)=>room===roomFliter._id))[0]);
+
+  }, [props.chatRooms,room]);
 
 
   useEffect(() => {
@@ -93,29 +99,36 @@ function ClientComponent(props) {
     console.log('chaaaat   map>>>>>>>>>>>>' , chat);
     // { username, text, time,payload,sender  }
     return chat.map((msg, index) => {
-      
+      let username = msg.username||msg.sender;
+      let user = (username === roomDetails.firstUser ? roomDetails.firstImage : roomDetails.secondImage)||{};
+      if(username==='trader'){
+        console.log('inside if chat--->',username==='trader',username);
+        user={userImage:'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png'};
+      }
+      // user.userImage = username === 'trader'?'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png':user.userImage;
+      console.log('user from chat ---->',user,username);
       if(msg.username === props.username || msg.sender === props.username){
         return (
-<li className="chat-right">
-    <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
-    <div className="chat-text">{msg.text||msg.payload }</div>
-    <div className="chat-avatar">
-        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"/>
-        <div className="chat-name">{msg.username||msg.sender}</div>
-    </div>
-</li>
-        )
+          <li className="chat-right">
+            <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
+            <div className="chat-text">{msg.text||msg.payload }</div>
+            <div className="chat-avatar">
+              <img src={user.userImage||"https://www.bootdey.com/img/Content/avatar/avatar3.png"} alt="Retail Admin"/>
+              <div className="chat-name">{msg.username||msg.sender}</div>
+            </div>
+          </li>
+        );
       }else{
         return(
-<li className="chat-left">
-    <div className="chat-avatar">
-        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"/>
-        <div className="chat-name">{msg.username||msg.sender}</div>
-    </div>
-    <div className="chat-text">{msg.text||msg.payload }</div>
-    <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
-</li>
-        )
+          <li className="chat-left">
+            <div className="chat-avatar">
+              <img src={user.userImage||"https://www.bootdey.com/img/Content/avatar/avatar3.png"}  alt="Retail Admin"/>
+              <div className="chat-name">{msg.username||msg.sender}</div>
+            </div>
+            <div className="chat-text">{msg.text||msg.payload }</div>
+            <div className="chat-hour">{msg.time||msg.date} <span className="fa fa-check-circle"></span></div>
+          </li>
+        );
       }
 
     });
@@ -125,59 +138,59 @@ function ClientComponent(props) {
   return (
     <>
   
-        {/* <div className="content-wrapper"> */}
-        {/* <div className="row gutters"> */}
-        {/* <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> */}
-        <div className="card m-0">
+      {/* <div className="content-wrapper"> */}
+      {/* <div className="row gutters"> */}
+      {/* <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> */}
+      <div className="card m-0">
         <div className="row no-gutters">
-        <Chats className="here"/>
-        {/* <div className="scrolling"> */}
-     <div className="chatGrid">
-     <div className="selected-user">
-                            <span>To: <span className="name">{username}</span></span>
-                        </div>
-        <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-        <div className="updown">
-        <div className="chat-container">
+          <Chats className="here"/>
+          {/* <div className="scrolling"> */}
+          <div className="chatGrid">
+            <div className="selected-user">
+              <span>To: <span className="name">{username}</span></span>
+            </div>
+            <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+              <div className="updown">
+                <div className="chat-container">
 
-        <ul className="chat-box chatContainerScroll">
-        {renderChat()}
-        </ul>
-<div className="form-group mt-3 mb-0">
-        <textarea 
-        className="form-control" 
-        rows="3" 
-        placeholder="Type your message here..."
-        name="message"
-        onChange={e => onTextChange(e)}
-        value={state.message}
-        >
-        </textarea>
-        {/* <button onClick={onMessageSubmit}>Send Message</button> */}
-            <MDBBtn
-                onClick={onMessageSubmit}
-                type="submit"
-                className="fancy-button">
-                  <span class="fancy-button-text">Send</span>
-                  <span class="fancy-button-background">&nbsp;</span>
-                  <MDBIcon icon="paper-plane" />
+                  <ul className="chat-box chatContainerScroll">
+                    {renderChat()}
+                  </ul>
+                  <div className="form-group mt-3 mb-0">
+                    <textarea 
+                      className="form-control" 
+                      rows="3" 
+                      placeholder="Type your message here..."
+                      name="message"
+                      onChange={e => onTextChange(e)}
+                      value={state.message}
+                    >
+                    </textarea>
+                    {/* <button onClick={onMessageSubmit}>Send Message</button> */}
+                    <MDBBtn
+                      onClick={onMessageSubmit}
+                      type="submit"
+                      className="fancy-button">
+                      <span class="fancy-button-text">Send</span>
+                      <span class="fancy-button-background">&nbsp;</span>
+                      <MDBIcon icon="paper-plane" />
               
-              </MDBBtn>
-    </div>
-    </div>
-     </div>
+                    </MDBBtn>
+                  </div>
+                </div>
+              </div>
        
-      {/* </div> */}
-      </div>
+              {/* </div> */}
+            </div>
 
-    </div>
+          </div>
          
-    {/* </div> */}
-    </div>
-    </div>
-    {/* </div> */}
-    {/* </div> */}
-    {/* </div> */}
+          {/* </div> */}
+        </div>
+      </div>
+      {/* </div> */}
+      {/* </div> */}
+      {/* </div> */}
 
 
 
@@ -190,7 +203,8 @@ const mapStateToProps = (state) =>{
   return {post : state.post,
     token : state.auth.token,
     client: state.auth.client,
-    username:state.profile.user.username
+    username:state.profile.user.username,
+    chatRooms:state.rooms.chatRooms,
   };
 } ;
   
@@ -201,13 +215,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
   
 export default connect(mapStateToProps , mapDispatchToProps )( ClientComponent );
-      // <div key={index}>
-      //   <h3>
-      //     {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
-      //   </h3>
-      //   <p>{msg.time||msg.date}</p>
-      // </div>
-        {/* <div className="selected-user">
+// <div key={index}>
+//   <h3>
+//     {msg.username||msg.sender}: <span>{msg.text||msg.payload }</span>
+//   </h3>
+//   <p>{msg.time||msg.date}</p>
+// </div>
+{/* <div className="selected-user">
     <span>To: <span className="name">{username}</span></span>
 </div> */}
 
@@ -224,14 +238,14 @@ export default connect(mapStateToProps , mapDispatchToProps )( ClientComponent )
         <button         onChange={e => onTextChange(e)}
         value={state.message}>Send Message</button>
     </div> */}
-    {/* <div classNameName="card"> */}
+{/* <div classNameName="card"> */}
 {/* <Chattest/> */}
-      {/* <form onSubmit={onMessageSubmit}> */}
-        {/* <h1>Messanger</h1> */}
-        {/* <div className="selected-user">
+{/* <form onSubmit={onMessageSubmit}> */}
+{/* <h1>Messanger</h1> */}
+{/* <div className="selected-user">
                             <span>To: <span className="name">{username}</span></span>
                         </div> */}
-        {/* <div classNameName="name-field">
+{/* <div classNameName="name-field">
           <label >Name</label>
           <input
             name="name"
@@ -242,7 +256,7 @@ export default connect(mapStateToProps , mapDispatchToProps )( ClientComponent )
    
 
 
-        {/* <div>
+{/* <div>
           <label >Message</label>
           <input
             name="message"
@@ -251,8 +265,8 @@ export default connect(mapStateToProps , mapDispatchToProps )( ClientComponent )
           />
         </div> */}
 
-        {/* <button>Send Message</button> */}
-      {/* </form> */}
+{/* <button>Send Message</button> */}
+{/* </form> */}
 
-      {/* <div classNameName="render-chat"> */}
-        {/* <h1>Chat Log</h1> */}
+{/* <div classNameName="render-chat"> */}
+{/* <h1>Chat Log</h1> */}

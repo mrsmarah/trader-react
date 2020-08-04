@@ -38,8 +38,19 @@ export const setUserIn = (obj) => {
 
 const validateToken = (token,dispatch) => {
   try {
+    let api = `https://trader401.herokuapp.com/token`;
     console.log('token--->',token);
     let user = jwt.verify(token, 'Dealer5-401+');
+    superagent.get(api)
+      .set('Content-Type', 'application/json' )
+      .set('Authorization',`Bearer ${token}`)
+      .then(data => {
+        console.log('token state',data.body);
+        if(data.body === 'token'){
+          
+          dispatch(logout());
+        }
+      });
     cookie.save('auth', token, { path: '/' });
     dispatch(setUserIn({user,token}));
 

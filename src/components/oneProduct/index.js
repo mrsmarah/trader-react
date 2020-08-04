@@ -25,7 +25,7 @@ function OneProduct (props){
   
 
   return (
-    <section>
+    <section className="ppp">
       <div className="sliderProduct">
         <Slider/>
         <div className="details">
@@ -60,7 +60,9 @@ function OneProduct (props){
             <span>Category Type: {props.post.onePost.categories} </span>
           </div>
           <div className="box">
-	<a className="hoverBtn" href="#popup1">See Comments</a>
+            <button>
+	<a className="hoverBtn" href="#popup1">Comments</a>
+  </button>
 </div>
         </div>
       </div>
