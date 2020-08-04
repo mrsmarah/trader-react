@@ -25,7 +25,7 @@ function OneProduct (props){
   
 
   return (
-    <section>
+    <section className="ppp">
       <div className="sliderProduct">
         <Slider/>
         <div className="details">

@@ -1,6 +1,6 @@
 .swiper-container {
     width: 500px;
-    height: 325px;
+    // height: 325px;
   }
   
   .swiper-pagination {
@@ -27,3 +27,13 @@ div#thumbs {
 // section.sliderr {
 // display: grid;
 // }
+li.swiper-slide.swiper-slide-active{
+  width: 158.333px;
+}
+.swiper-slide{
+    flex-shrink: unset;
+    
+  }
+  .swiper-container-android .swiper-slide, .swiper-wrapper {
+      transform: translate3d(0px, 0, 0); 
+}

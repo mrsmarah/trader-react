@@ -13,9 +13,9 @@
     font-size: 25px;
 }
 .details h2{
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-family: 'Adamina', serif;
-
+font-weight: 400;
 }
 
 .dolar{
@@ -239,4 +239,7 @@ color: #fff;
   .popup{
     width: 70%;
   }
+}
+.ppp{
+  // overflow: auto;
 }
