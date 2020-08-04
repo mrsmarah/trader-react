@@ -99,8 +99,14 @@ function ClientComponent(props) {
     console.log('chaaaat   map>>>>>>>>>>>>' , chat);
     // { username, text, time,payload,sender  }
     return chat.map((msg, index) => {
-      let user = (msg.username === roomDetails.firstUser ? roomDetails.secondImage : roomDetails.firstImage)||{};
-      console.log('user from chat ---->',user,roomDetails);
+      let username = msg.username||msg.sender;
+      let user = (username === roomDetails.firstUser ? roomDetails.firstImage : roomDetails.secondImage)||{};
+      if(username==='trader'){
+        console.log('inside if chat--->',username==='trader',username);
+        user={userImage:'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png'};
+      }
+      // user.userImage = username === 'trader'?'https://www.bbva.com/wp-content/uploads/2018/03/apertura-trader.png':user.userImage;
+      console.log('user from chat ---->',user,username);
       if(msg.username === props.username || msg.sender === props.username){
         return (
           <li className="chat-right">
