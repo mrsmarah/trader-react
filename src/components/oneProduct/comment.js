@@ -23,57 +23,58 @@ function Comment(props) {
   console.log('props.post.onePost.comment', props.post.onePost.comment);
   return (
     <>
-    <div id="popup1" className="overlay">
-	<div className="popup">
-  <a className="close" href="#">&times;</a>
-  <div className="content">
-      <section className='commentSection'>
-        <h2 className='comments-title'>All Comments :  ({commentArray})</h2>
-        {props.post.onePost.comment.map((comment, i) => {
-          return (
-            <div className='container'>
-              <div className='be-comment-block'>
-                <div className='be-comment'>
-                  <div className='be-img-comment'>
-                    <a href='#'>
-                      <img className="be-ava-comment" src='https://image.shutterstock.com/image-vector/male-silhouette-avatar-profile-picture-260nw-199246382.jpg' />
-                    </a>
+      <div id="popup1" className="overlay">
+        <div className="popup">
+          <a className="close" href="#">&times;</a>
+          <div className="content">
+            <section className='commentSection'>
+              <h2 className='comments-title'>All Comments :  ({commentArray})</h2>
+              {props.post.onePost.comment.map((comment, i) => {
+                return (
+                  <div className='container'>
+                    <div className='be-comment-block'>
+                      <div className='be-comment'>
+                        <div className='be-img-comment'>
+                          <a href='#'>
+                            <img className="be-ava-comment" src={ comment.userImage ||'https://image.shutterstock.com/image-vector/male-silhouette-avatar-profile-picture-260nw-199246382.jpg'} />
+                          </a>
+                        </div>
+                        <div className='be-comment-content'>
+                          <span className='be-comment-name'>
+                            {comment.username}
+                          </span>
+                          <p className="be-comment-text" >
+                            {comment.theComment}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className='be-comment-content'>
-                    <span className='be-comment-name'>
-                      {comment.username}
-                    </span>
-                    <p className="be-comment-text" >
-                      {comment.theComment}
-                    </p>
-                  </div>
-                </div>
+                );
+              })}
+
+          <form className='form-block' onSubmit={handleSubmit} >
+            <div id='commentText' className='col-xs-12'>
+              <div >
+                <TextField
+                  label="type your comment here ..."
+                  name="theComment"
+                  onChange={handleChange}
+                  id='comment'
+                  className='borderBu'
+                >
+                </TextField>
               </div>
             </div>
-          );
-        })}
-        <form className='form-block' onSubmit={handleSubmit} >
-          <div id='commentText' className='col-xs-12'>
-            <div >
-              <TextField
-                label="type your comment here ..."
-                name="theComment"
-                onChange={handleChange}
-                id='comment'
-                className='borderBu'
-              >
-              </TextField>
+            <button id='addComment' className="hoverBtn" >Add</button>
+  
+                </form>
+              </section>
             </div>
-          </div>
-          <button id='addComment' className="hoverBtn" >Add</button>
+            </div>
+            </div>
 
-        </form>
-      </section>
-      </div>
-      </div>
-      </div>
-
-
+       
     </>
   );
 }

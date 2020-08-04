@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const initialState = {
-  onePost : {comment:[]},
+  onePost : {images:[] ,comment:[]},
 };
 
 export default (state = initialState ,action) =>{
@@ -32,13 +32,20 @@ export default (state = initialState ,action) =>{
 export const getRemoteProduct = (id,token='0')  => dispatch => {
   console.log('getRemoteProduct id token------> ',id,token);
   let api = `https://trader401.herokuapp.com/search/${id}`;
-  return superagent.get(api)
+  if(token.length> 2){
+    return superagent.get(api)
+      .set('Content-Type', 'application/json' )
+      .set('Authorization',`Bearer ${token}`)
+      .then(data => {
+        (console.log('getRemoteProduct DATA -------->',data ));
+        dispatch( getProduct(data.body));
+      });}
+  else{return superagent.get(api)
     .set('Content-Type', 'application/json' )
-    .set('Authorization',`Bearer ${token}`)
     .then(data => {
       (console.log('getRemoteProduct DATA -------->',data ));
       dispatch( getProduct(data.body));
-    });
+    });}
 };
 
 
