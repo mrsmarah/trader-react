@@ -37,19 +37,19 @@ textarea.form-control {
   width: 40%;
 }
 .fileUpload {
-  background: #747474;
+  background: transparent;
   top: -4.6vw;
   left: 6vw;
   border: 1px solid;
 }
 .fileUpload:hover {
-  background: #747474;
+  background: transparent;
 }
 button#signInBt2 {
-  margin-left: 9vw;
-  margin-top: -3vw;
-  width: 6vw;
-  height: 2vw;
+  margin-left: 7.1em;
+  margin-top: -3em;
+  width: 7em;
+  height: 2.5em;
   background-color: #00000087;
   color: #d9d9d9;
   border-radius: 10px;
@@ -73,4 +73,20 @@ select#inputGroupSelect01 {
 }
 ::placeholder {
   color: black;
+}
+#contanire {
+  background: url(../login/signin.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 11%;
+}
+.back2 {
+  background-image: url(../login/signin.jpg);
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }

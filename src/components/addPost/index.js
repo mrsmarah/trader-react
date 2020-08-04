@@ -7,6 +7,7 @@ import { getRemoteProduct } from '../../store/reducers/post';
 // import {storage} from '../firebase/firebase';
 import Form from 'react-bootstrap/Form';
 import './addPost.css';
+import './hover.css';
 import Upload from '../upload';
 const AddPost = (props) => {
   let { id } = useParams();
@@ -50,55 +51,58 @@ const AddPost = (props) => {
 
   return (
     <>
-
-      {(redirect === true) ? <Redirect to={`/user/${props.username}`} /> : null}
-      {console.log(' props.username', props.username)}
-      {console.log('add post before render -----> ', post)}
-      <Show condition={props.loggedIn}>
-        <Form className='login formStyle zIndex' onSubmit={handleSubmit} >
-          <label className='labelForm' >ADD POST</label>
-          <Form.Control
-            placeholder='Title'
-            name='title'
-            type='text'
-            onChange={handleChange}
-            value={post.title || ''}
-            className='borderBu'
-          />
-          <Form.Control as="textarea" rows="3" placeholder='Description' name="description"
-            onChange={handleChange}
-            value={post.description}
-            className='borderBu' />
-          {/* <Form.Control
+      <div className='back2'>
+        {(redirect === true) ? <Redirect to={`/user/${props.username}`} /> : null}
+        {console.log(' props.username', props.username)}
+        {console.log('add post before render -----> ', post)}
+        <div id='addPost'>
+          <Show condition={props.loggedIn}>
+            <Form className='login formStyle zIndex' onSubmit={handleSubmit} >
+              <label className='labelForm' >ADD POST</label>
+              <Form.Control
+                placeholder='Title'
+                name='title'
+                type='text'
+                onChange={handleChange}
+                value={post.title || ''}
+                className='borderBu'
+              />
+              <Form.Control as="textarea" rows="3" placeholder='Description' name="description"
+                onChange={handleChange}
+                value={post.description}
+                className='borderBu' />
+              {/* <Form.Control
             placeholder="Description"
             name="description"
             onChange={handleChange}
             value={post.description}
             className='borderBu'
           /> */}
-          <select class="custom-select" id="inputGroupSelect01" name="categories" onChange={handleChange}
-            value={post.categories}>
-            <option className='catOptions' selected>Categories</option>
-            {props.categories.categories.map(category => {
-              return (
-                <option className='catOptions' value={category.categories}>{category.categories}</option>
-              );
-            })}
+              <select class="custom-select" id="inputGroupSelect01" name="categories" onChange={handleChange}
+                value={post.categories}>
+                <option className='catOptions' selected>Categories</option>
+                {props.categories.categories.map(category => {
+                  return (
+                    <option className='catOptions' value={category.categories}>{category.categories}</option>
+                  );
+                })}
 
-          </select>
-          <Upload />
+              </select>
+              <Upload />
 
-          <Show condition={props.mode !== 'edit'}>
-            <button id='signInBt2' >ADD</button>
+              <Show condition={props.mode !== 'edit'}>
+                <button className='hvr-pulse' id='signInBt2' >ADD</button>
+              </Show>
+              <Show condition={props.mode === 'edit'}>
+                <button >update</button>
+              </Show>
+
+            </Form>
           </Show>
-          <Show condition={props.mode === 'edit'}>
-            <button >update</button>
-          </Show>
+        </div>
 
-        </Form>
+      </div>
 
-
-      </Show>
     </>
   );
 
