@@ -55,28 +55,33 @@ const AddPost = (props) => {
       {console.log(' props.username', props.username)}
       {console.log('add post before render -----> ', post)}
       <Show condition={props.loggedIn}>
-        <form className='login formStyle' onSubmit={handleSubmit} >
-          <label className='labelForm' >Add Post</label>
+        <Form className='login formStyle zIndex' onSubmit={handleSubmit} >
+          <label className='labelForm' >ADD POST</label>
           <Form.Control
             placeholder='Title'
             name='title'
+            type='text'
             onChange={handleChange}
             value={post.title || ''}
             className='borderBu'
           />
-          <Form.Control
+          <Form.Control as="textarea" rows="3" placeholder='Description' name="description"
+            onChange={handleChange}
+            value={post.description}
+            className='borderBu' />
+          {/* <Form.Control
             placeholder="Description"
             name="description"
             onChange={handleChange}
             value={post.description}
             className='borderBu'
-          />
+          /> */}
           <select class="custom-select" id="inputGroupSelect01" name="categories" onChange={handleChange}
             value={post.categories}>
-            <option selected>categories</option>
+            <option className='catOptions' selected>Categories</option>
             {props.categories.categories.map(category => {
               return (
-                <option value={category.categories}>{category.categories}</option>
+                <option className='catOptions' value={category.categories}>{category.categories}</option>
               );
             })}
 
@@ -84,13 +89,13 @@ const AddPost = (props) => {
           <Upload />
 
           <Show condition={props.mode !== 'edit'}>
-            <button >ADD</button>
+            <button id='signInBt2' >ADD</button>
           </Show>
           <Show condition={props.mode === 'edit'}>
             <button >update</button>
           </Show>
 
-        </form>
+        </Form>
 
 
       </Show>

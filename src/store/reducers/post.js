@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const initialState = {
-  onePost : {comment:[]},
+  onePost : {images:[] ,comment:[]},
 };
 
 export default (state = initialState ,action) =>{
