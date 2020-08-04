@@ -9,58 +9,58 @@ const Post = (props) => {
   
   return (
     <>
-    {/* <div  id={props.data.id}>
+      {/* <div  id={props.data.id}>
       <p>{props.data.title}</p>
       <p>{props.data.description}</p>
       
     </div> */}
-     <div className ="cardzz card--1">
-                <div className ="card__info-hover">
-                  <svg className ="card__like"  viewBox="0 0 24 24" style={{
-                    pointerEvents: 'bounding-box'
-                  }} onClick={() =>{
-                    props.addToFav(props.data._id, props.token );
-                    alert('Post added to your favorite list !');
-                  }}>
-                    <path 
-                      d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 
+      <div className ="cardzz card--1">
+        <div className ="card__info-hover">
+          <svg className ="card__like"  viewBox="0 0 24 24" style={{
+            pointerEvents: 'bounding-box'
+          }} onClick={() =>{
+            props.addToFav(props.data._id, props.token );
+            alert('Post added to your favorite list !');
+          }}>
+            <path 
+              d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 
     4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,
     6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 
     9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36
      22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
 
-                  </svg>
-                </div>
-                <div className ="card__img"
-                  style={{
-                    backgroundImage: `url(${props.data.images[0]})`,
-                  }}
-                ></div>
-                <Link to={`/search/${props.data._id}`} className="card_link">
-                  <div className="card__img--hover"style={{
-                    backgroundImage:  `url(${props.data.images[0]})`,
-                  }}></div>
-                </Link>
-                <div className ="card__info">
+          </svg>
+        </div>
+        <div className ="card__img"
+          style={{
+            backgroundImage: `url(${props.data.images[0]})`,
+          }}
+        ></div>
+        <Link to={`/search/${props.data._id}`} className="card_link">
+          <div className="card__img--hover"style={{
+            backgroundImage:  `url(${props.data.images[0]})`,
+          }}></div>
+        </Link>
+        <div className ="card__info">
   
-                  <h3 className="card__title">{props.data.title}</h3>
-                  <span className="card__category"> {props.data.description}</span>
-                  <span className="card__by">by <Link to={`/user/${props.data.username}`}
-                    className="card__author" >{props.data.username}
-                  </Link> </span>
-                  <div className="likeDislike">
+          <h3 className="card__title">{props.data.title}</h3>
+          <span className="card__category"> {props.data.description}</span>
+          <span className="card__by">by <Link to={`/user/${props.data.username}`}
+            className="card__author" >{props.data.username}
+          </Link> </span>
+          <div className="likeDislike">
                  
-                  <MDBIcon
-        icon='trash'
-        className='cyan-text'
-        size='3x'
-        style={{ cursor: 'pointer' }}
-        onClick={()=>props.deletePost(props.data._id,props.token)}
-/>
-                  </div>
-                </div>
-              </div>
-    {/* <div className="shadow-box-example hoverable">
+            <MDBIcon
+              icon='trash'
+              className='cyan-text'
+              size='3x'
+              style={{ cursor: 'pointer' }}
+              onClick={()=>props.deletePost(props.data._id,props.token)}
+            />
+          </div>
+        </div>
+      </div>
+      {/* <div className="shadow-box-example hoverable">
 <MDBCol md="4">
   <MDBCard cascade>
     <MDBCardImage
@@ -101,7 +101,7 @@ const Post = (props) => {
   </MDBCard>
 </MDBCol>
 </div> */}
-</>
+    </>
   );
 };
 const mapStateToProps = (state) => {

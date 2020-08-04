@@ -120,8 +120,8 @@ const Profile = (props) => {
 const mapStateToProps = (state) => {
   console.log('state------>',state);
   return { 
-    user: state.profile.user,
-    posts:  state.profile.posts ,
+    user: state.profile.user1,
+    posts:  state.profile.posts1 ,
     username: state.auth.username,
     token : state.auth.token,
   };
@@ -129,8 +129,8 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  getUser: (username , token) => dispatch(actions.getUser(username ,token )),
-  getPosts: (username ,token ) => dispatch(actions.getPosts(username , token)),
+  getUser: (username , token) => dispatch(actions.getUser1(username ,token )),
+  getPosts: (username ,token ) => dispatch(actions.getPosts1(username , token)),
   clear: ()=>dispatch(actions.clear()),
 });
 
