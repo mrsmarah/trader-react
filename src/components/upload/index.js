@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from 'react';
 // import { handleUpload }  from '../../firebase';
 import { handleUpload } from '../../store/reducers/upload';
 import { connect } from 'react-redux';
-import './addPost.css';
+import './upload.css';
 import './hover.css';
 import Table from 'react-bootstrap/Table';
 const ReactFirebaseFileUpload = (props) => {
@@ -48,9 +49,8 @@ const ReactFirebaseFileUpload = (props) => {
           }
         </div>
       </div> */}
-      <Table className='mt-4'>
-        <h4 id='textUp'>Your Images Uplouding ....</h4>
-
+      {/* <img className='backImg' src='https://image.freepik.com/free-photo/living-room-with-armchairs-shelfs-room-wall-blue_41470-216.jpg' ></img> */}
+      <Table className='mt-4 '>
         <tr className='grid-container'>
           {props.images.map((imageMap, i) => {
             return (

@@ -55,7 +55,7 @@ const AddPost = (props) => {
       {console.log(' props.username', props.username)}
       {console.log('add post before render -----> ', post)}
       <Show condition={props.loggedIn}>
-        <Form className='login formStyle' onSubmit={handleSubmit} >
+        <Form className='login formStyle zIndex' onSubmit={handleSubmit} >
           <label className='labelForm' >ADD POST</label>
           <Form.Control
             placeholder='Title'

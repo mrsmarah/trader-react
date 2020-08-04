@@ -53,9 +53,9 @@ input[type="file"] {
 
 .formStyle {
   background-color: #353535e0;
-  margin-top: 5vw;
-  margin-bottom: 5vw;
-  margin-right: 12vw;
+  margin-top: 2em;
+  margin-bottom: 5em;
+  margin-right: 11em;
 }
 .grid-container {
   display: grid;
@@ -73,7 +73,7 @@ table.mt-4.table {
   top: 17%;
   /* border: 1px black solid; */
   height: 30em;
-  border: 1px black solid;
+  /* border: 1px black solid; */
 }
 .table {
   width: 48em;
@@ -81,4 +81,16 @@ table.mt-4.table {
 #textUp {
   margin-top: -2em;
   margin-left: 10em;
+}
+.zIndex {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.35)
+    ),
+    url(https://image.freepik.com/free-photo/living-room-with-armchairs-shelfs-room-wall-blue_41470-216.jpg);
+  height: 32em;
+}
+select#inputGroupSelect01 {
+  background-color: #6c6c6b;
+  border-radius: 14px;
 }
