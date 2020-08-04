@@ -31,7 +31,7 @@ const Profile = (props) => {
     //   console.log('unmounting...');
     //   props.clear();  
     // };
-  }, []);
+  }, [username]);
   
   return (
     <>

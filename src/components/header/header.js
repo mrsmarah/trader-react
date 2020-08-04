@@ -109,8 +109,8 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch, getState) => ({
-  getUser: (username) => dispatch(actions2.getUser(username)),
-  getPosts: (username) => dispatch(actions2.getPosts(username)),
+  getUser: (username) => dispatch(actions2.getUser1(username)),
+  getPosts: (username) => dispatch(actions2.getPosts1(username)),
   logout: () => dispatch(actions.logout()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
