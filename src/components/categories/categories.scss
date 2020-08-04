@@ -26,7 +26,7 @@ width: 100%;
     justify-content: center;
     color: #fff;
     text-align: center;
-    opacity: .5;
+    // opacity: .5;
     transition: opacity .15s ease;
 
 }
@@ -55,7 +55,7 @@ display: grid;
     font-size: 25px;
 }
   .text {
-    color: #000000;
+    color: #fffdfde0;
     font-family: 'Vidaloka', serif;
     font-size: 22px;
     letter-spacing: 8px;
@@ -63,8 +63,8 @@ display: grid;
     position: relative;
     top: -48px;
   }
-  svg {
-    background: #ffffff;
+a .svg-wrapper svg {
+  background-color: #080808a3;
 }
 .text-white {
     justify-content: center;
@@ -147,4 +147,9 @@ div#root {
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 0;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  width: 40px;
+    height: 40px;
 }

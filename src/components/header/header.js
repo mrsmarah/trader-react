@@ -41,11 +41,11 @@ function Header(props) {
 
           <MDBDropdown >
             <MDBDropdownToggle caret color="primary" className="a-tag" >
+            <Show condition={props.loggedIn}>
               <span> <img src={props.user.userImage || 'https://axxeltrova.com/wp-content/uploads/2017/11/round-placeholder.png'} alt="img" style={{
                 height:'35px',
                 borderRadius:'50%'
               }}/></span>
-              <Show condition={props.loggedIn}>
                 <span className="togleSpan">
                   {props.username }
                 </span>
