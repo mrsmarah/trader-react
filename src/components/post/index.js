@@ -22,18 +22,16 @@ const Post = (props) => {
       hover
       src= "https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg"
     />
-    <MDBCardBody cascade>
-    <MDBCardText className="buttonInText">
     <MDBBtn
       href={`/search/${props.data._id}`}
       floating
       tag='a'
-      className='ml-auto mr-4 lighten-3 mdb-coalor next'
+      className='ml-auto mr-4 lighten-3 mdb-coalor'
       action onClick={()=> props.getRemoteProduct(props.data._id)}
     >
       <MDBIcon icon='chevron-right' className="mdb-color lighten-3"/>
     </MDBBtn>
-    </MDBCardText>
+    <MDBCardBody cascade>
       <MDBCardTitle>{props.data.title}</MDBCardTitle>
       <hr/>
       <MDBCardText>

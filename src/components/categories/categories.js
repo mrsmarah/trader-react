@@ -38,11 +38,11 @@ const Categories = (props) => {
                   <div className="h-three-para">
                     <h3 className="h-three">
                       <Link to={`/searchBy/${category.categories}`} >
-                        <div className="svg-wrapper">
+                        <div class="svg-wrapper">
                           <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                            <rect className="shape" height="60" width="320" />
+                            <rect class="shape" height="60" width="320" />
                           </svg>
-                          <div className="text"> {category.categories}</div>
+                          <div class="text"> {category.categories}</div>
                         </div>
                       </Link>
                     </h3><br/>
@@ -57,21 +57,21 @@ const Categories = (props) => {
 
       <MDBCol md="12" className="mb-4">
 
-        {/* <MDBCard className="card-image" style={{
-                backgroundImage:
-                  "url(https://cdn11.bigcommerce.com/s-fcn1lgnyqp/stencil/535737d0-2953-0136-9c41-525400dfdca6/e/636f37e0-f70b-0135-4977-525400970412/img/heading-brush.png) "
-              }}> */}
-        <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
-          <div className="black">
-            <h3 className="py-3 font-weight-bold">
-              <strong> Start  Your Trading Journey </strong>
-            </h3>
-            <h6 className="purple-text">
-              <strong> with TRADER ...</strong>
-            </h6>
+        <MDBCard className="card-image" style={{
+          backgroundImage:
+                  "url(https://www.kindpng.com/picc/m/41-418824_transparent-dark-clouds-png-png-download.png)"
+        }}>
+          <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
+            <div className="black">
+              <h3 className="py-3 font-weight-bold">
+                <strong> What's Special</strong>
+              </h3>
+              <h6 className="purple-text">
+                <strong> For today?</strong>
+              </h6>
+            </div>
           </div>
-        </div>
-        {/* </MDBCard> */}
+        </MDBCard>
       </MDBCol>
 
     </>

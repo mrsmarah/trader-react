@@ -47,8 +47,6 @@ a.btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
 }
 .card{
   border-radius: 1.25rem;
-  background-color: #fff;
-
 }
 .card-body {
   flex: 1 1 auto;
@@ -104,24 +102,17 @@ a.btn-default.btn.Ripple-parent.btn-action.ml-auto.mr-4.lighten-3.mdb-coalor {
 }
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=M+PLUS+1p:wght@700&display=swap');
-// section.allProduct{
-//   display: grid;
+section.allProduct{
+  display: grid;
 
-// }
-.card.card-image.imageCard{
-  border-radius: 1rem;
 }
+
 .card.cards.card-image.imageCard {
   background-color: none;
-  border-radius: 1rem;
 }
 
 .text-white.text-center.d-flex.align-items-center.rgba-black-strong.py-5.px-4.divImg.imageCard{
   background-color: #10101000;
-  border-radius: 1rem;
-}
-.text-white.text-center.d-flex.align-items-center.rgba-black-strong.py-5.px-4.divImg{
-  border-radius: 1rem;
 }
 
 i.fa.fa-gratipay.fa-3x.cyan-text {
@@ -158,11 +149,7 @@ section.productContainer {
 
 }
 section.threeCard{
-  margin: 0 ;
-  width: 100%;
-  grid-template-columns: 33% 33% 34%;
-  display: grid;
-  padding: 3%;
+  margin: 0 6% 4%
 }
 
 .firstSection , .secSection ,.thirdSection {
@@ -370,21 +357,13 @@ i.fa.fa-heart.fa-3x.cyan-text:hover{
 }
 
 .likeDislike{
-  width: 70%;
-  display: grid;
-  grid-template-columns: 25% 25%;
-  // position: absolute;
-  padding: 16px;
-width: 100%;
-// opacity: 0;
-bottom: 0;
-z-index: 999;
+  display: flex;
+  justify-content: flex-end;
 }
 .likeDislike .fa.fa-thumbs-up ,.likeDislike .fa.fa-thumbs-down {
   margin: 0 2%;
   color: #5c6063;
   font-size: larger;
-  z-index: 8888;
 }
 .likeDislike .fa.fa-thumbs-up:hover ,.likeDislike .fa.fa-thumbs-down:hover{
   color: #1e62c9;
@@ -411,228 +390,6 @@ z-index: 999;
 .mr-4, .mx-4 {
   margin-right: 0rem!important;
 }
-.col-md-4 a {
-  color: black;
-}
-.col-md-4 a:hover  {
-  font-size: 20px;
-  text-decoration: wavy;
-  color: rgb(117, 117, 167);
-}
-  .col-md-4 h4:hover{
-    text-decoration: wavy;
-    color: rgb(117, 117, 167);
-  }
-
-.card > span > a{
-  color: white;
-}
-.card > span > a:hover{
-  color: white;
-  text-decoration: wavy;
-}
-.likeDislike div{
-  display: flex;
-  padding: 2%;
-}
-.pagination{
-  justify-content: center;
-  
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  
-}
-a.page-link:active {
-  background-color: #688a9e;
-  color: white;
-}
-// .pagination a:active {
-//   background-color: #688a9e;
-//   color: white;
-// }
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-*{
-  box-sizing: border-box;
-}
-
-// body, html {
-//    font-family: 'Roboto Slab', serif;
-//     margin: 0;
-//   width: 100%;
-// height: 100%;
-//     padding: 0;
-// }
-
-// body {
-//   background-color: #D2DBDD;
-//   display: flex;
-//   display: -webkit-flex;
-//   -webkit-justify-content: center;
-//   -webkit-align-items: center;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-.cardsZZ {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-// .card--1 .card__img, .card--1 .card__img--hover {
-//     background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
-// }
-
-
-.card__like {
-    width: 18px;
-}
-
-.card__clock {
-    width: 15px;
-  vertical-align: middle;
-    fill: #AD7D52;
-}
-.card__time {
-    font-size: 12px;
-    color: #AD7D52;
-    vertical-align: middle;
-    margin-left: 5px;
-}
-
-.card__clock-info {
-    float: right;
-}
-
-.card__img {
-  visibility: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 235px;
-  border-top-left-radius: 12px;
-border-top-right-radius: 12px;
-  
-}
-
-.card__info-hover {
-    position: absolute;
-    padding: 16px;
-  width: 100%;
-  opacity: 0;
-  top: 0;
-  z-index: 999;
-
-}
-.card__info-hover-like{
-  position: absolute;
-  padding: 16px;
-width: 100%;
-opacity: 0;
-bottom: 0;
-z-index: 999;
-}
-.card__img--hover {
-  transition: 0.2s all ease-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-  position: absolute;
-    height: 235px;
-  border-top-left-radius: 12px;
-border-top-right-radius: 12px;
-top: 0;
-  
-}
-.cardzz {
-  margin: 2% 1%;
-  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: #fff;
-    // width: 33.3%;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
-  height: 415px;
-  width: 273px;
-}
-.card:hover {
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
-    transform: scale(1.10, 1.10);
-}
-
-.card__info {
-z-index: 332;
-  background-color: #fff;
-  border-bottom-left-radius: 12px;
-border-bottom-right-radius: 12px;
-   padding: 16px 24px 24px 24px;
-}
-
-.card__category {
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-weight: 500;
-  color: #868686;
-  font-weight: 400;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.card__title {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-family: 'Roboto Slab', serif;
-    font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-
-.card__by {
-    font-size: 12px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-}
-
-.card__author {
-    font-weight: 600;
-    text-decoration: none;
-    color: #AD7D52;
-}
-
-.cardzz:hover .card__img--hover {
-    height: 100%;
-    opacity: 0.3;
-}
-
-.cardzz:hover .card__info {
-    background-color: transparent;
-    position: relative;
-}
-
-.cardzz:hover .card__info-hover {
-    opacity: 1;
+.card-body{
+  background-color: white;
 }
