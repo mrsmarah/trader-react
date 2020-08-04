@@ -9,7 +9,7 @@ import * as actions2 from './store/reducers/profile';
 import { getCategories } from './store/reducers/categories';
 import { addPost } from './store/reducers/test';
 import * as actions3 from './store/reducers/profile';
-
+import {getRooms,getMessages} from './store/reducers/chat-Reducer';
 const App = (props) => {
 
   // componentWillMount(){
@@ -20,6 +20,7 @@ const App = (props) => {
     if(props.token){
       props.getUser(props.user.username, props.token);
       props.getPosts(props.user.username, props.token);
+      props.getRooms(props.token);
     }
    
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
   getUser: (username, token) => dispatch(actions3.getUser(username, token)),
   getPosts: (username, token) => dispatch(actions3.getPosts(username, token)),
   addPost:()=>dispatch(addPost()),
+  getRooms:(token) => dispatch(getRooms(token)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // export default App;

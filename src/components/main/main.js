@@ -74,7 +74,7 @@ const Main = (props) => {
 
       <Route exact path="/status/:id">
         <Auth capability='admin'>
-          <AdminState />
+          {/* <AdminState /> */}
           <OneProduct show='admin' />
         </Auth>
       </Route>
