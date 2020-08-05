@@ -126,6 +126,7 @@
     padding: 4% 0px;
     display: grid;
     grid-template-columns: 31% 54% 12%;
+    
 }
 .dropdown.a-tag {
   padding: 0;
@@ -138,6 +139,7 @@
 }
 button.btn-primary.btn.Ripple-parent.dropdown-toggle span.togleSpan {
   margin-top: 13%;
+  padding-left: 4px;
 }
 button.btn-primary.btn.Ripple-parent.dropdown-toggle span{
   margin: auto;
@@ -309,3 +311,18 @@ text-decoration: none;
 //     transition: 0.5s;
 //     border-radius: 10px;
 // }
+
+
+@media (max-width:760px){
+html{
+  width: min-content;
+}
+  .collapse:not(.show) {
+    display: block;
+  }
+  .navbar-collapse {
+    flex-basis: auto;
+    flex-grow: initial;
+    align-items: center;
+  }
+}

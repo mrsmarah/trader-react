@@ -63,13 +63,13 @@ const SignUP = (props) => {
 
           >
           </Form.Control>
-          <Form.Control
+          {/* <Form.Control
             placeholder="Role"
             name="role"
             onChange={handleChange}
             className='borderBu'
-          >
-          </Form.Control>
+          > */}
+          {/* </Form.Control> */}
           <button id='signInBt'>SING UP</button>
         </form>
 
