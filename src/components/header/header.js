@@ -24,7 +24,7 @@ function Header(props) {
                   T R A D E R </Link></p></Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
 
-          <Nav className="mr-auto">
+          <Nav className=" mr-auto">
             {/* <MDBCol md="6">
               <div className="input-group md-form form-sm form-1 pl-0">
                 <div className="input-group-prepend">
@@ -49,13 +49,13 @@ function Header(props) {
                   height:'35px',
                   borderRadius:'50%'
                 }}/></span>
-                <span className="togleSpan">
+                <span className="pFonts togleSpan">
                   {props.username }
                 </span>
               </Show>
               <Show condition={!props.loggedIn}>
                 <span >
-                  <NavLink to="/log" >Log In</NavLink>
+                  <NavLink className="pFonts" to="/log" >Log In</NavLink>
                 </span>
               </Show>
               <Show condition={props.loggedIn}>
@@ -68,35 +68,35 @@ function Header(props) {
             <Show condition={props.loggedIn}>
               <MDBDropdownMenu basic>
                 <MDBDropdownItem > 
-                  <NavLink to="/"> Home</NavLink>
+                  <NavLink className="pFonts" to="/"> Home</NavLink>
                 </MDBDropdownItem>
                 <MDBDropdownItem > 
-                  <NavLink to={`/user/${props.username}`} onClick={() => {
+                  <NavLink className="pFonts" to={`/user/${props.username}`} onClick={() => {
                     props.getUser(props.username);
                     props.getPosts(props.username);
                   }} >Profile Page
                   </NavLink></MDBDropdownItem>
                 <MDBDropdownItem > 
-                  <NavLink to="/favList">Favorite List
+                  <NavLink className="pFonts" to="/favList">Favorite List
                   </NavLink>
                 </MDBDropdownItem>
                 <MDBDropdownItem > 
-                  <NavLink to="/chat"> My Chats
+                  <NavLink className="pFonts" to="/chat"> My Chats
                   </NavLink>
                 </MDBDropdownItem>
                 <MDBDropdownItem> 
-                  <NavLink to="/post">Add post</NavLink>
+                  <NavLink className="pFonts" to="/post">Add post</NavLink>
                 </MDBDropdownItem>
                 <Auth capability="admin">
-                  <MDBDropdownItem><NavLink to="/admin">Admin Page</NavLink></MDBDropdownItem>
+                  <MDBDropdownItem><NavLink className="pFonts" to="/admin">Admin Page</NavLink></MDBDropdownItem>
                 </Auth>
                 {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
                 <MDBDropdownItem divider />
-                <MDBDropdownItem onClick={() =>{
+                <MDBDropdownItem  onClick={() =>{
                   setRedirect(true);
                   props.logout();
                   
-                }}>logout</MDBDropdownItem>
+                }}><span className="logouth" >logout</span> </MDBDropdownItem>
               </MDBDropdownMenu>
                  
             </Show>

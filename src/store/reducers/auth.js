@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
   case 'logout':
     cookie.save('auth', 'token',{ path: '/' });
     return initialState;
- 
+
   default:
     return state;
   }
@@ -126,55 +126,6 @@ export const load = () => dispatch => {
   const cookieToken = cookie.load('auth');
   const token = cookieToken || null;
   validateToken(token,dispatch);
-};
-
-
-export const signWithGoogle = () => dispatch => {
-  // console.log('username, password---------------->',username, password);
-  // const options = {
-  //   mode: 'cors',
-  //   headers: { 'Content-Type': 'application/json' ,'Authorization': `Basic ${btoa(`${username}:${password}` )}`},
-  //   cache: 'no-cache',
-  // };
-  superagent.get(`${API}/oauth`)
-    .then(res => {
-      console.log('GOOGLE RES--->',res);
-      // validateToken(res.data.token,dispatch);
-    })
-    .catch(e => {
-      console.log('ERROR GOOGLE');
-      console.error();
-    });
-};
-
-export const googleAction = () => {
-  return {
-    type: 'GOOGLE',
-    payload: 'payload',
-  };
-};
-
-export const signWithFacebook = () => dispatch => {
-  // console.log('username, password---------------->',username, password);
-  // const options = {
-  //   mode: 'cors',
-  //   headers: { 'Content-Type': 'application/json' ,'Authorization': `Basic ${btoa(`${username}:${password}` )}`},
-  //   cache: 'no-cache',
-  // };
-  axios.post(`${API}/login-with-facebook`)
-    .then(res => {
-      console.log('FACEBOOK RES--->',res);
-    // validateToken(res.data.token,dispatch);
-    }).catch(e => {
-      console.log('ERROR FACEBOOK');
-      console.error();
-    });
-};
-export const facebookAction = () => {
-  return {
-    type: 'FACEBOOK',
-    payload: 'payload',
-  };
 };
 
 

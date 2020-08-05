@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap');
+.pFonts{
+    font-family: 'News Cycle', sans-serif;
+}
+
 .signup {
   width: 29vw;
   padding: 3vw;

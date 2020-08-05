@@ -602,7 +602,7 @@ border-bottom-right-radius: 12px;
 .card__title {
     margin-top: 5px;
     margin-bottom: 10px;
-    font-family: 'Roboto Slab', serif;
+   font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -621,6 +621,7 @@ border-bottom-right-radius: 12px;
     font-weight: 600;
     text-decoration: none;
     color: #AD7D52;
+    
 }
 
 .cardzz:hover .card__img--hover {

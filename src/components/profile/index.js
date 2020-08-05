@@ -70,11 +70,11 @@ const Profile = (props) => {
         </h3>
         <div className="headerProfile">
           <section className="posts">
-            <h4>
+            <h4 className="pFonts">
     posts
             </h4>
 
-            <span >
+            <span className="pFonts">
               {props.posts.length}
             </span>
 
@@ -82,19 +82,19 @@ const Profile = (props) => {
           </section>
 
           <section className="following">
-            <h4>
+            <h4 className="pFonts">
   following
             </h4>
-            <span>
+            <span className="pFonts">
   0
             </span>
           </section>
 
           <section className="followers">
-            <h4>
+            <h4 className="pFonts">
   followers
             </h4>
-            <span>
+            <span className="pFonts">
  2
             </span>
           </section>

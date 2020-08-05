@@ -31,7 +31,7 @@ function OneProduct (props){
         <Slider/>
         <div className="details">
           <div className='heart'>
-            <h2>{props.post.onePost.title}</h2>
+            <h2 >{props.post.onePost.title}</h2>
             <MDBIcon
               icon='heart'
               className='cyan-text'
@@ -48,7 +48,7 @@ function OneProduct (props){
           <span className="dolar"> {props.post.onePost.price || '55'}$ </span>
           <hr/>
           <div className="user-cat">
-            <span> BY: {props.post.onePost.username} 
+            <span> By : {props.post.onePost.username} 
               <MDBBtn
                 type="submit"
                 className="fancy-button">
@@ -58,7 +58,7 @@ function OneProduct (props){
                   <MDBIcon icon="paper-plane" />
                 </Link>
               </MDBBtn> </span><br/>
-            <span>Category Type: {props.post.onePost.categories} </span>
+            <span>Category : {props.post.onePost.categories} </span>
           </div>
           <div className="box">
             <button>

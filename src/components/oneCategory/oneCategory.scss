@@ -1,5 +1,11 @@
 // @import "compass/css3";
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Mate+SC&display=swap');
 
+// h1 .pFonts{
+//   font-family: 'Julius Sans One', sans-serif;
+//   letter-spacing: 8px;
+
+// }
 
 #hero1{
 //  background:url(https://4.bp.blogspot.com/_AQ0vcRxFu0A/S9shDGGyMTI/AAAAAAAAAYk/kn3WTkY2LoQ/s1600/IMG_0714.JPG);
@@ -44,10 +50,11 @@
 
 .headerh1{
   margin:0px;
-  font-family: 'Roboto Slab', serif;
   font-weight:400;
   font-size:32px;
   padding:0px 20px;
+  font-family: 'Julius Sans One', sans-serif;
+  letter-spacing: 8px;
   text-transform: uppercase;
 }
 

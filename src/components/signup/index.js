@@ -37,12 +37,12 @@ const SignUP = (props) => {
       <Show condition={!props.loggedIn}>
         {/* <div className='flexRight'> */}
         <form className='login' onSubmit={handleSubmit}  >
-          <label className='labelForm'>SIGN UP</label>
+          <label className='labelForm pFonts'>SIGN UP</label>
           <Form.Control
             placeholder="User Name"
             name="username"
             id='username'
-            className='borderBu'
+            className='borderBu pFonts'
 
             onChange={handleChange}>
           </Form.Control>
@@ -51,7 +51,7 @@ const SignUP = (props) => {
             name="password"
             id='password'
             onChange={handleChange}
-            className='borderBu'
+            className='borderBu pFonts'
 
           >
           </Form.Control>
@@ -59,7 +59,7 @@ const SignUP = (props) => {
             placeholder="Email"
             name="email"
             onChange={handleChange}
-            className='borderBu'
+            className='borderBu pFonts'
 
           >
           </Form.Control>

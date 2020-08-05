@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap');
+.pFonts{
+    font-family: 'News Cycle', sans-serif;
+    font-size: 17px;
+
+}
+.logouth{
+  font-family: 'News Cycle', sans-serif;
+}
+
 .header{
   position: sticky;
   width: 100%;
@@ -56,7 +66,7 @@
     margin: 10px;
     text-decoration: none;
     text-transform: uppercase;
-    color:#f9f9f9e6;
+    // color:#f9f9f9e6;
     letter-spacing: 3px;
     font-family: "Open Sans";
     font-weight: lighter;
@@ -98,7 +108,7 @@
     height: calc(100% - 2px);
     // border: 1px solid #fff;
     text-decoration: none;
-    color: white;
+    // color: white;
   }
   .a-tag:hover:before {
     left: -50px;
@@ -117,7 +127,7 @@
 }
   .a-tag:hover {
     text-decoration: none;
-    color: white;
+    // color: white;
   }
   button.btn-primary.btn.Ripple-parent.dropdown-toggle {
     background-color: #1a1a1a00;

@@ -11,7 +11,6 @@ import Chat from '../chats/chats';
 import ChatMessages from '../chats/messages';
 import ClientComponent from '../chat/index';
 import Login from '../login';
-import Providers from '../login/signWith';
 import Auth from '../auth';
 import AddPost from '../addPost';
 import { connect } from 'react-redux';
