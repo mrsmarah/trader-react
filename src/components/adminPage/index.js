@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 const Admin = (props) => {
 
   let adminArray = props.posts.adminPost.sort((a, b) => {
-    if(a.username < b.username) { return -1; }
-    if(a.username > b.username) { return 1; }
+    if(a.status < b.status) { return 1; }
+    if(a.status > b.status) { return -1; }
     return 0;
   });
 
@@ -31,12 +31,13 @@ const Admin = (props) => {
       <Table className='adminTable'>
         <thead>
           <tr>
-            <th>User Name</th>
-            <th>Title</th>
-            <th>Categories</th>
-            <th>Status</th>
-            <th>Description</th>
-            <th>Details</th>
+            <th className='t-header'>User Name</th>
+            <th className='t-header'>Post Title</th>
+            <th className='t-header'>Post Category</th>
+            <th className='t-header'>Change Status</th>
+            <th className='t-header'>Current Status</th>
+            <th className='t-header'>Post Description</th>
+            <th className='t-header'>Post Details</th>
           </tr>
         </thead>
 
@@ -46,16 +47,17 @@ const Admin = (props) => {
             <tbody key={post._id}>
               <tr>
                 <th>{post.username}</th>
-                <th>{post.title}</th>
+                <th className='charNum'>{post.title}</th>
                 <th>{post.categories}</th>
                 {/* <th>View Detalis</th> */}
                 <th>
                   <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token); }} value={post.selectValue} name="cars">
-                    <option value="pendding">{post.status}</option>
+                    {/* <option value="pendding">{post.status}</option> */}
                     <option value="accepted">accept</option>
                     <option value="rejected">reject</option>
                   </select>
                 </th>
+                <th >{post.status}</th>
                 <th className='charNum'>{post.description}</th>
                 <th><Link to={`/status/${post._id}`}>View Details</Link></th>
 
