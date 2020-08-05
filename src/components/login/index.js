@@ -46,12 +46,12 @@ const Login = (props) => {
           <Show condition={!props.loggedIn && !signup}>
 
             <form className='login' onSubmit={handleSubmit}  >
-              <label className='labelForm'>SIGN IN</label>
+              <label className='labelForm pFonts'>SIGN IN</label>
               <Form.Control
                 placeholder="User Name"
                 name="username"
                 id='username'
-                className='borderBu'
+                className='pFonts borderBu '
                 type='text'
                 onChange={handleChange}>
               </Form.Control>
@@ -59,12 +59,12 @@ const Login = (props) => {
                 placeholder="Password"
                 name="password"
                 id='password'
-                className='borderBu'
+                className='pFonts borderBu'
                 type='password'
                 onChange={handleChange}>
               </Form.Control>
               <button id='signInBt'>SIGN IN</button>
-              <p className='newUser' >New User ? <Link onClick={() => { setSignup(true); }}  >Register </Link></p>
+              <p className='newUser pFonts' >New User ? <Link onClick={() => { setSignup(true); }}  >Register </Link></p>
             </form>
           </Show>
           <Show condition={!props.loggedIn && signup}>
@@ -112,3 +112,4 @@ const mapDispatchToProps = (dispatch, getState) => ({
   logout: () => dispatch(actions.logout()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

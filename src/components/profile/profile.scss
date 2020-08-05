@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap');
 
 .imagepro{
     width: 25vh;
@@ -12,11 +12,15 @@
     width: 35%; 
     margin: 4%;
 }
+.pFonts{
+    font-family: 'News Cycle', sans-serif;
+}
 
 .card-img-top .imagepro{
     margin: auto;
 }
 .avatar{
+    font-family: 'News Cycle', sans-serif;
     display: grid;
     padding: 20px;
     transform: translate(0%, -50%);

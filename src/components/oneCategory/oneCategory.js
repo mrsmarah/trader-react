@@ -28,7 +28,7 @@ const OneCategory = (props) => {
         }}>
         <div className="inner">
           <div className="copy">
-            <h1 className="headerh1">{ props.categories.activeCategory}</h1>
+            <h1 className="pFonts headerh1 ">{ props.categories.activeCategory}</h1>
     
           </div>
         </div>
