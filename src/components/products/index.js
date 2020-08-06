@@ -1,67 +1,69 @@
-import React , { useEffect } from 'react';
-import { Link,useParams } from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 // import Card from 'react-bootstrap/Card';
 // import Button from 'react-bootstrap/Button';
-import {getRemoteData,getFav} from '../../store/reducers/products';
-import {getRemoteProduct } from '../../store/reducers/post';
-import {getFilteredProducts} from '../../store/reducers/products';
-import {addToFav,ratePost } from '../../store/reducers/post';
-import { MDBIcon,MDBCol,MDBCardTitle, MDBBtn,MDBCard,MDBCardBody,MDBCardImage,MDBCardText } from 'mdbreact';
+import { getRemoteData, getFav } from '../../store/reducers/products';
+import { getRemoteProduct } from '../../store/reducers/post';
+import { getFilteredProducts } from '../../store/reducers/products';
+import { addToFav, ratePost } from '../../store/reducers/post';
+import { MDBIcon, MDBCol, MDBCardTitle, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText } from 'mdbreact';
 import './product.scss';
 import ParallaxHeader from './parallaxHeader.js';
 import ParallaxFooter from './parallaxFooter.js';
 import Pagination from '../pagination/pagination';
-import {Redirect} from 'react-router-dom';
-function Products (props){
-  console.log('products props ------>',props);
-  let{category} = useParams();
+import { Redirect } from 'react-router-dom';
+function Products(props) {
+  console.log('products props ------>', props);
+  let { category } = useParams();
 
   ////////////////////////////////// PAGINATION
   let currentItems = [];
   let pageNumbers = [];
-  let itemPerPage= 12;
+  let itemPerPage = 12;
 
   if (props.currentPage) {
     let idxOfLastItem = props.currentPage * itemPerPage;
     let idxOfFirstItem = idxOfLastItem - itemPerPage;
-    
-    currentItems = props.data.slice(idxOfFirstItem, idxOfLastItem);    
+
+    currentItems = props.data.slice(idxOfFirstItem, idxOfLastItem);
     for (let i = 1; i <= Math.ceil(props.data.length / itemPerPage); i++) {
       pageNumbers.push(i);
     }
   }
   if (!currentItems.length) {
     console.log('empty');
-    currentItems= props.data;
+    currentItems = props.data;
   };
   ///////////////////////////////////////
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('PRODUCTS KEY ------>',props.productsKey);
-   
-    setTimeout(function(){while(props.user === {}){}
-      return true;}  , 2000);
+    console.log('PRODUCTS KEY ------>', props.productsKey);
+
+    setTimeout(function () {
+      while (props.user === {}) { }
+      return true;
+    }, 2000);
 
     switch (props.productsKey) {
 
-    case 'fav':
-      console.log('favlist------>',props.user);
-      props.getFav( props.token );
-      break;
+      case 'fav':
+        console.log('favlist------>', props.user);
+        props.getFav(props.token);
+        break;
 
-    case 'FILTER':
-      console.log('FILTER from switch ', category);
-      props.getFilteredProducts(category);
-      break;
-    
-    default:
-      props.get();
-      break;
+      case 'FILTER':
+        console.log('FILTER from switch ', category);
+        props.getFilteredProducts(category);
+        break;
+
+      default:
+        props.get();
+        break;
     }
-    
-  },[]);
+
+  }, [props.productsKey]);
 
   return (
     <>
@@ -70,7 +72,7 @@ function Products (props){
       {/* <section className="productContainer"> */}
       {/* {props.data.map((product , i) =>{ */}
       <section className="cardsZZ">
-        {currentItems.map((product , i) =>{
+        {currentItems.map((product, i) => {
           return (
             <>
               {/* <Show condition={props.loggedIn} >
@@ -78,16 +80,16 @@ function Products (props){
               </Show> */}
               {/* <div className="shadow-box-example hoverable" > */}
 
-       
-              <div className ="cardzz card--1">
-                <div className ="card__info-hover">
-                  <svg className ="card__like"  viewBox="0 0 24 24" style={{
+
+              <div className="cardzz card--1">
+                <div className="card__info-hover">
+                  <svg className="card__like" viewBox="0 0 24 24" style={{
                     pointerEvents: 'bounding-box'
-                  }} onClick={() =>{
-                    props.addToFav(product._id, props.token );
+                  }} onClick={() => {
+                    props.addToFav(product._id, props.token);
                     alert('Post added to your favorite list !');
                   }}>
-                    <path 
+                    <path
                       d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 
     4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,
     6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 
@@ -96,18 +98,18 @@ function Products (props){
 
                   </svg>
                 </div>
-                <div className ="card__img"
+                <div className="card__img"
                   style={{
                     backgroundImage: `url(${product.images[0]})`,
                   }}
                 ></div>
                 <Link to={`/search/${product._id}`} className="card_link">
-                  <div className="card__img--hover"style={{
-                    backgroundImage:  `url(${product.images[0]})`,
+                  <div className="card__img--hover" style={{
+                    backgroundImage: `url(${product.images[0]})`,
                   }}></div>
                 </Link>
-                <div className ="card__info">
-  
+                <div className="card__info">
+
                   <h3 className="card__title">{product.title}</h3>
                   <span className="card__category"> {product.description}</span>
                   <span className="card__by">by <Link to={`/user/${product.username}`}
@@ -115,26 +117,26 @@ function Products (props){
                   </Link> </span>
                   <div className="likeDislike">
                     <div>
-                      <MDBIcon 
+                      <MDBIcon
                         icon="thumbs-up card__like"
-                        onClick={() =>{
-                          props.ratePost(product._id, props.token , {'theRate':'+'} );
+                        onClick={() => {
+                          props.ratePost(product._id, props.token, { 'theRate': '+' });
                           console.log('hi')
                         }} />
                       <p>{product.positiveRateUser.length}</p>
                     </div>
                     <div>
-                      <MDBIcon 
+                      <MDBIcon
                         icon="thumbs-down card__like"
-                        onClick={() =>{
-                          props.ratePost(product._id, props.token , {'theRate':'-'});
+                        onClick={() => {
+                          props.ratePost(product._id, props.token, { 'theRate': '-' });
                         }} />
                       <p>{product.negativeRateUser.length}</p>
                     </div>
                   </div>
                 </div>
               </div>
-                
+
               {/* </div> */}
 
             </>
@@ -144,7 +146,7 @@ function Products (props){
       </section>
       {/* </section> */}
       {/* </section> */}
-      <Pagination pageNumbers={pageNumbers}/>
+      <Pagination pageNumbers={pageNumbers} />
 
       <section className="threeCard">
         <MDBCol>
@@ -152,7 +154,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg\')'
+                'url(\'https://cdn.vox-cdn.com/thumbor/3SDag4_szhZrsfE86H7OGXcesxs=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19395168/vpavic_191118_3800_0122.jpg\')'
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -173,7 +175,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg\')'
+                'url(\'https://img.freepik.com/free-vector/delivery-service-with-masks-illustration_23-2148501978.jpg?size=338&ext=jpg\')'
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -194,7 +196,7 @@ function Products (props){
             className="card-image imageCard"
             style={{
               backgroundImage:
-        'url(\'https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg\')'
+                'url(\'https://vips.org/wp-content/uploads/2017/12/ribbonhand1.jpg\')'
             }}
           >
             <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 divImg">
@@ -212,33 +214,33 @@ function Products (props){
 
       </section>
 
-   
-      <ParallaxFooter/>
+
+      <ParallaxFooter />
       {/* </section> */}
     </>
   );
 }
 
-const mapStateToProps = (state) =>{
-  console.log('state from categories------>',state);
+const mapStateToProps = (state) => {
+  console.log('state from categories------>', state);
   return {
     categories: state.categories,
-    data : state.products.products,
+    data: state.products.products,
     currentPage: state.pagination.currentPage,
-    user :  state.auth.user ,
-    token : state.auth.token ,
+    user: state.auth.user,
+    token: state.auth.token,
   };
-} ;
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  get: () => dispatch(getRemoteData() ),
-  getRemoteProduct: (id) => dispatch(getRemoteProduct(id) ),
-  getFav:(token) => dispatch(getFav(token)),
-  getFilteredProducts: (category) => dispatch(getFilteredProducts(category) ),
-  addToFav: (id ,token ) => dispatch(addToFav(id ,token)),
-  ratePost: ( id , token , rate ) => dispatch(ratePost(id , token , rate)),
+  get: () => dispatch(getRemoteData()),
+  getRemoteProduct: (id) => dispatch(getRemoteProduct(id)),
+  getFav: (token) => dispatch(getFav(token)),
+  getFilteredProducts: (category) => dispatch(getFilteredProducts(category)),
+  addToFav: (id, token) => dispatch(addToFav(id, token)),
+  ratePost: (id, token, rate) => dispatch(ratePost(id, token, rate)),
 });
-export default connect(mapStateToProps  , mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
 
 {/* <MDBCol md="4">
 <MDBCard cascade>

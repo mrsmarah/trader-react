@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap');
-.pFonts{
-    font-family: 'News Cycle', sans-serif;
-    color: white;
+@import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap");
+.pFonts {
+  font-family: "News Cycle", sans-serif;
+  color: white;
 }
 
 .login {
@@ -161,4 +161,7 @@ span#goBack {
 .formStyle {
   margin-top: 3vw;
   margin-bottom: 3vw;
+}
+input[type="password"]::placeholder {
+  color: #d9d9c4 !important;
 }
