@@ -52,7 +52,7 @@ const Admin = (props) => {
                 {/* <th>View Detalis</th> */}
                 <th>
                   <select id="cars" onChange={(e) => { props.changeStatus(post._id, { status: e.target.value }, props.token); }} value={post.selectValue} name="cars">
-                    {/* <option value="pendding">{post.status}</option> */}
+                    <option value="pending">{post.status}</option>
                     <option value="accepted">accept</option>
                     <option value="rejected">reject</option>
                   </select>
